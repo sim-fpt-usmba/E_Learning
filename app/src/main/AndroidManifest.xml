@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ma.ac.usmba.fpt.e_learning">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ProfCreerSeanceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProfModuleActivity" >
+
+        </activity>
+
+        <activity android:name=".EtudiantSeanceActivity" />
+        <activity android:name=".ProfAccueilActivity" />
+        <activity android:name=".EtudiantModuleActivity" />
+        <activity android:name=".ProfLoginActivity" />
+        <activity android:name=".EtudiantLoginActivity" />
+        <activity android:name=".EtudiantAccueilActivity" />
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".EtudiantSemestreActivity" />
+    </application>
+
+</manifest>

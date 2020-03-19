@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">E_learning</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="AR">AR</string>
+    <string name="FR">FR</string>
+    <string name="Professeur">Professeur</string>
+    <string name="Etudiant">Etudiant</string>
+    <string name="Espace_Etudiant">Espace Etudiant</string>
+    <string name="RESSOURCES">Resources</string>
+    <string name="espace_etudiant">ESPACE ETUDIANT</string>
+    <string name="assister_la_seance">ASSISTER LA SEANCE</string>
+    <string name="back">back</string>
+    <string name="student_hot">student_hot</string>
+    <string name="cne">CNE</string>
+    <string name="cin">CIN</string>
+    <string name="valider">Valider</string>
+    <string name="espace_professeur">ESPACE PROFESSEUR</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="mot_de_pass">Mot de pass</string>
+    <string name="modules">Modules</string>
+    <string name="creer_une_seance">CREER UNE SEANCE</string>
+    <string name="gerer_mes_seance">GERER MES SEANCE</string>
+    <string name="m1_seance_1">M1: SEANCE 1</string>
+    <string name="contenu">Contenu</string>
+    <string name="discussion">Discussion</string>
+    <string name="quiz">Quiz</string>
+    <string name="module_1">Module 1</string>
+    <string name="REF">REF</string>
+    <string name="module">module</string>
+    <string name="creer_seance">creer seance</string>
+</resources>
