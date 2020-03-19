@@ -19,7 +19,8 @@
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.073"
+        />
 
     <Button
         android:id="@+id/ar_button"
@@ -70,7 +71,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.803"
+        android:onClick="onClickProf"/>
 
     <Button
         android:id="@+id/etud_button"
@@ -89,6 +91,7 @@
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.941"
+        android:onClick="onClickEtudiant"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

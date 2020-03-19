@@ -2,8 +2,10 @@ package ma.ac.usmba.fpt.e_learning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.VideoView;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -33,5 +35,16 @@ public class WelcomeActivity extends AppCompatActivity {
                 videoView.start();
             }
         });
+    }
+
+
+    public void onClickEtudiant(View view) {
+            Intent intent = new Intent(WelcomeActivity.this, EtudiantLoginActivity.class);
+            startActivity(intent);
+    }
+
+    public void onClickProf(View view) {
+        Intent intent = new Intent(WelcomeActivity.this, ProfLoginActivity.class);
+        startActivity(intent);
     }
 }

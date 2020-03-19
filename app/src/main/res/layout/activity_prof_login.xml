@@ -76,6 +76,7 @@
             tools:ignore="RtlSymmetry"
             android:autofillHints="@string/mot_de_pass" />
         <Button
+            android:onClick="onClickValider"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:layout_gravity="center"

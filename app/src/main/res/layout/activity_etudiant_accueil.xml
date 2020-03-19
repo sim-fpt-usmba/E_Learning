@@ -29,6 +29,7 @@
 
     <Button
         android:id="@+id/etud_action1"
+        android:onClick="onClickAssister"
         android:layout_width="350dp"
         android:layout_height="84dp"
         android:layout_marginStart="30dp"
@@ -50,6 +51,7 @@
 
     <Button
         android:id="@+id/etud_action2"
+        android:onClick="onClickResources"
         android:layout_width="348dp"
         android:layout_height="72dp"
         android:layout_marginStart="30dp"
