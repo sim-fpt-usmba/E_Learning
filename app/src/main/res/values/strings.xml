@@ -26,14 +26,9 @@
     <string name="m1_seance_1">M1: SEANCE 1</string>
     <string name="contenu">Contenu</string>
     <string name="discussion">Discussion</string>
-    <string name="creer_quiz">Creer Quiz</string>
-    <string name="question">Question</string>
-    <string name="reponses">Reponses</string>
-    <string name="ajouter">Ajouter</string>
     <string name="quiz">Quiz</string>
     <string name="module_1">Module 1</string>
     <string name="REF">REF</string>
     <string name="module">module</string>
     <string name="creer_seance">creer seance</string>
-    <string name="supprimer">Supprimer</string>
 </resources>

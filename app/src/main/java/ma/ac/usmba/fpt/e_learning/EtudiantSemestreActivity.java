@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.Controller.SemestreController;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.Model.Semestre;
 
 public class EtudiantSemestreActivity extends AppCompatActivity {
     ArrayList<Button> buttonModules_S1  = new ArrayList<Button>();
     ArrayList<Button> buttonModules_S2 = new ArrayList<Button>();
-    ArrayList<Semestre> semesters=new ArrayList<Semestre>();
+    ArrayList<Semestre> semesters;
     ArrayList<Module> modS1;
     ArrayList<Module> modS2;
 
@@ -32,7 +33,9 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
 
         semestre1=(Button)findViewById(R.id.addBtnM_S1);
         semestre2=(Button)findViewById(R.id.addBtnM_S2);
-        setSemesters();
+        semesters= SemestreController.setModules();
+        semestre1.setText(semesters.get(0).get_semestre());
+        semestre2.setText(semesters.get(1).get_semestre());
         semestre1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
@@ -101,25 +104,6 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         linear1_s2.removeAllViews();
         sem2=true;
     }
-    private void setSemesters(){
-        semesters.add(new Semestre("Semestre 4"));
-        semesters.add(new Semestre("Semestre 6"));
-        Module m1=new Module("Module 1");
-        Module m2=new Module("Module 2");
-        Module m3=new Module("Module 3");
-        Module m4=new Module("Module 3");
-        Module m5=new Module("Module 5");
-        Module m6=new Module("Module 6");
-        semesters.get(0).add_module(m1);
-        semesters.get(0).add_module(m2);
-        semesters.get(1).add_module(m3);
-        semesters.get(1).add_module(m4);
-        semesters.get(1).add_module(m5);
-        semesters.get(1).add_module(m6);
-        semestre1.setText(semesters.get(0).get_semestre());
-        semestre2.setText(semesters.get(1).get_semestre());
-    }
-
 
 
 }
