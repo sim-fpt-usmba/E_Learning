@@ -52,18 +52,21 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/cne"
             android:layout_width="280dp"
             android:layout_height="45dp"
-            android:hint="@string/cne"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:paddingLeft="15dp"
-            android:inputType="textEmailAddress"
+            android:autofillHints="@string/cne"
             android:background="@drawable/btn"
+            android:hint="@string/cne"
+            android:inputType="textEmailAddress"
             android:paddingStart="15dp"
-            tools:ignore="RtlSymmetry"
-            android:autofillHints="@string/cne" />
+            android:paddingLeft="15dp"
+            tools:ignore="RtlSymmetry" />
+
         <EditText
+            android:id="@+id/cin"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:hint="@string/cin"

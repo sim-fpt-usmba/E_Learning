@@ -3,8 +3,8 @@ package ma.ac.usmba.fpt.e_learning.Model;
 import java.util.ArrayList;
 
 public class Semestre {
-   private String nom_semestre;
-   private ArrayList<Module> listof_module;
+    private String nom_semestre;
+    private ArrayList<Module> listof_module;
     public Semestre(){
 
     }
@@ -30,18 +30,18 @@ public class Semestre {
     }
 
     public void add_module(Module m){
-        if (!exists(m))
+        if (!exists(this,m))
             listof_module.add(m);
     }
     public void remove_module(Module m){
-        if (exists(m))
+        if (exists(this,m))
             listof_module.remove(m);
     }
-    public boolean exists(Module m){
-        for(Module x:listof_module){
+    public boolean exists(Semestre sem, Module m){
+        for(Module x:sem.getListof_module()){
             if((x.getNom_module()).equals(m.getNom_module()))
                 return true;
-                break;
+            break;
         }
         return false;
     }

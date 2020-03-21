@@ -52,6 +52,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:hint="@string/email"
@@ -64,6 +65,7 @@
             tools:ignore="RtlSymmetry"
             android:autofillHints="@string/email" />
         <EditText
+            android:id="@+id/password"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:hint="@string/mot_de_pass"

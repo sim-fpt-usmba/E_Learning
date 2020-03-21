@@ -31,4 +31,5 @@
     <string name="REF">REF</string>
     <string name="module">module</string>
     <string name="creer_seance">creer seance</string>
+    <string name="listes_des_sances">Liste des seances</string>
 </resources>
