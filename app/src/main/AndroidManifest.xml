@@ -9,9 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".QuizPopUp"
-            android:theme="@style/AppTheme.MyTheme"
-            />
         <activity android:name=".ProfCreerSeanceActivity" />
         <activity android:name=".ProfModuleActivity" />
         <activity android:name=".EtudiantSeanceActivity" />
