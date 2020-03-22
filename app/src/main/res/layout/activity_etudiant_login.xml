@@ -43,6 +43,7 @@
                 android:contentDescription="@string/student_hot"
                 android:src="@drawable/ic_school_black_24dp"
                 app:srcCompat="@drawable/groupe_91" />
+
         </LinearLayout>
 
         <EditText
@@ -83,6 +84,13 @@
             android:text="CONNEXION"
             android:textAllCaps="false"
             android:textColor="@color/whitecolor" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="52dp"
+            android:layout_height="61dp"
+            android:src="@drawable/icon_feather_lock" />
+
     </LinearLayout>
 
     <TextView
@@ -104,8 +112,8 @@
         android:onClick="goback"
         android:src="@drawable/ic_arrow_back_black_24dp"
         app:srcCompat="@drawable/trace_12"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="73dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="70dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
