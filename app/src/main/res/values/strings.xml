@@ -32,4 +32,6 @@
     <string name="module">module</string>
     <string name="creer_seance">creer seance</string>
     <string name="listes_des_sances">Liste des seances</string>
+    <string name="listes_des_s_ances">Liste Des Filiere</string>
+    <string name="liste_des_filieres">liste Des Filieres</string>
 </resources>

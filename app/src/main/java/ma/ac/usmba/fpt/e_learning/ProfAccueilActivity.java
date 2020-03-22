@@ -15,12 +15,14 @@ public class ProfAccueilActivity extends AppCompatActivity {
     }
 
     public void onClickProfModule(View view) {
-        Intent intent = new Intent(ProfAccueilActivity.this, ProfModuleActivity.class);
+        Intent intent = new Intent(ProfAccueilActivity.this, ProfFiliereActivity.class);
+        intent.putExtra("from", "Gerer");
         startActivity(intent);
     }
 
     public void onClickProfCreer(View view) {
-        Intent intent = new Intent(ProfAccueilActivity.this, ProfCreerSeanceActivity.class);
+        Intent intent = new Intent(ProfAccueilActivity.this, ProfFiliereActivity.class);
+        intent.putExtra("from", "Creer");
         startActivity(intent);
     }
 }
