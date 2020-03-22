@@ -57,8 +57,6 @@ public class ProfFiliereActivity extends AppCompatActivity {
                         Intent intent = new Intent(ProfFiliereActivity.this, ProfModuleActivity.class);
                         startActivity(intent);
                     }
-
-
                 }
             });
             filier_layout.addView(button_filier_list.get(i));
