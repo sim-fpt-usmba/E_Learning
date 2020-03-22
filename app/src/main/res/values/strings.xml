@@ -32,4 +32,8 @@
     <string name="module">module</string>
     <string name="creer_seance">creer seance</string>
     <string name="listes_des_sances">Liste des seances</string>
+    <string name="Question">Question</string>
+    <string name="reponses">Reponses</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="creer_quiz">Creer quiz</string>
 </resources>
