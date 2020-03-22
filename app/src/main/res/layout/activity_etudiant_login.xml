@@ -8,27 +8,17 @@
     android:background="@color/lightwhite"
     tools:context=".EtudiantLoginActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/GoBackIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goback"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:contentDescription="@string/back" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:id="@+id/imageView4"
+            android:layout_width="84dp"
+            android:layout_height="58dp"
+            android:src="@drawable/trace_12"
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="2dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,57 +27,48 @@
             android:text="@string/Espace_Etudiant"
             android:textColor="@color/greencolor"
             android:textSize="25sp"
-            android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/img"
-            android:layout_marginTop="40dp">
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/ic_school_black_24dp"
-                android:contentDescription="@string/student_hot" />
-        </LinearLayout>
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="84dp" />
 
         <EditText
             android:id="@+id/cne"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:autofillHints="@string/cne"
-            android:background="@drawable/btn"
             android:hint="@string/cne"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="179dp" />
 
         <EditText
             android:id="@+id/cin"
             android:layout_width="280dp"
             android:layout_height="45dp"
-            android:hint="@string/cin"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="15dp"
+            android:autofillHints="@string/cin"
+            android:hint="@string/cin"
             android:inputType="textPassword"
-            android:background="@drawable/btn"
             android:paddingStart="15dp"
+            android:paddingLeft="15dp"
             tools:ignore="RtlSymmetry"
-            android:autofillHints="@string/cin" />
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="283dp" />
+
         <Button
-            android:onClick="onClickValider"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:onClick="onClickValider"
             android:text="@string/valider"
             android:textAllCaps="false"
-            android:background="@drawable/joinbtn"
-            android:textColor="@color/whitecolor"/>
-    </LinearLayout>
+            android:textColor="@color/whitecolor"
+            tools:layout_editor_absoluteX="97dp"
+            tools:layout_editor_absoluteY="383dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
