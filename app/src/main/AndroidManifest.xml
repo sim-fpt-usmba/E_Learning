@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".accueil"></activity>
         <activity android:name=".ProfCreerSeanceActivity" />
         <activity android:name=".ProfModuleActivity" />
         <activity android:name=".EtudiantSeanceActivity" />
@@ -21,6 +22,7 @@
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
