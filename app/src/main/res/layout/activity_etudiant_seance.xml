@@ -6,100 +6,26 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="331dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="28dp"
-        android:background="#4D111010"
-        android:text="@string/m1_seance_1"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013"
-        android:gravity="center_horizontal" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        tools:layout_editor_absoluteY="731dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="93dp"
-        android:layout_height="56dp"
-        android:background="#FFFFFF"
-        android:clickable="true"
-        android:cursorVisible="true"
-        android:onClick="onClick"
-        android:text="@string/contenu"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.698"
-        android:focusable="true"
-        tools:ignore="TextViewEdits" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="112dp"
-        android:layout_height="56dp"
-        android:background="#4D111010"
-        android:text="@string/discussion"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.698" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="93dp"
-        android:layout_height="56dp"
-        android:background="#4D111010"
-        android:onClick="onClick"
-        android:text="@string/quiz"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.698" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="338dp"
-        android:layout_height="309dp"
-        android:layout_marginBottom="80dp"
-        android:background="#36918888"
-        android:textAlignment="center"
-        android:textColor="#090000"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:gravity="center_horizontal" />
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
