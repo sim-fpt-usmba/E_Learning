@@ -13,33 +13,19 @@
         android:src="@drawable/rectangle_118"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="413dp"
+        android:layout_height="589dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="142dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/GoBackIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/back"
-                android:onClick="goback"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/Espace_Etudiant"
-                android:textColor="@color/greencolor"
-                android:textSize="25sp"
-                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -48,14 +34,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/img"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:background="@drawable/img">
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="237dp"
+                android:layout_height="match_parent"
                 android:contentDescription="@string/student_hot"
-                android:src="@drawable/ic_school_black_24dp" />
+                android:src="@drawable/ic_school_black_24dp"
+                app:srcCompat="@drawable/groupe_91" />
         </LinearLayout>
 
         <EditText
@@ -76,27 +63,49 @@
             android:id="@+id/cin"
             android:layout_width="280dp"
             android:layout_height="45dp"
-            android:hint="@string/cin"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:paddingLeft="15dp"
-            android:inputType="textPassword"
+            android:autofillHints="@string/cin"
             android:background="@drawable/btn"
+            android:hint="@string/cin"
+            android:inputType="textPassword"
             android:paddingStart="15dp"
-            tools:ignore="RtlSymmetry"
-            android:autofillHints="@string/cin" />
+            android:paddingLeft="15dp"
+            tools:ignore="RtlSymmetry" />
 
         <Button
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/joinbtn"
+            android:background="@drawable/rectangle_11"
             android:onClick="onClickValider"
-            android:text="@string/valider"
+            android:text="CONNEXION"
             android:textAllCaps="false"
             android:textColor="@color/whitecolor" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/Espace_Etudiant"
+        android:textColor="@color/whitecolor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <ImageView
+        android:id="@+id/GoBackIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/back"
+        android:onClick="goback"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        app:srcCompat="@drawable/trace_12"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="73dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
