@@ -16,9 +16,12 @@
             android:id="@+id/imageView3"
             android:layout_width="225dp"
             android:layout_height="230dp"
-            app:srcCompat="@drawable/image_1"
-            tools:layout_editor_absoluteX="95dp"
-            tools:layout_editor_absoluteY="385dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.734"
+            app:srcCompat="@drawable/image_1" />
 
         <ImageView
             android:id="@+id/imageView9"
@@ -53,8 +56,12 @@
             android:textColor="@color/design_default_color_background"
             android:textSize="36sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="107dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.103" />
 
         <TextView
             android:id="@+id/textView7"
@@ -63,8 +70,10 @@
             android:gravity="center"
             android:text="FACULTE POLYDISCIPLINAIRE DE TAZA"
             android:textColor="#E31731"
-            tools:layout_editor_absoluteX="79dp"
-            tools:layout_editor_absoluteY="636dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.887"
+            tools:layout_editor_absoluteX="75dp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -73,8 +82,11 @@
             android:gravity="center"
             android:text="UNIVERSITE SIDI MOHAMED BEN ABDELAH"
             android:textColor="#3556A3"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="609dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.851" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
