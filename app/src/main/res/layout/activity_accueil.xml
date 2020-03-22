@@ -13,20 +13,47 @@
         tools:layout_editor_absoluteX="1dp">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:layout_width="244dp"
+            android:layout_height="282dp"
             app:srcCompat="@drawable/image_1"
-            tools:layout_editor_absoluteX="75dp"
-            tools:layout_editor_absoluteY="360dp" />
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="409dp" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="416dp"
+            android:layout_height="520dp"
+            app:srcCompat="@drawable/trace_1"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-28dp" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="409dp"
+            android:layout_height="528dp"
+            app:srcCompat="@drawable/trace_177"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="-54dp" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="415dp"
+            android:layout_height="527dp"
+            app:srcCompat="@drawable/trace_178"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="-61dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="160dp"
-            tools:layout_editor_absoluteY="137dp" />
-
+            android:text="E-LEARNING"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="118dp"
+            tools:layout_editor_absoluteY="107dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
