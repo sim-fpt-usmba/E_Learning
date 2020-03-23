@@ -66,7 +66,7 @@
             android:layout_marginTop="40dp">
 
             <ImageView
-                android:layout_width="208dp"
+                android:layout_width="241dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/student_hot"
                 app:srcCompat="@drawable/groupe_91" />
@@ -78,27 +78,27 @@
 
             <EditText
                 android:id="@+id/cne"
-                android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_width="262dp"
+                android:layout_height="47dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/cne"
-                android:background="@drawable/ligne_1"
+                android:background="@drawable/btn"
                 android:hint="@string/cne"
                 android:inputType="textEmailAddress"
                 android:paddingStart="15dp"
                 android:paddingLeft="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.857"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.239"
+                app:layout_constraintVertical_bias="0.217"
                 tools:ignore="RtlSymmetry" />
 
             <EditText
                 android:id="@+id/cin"
-                android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_width="262dp"
+                android:layout_height="47dp"
                 android:layout_gravity="center"
                 android:autofillHints="@string/cin"
                 android:background="@drawable/btn"
@@ -108,16 +108,16 @@
                 android:paddingLeft="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.857"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.45"
+                app:layout_constraintVertical_bias="0.469"
                 tools:ignore="RtlSymmetry" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="280dp"
-                android:layout_height="59dp"
+                android:layout_width="294dp"
+                android:layout_height="63dp"
                 android:layout_gravity="center"
                 android:background="@drawable/rectangle_11"
                 android:onClick="onClickValider"
@@ -128,15 +128,15 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.633"
+                app:layout_constraintHorizontal_bias="0.523"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.744" />
+                app:layout_constraintVertical_bias="0.756" />
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="41dp"
-                android:layout_height="43dp"
+                android:layout_width="35dp"
+                android:layout_height="46dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.091"
@@ -147,8 +147,8 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="39dp"
-                android:layout_height="37dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.086"

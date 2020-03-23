@@ -6,60 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".EtudiantAccueilActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="349dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="686dp"
-        android:background="@drawable/text_views"
-        android:gravity="center"
-        android:text="@string/espace_etudiant"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
         android:id="@+id/etud_action1"
-        android:onClick="onClickAssister"
-        android:layout_width="350dp"
-        android:layout_height="84dp"
+        android:layout_width="370dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="106dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="507dp"
-        android:background="@drawable/my_buttons"
-        android:text="@string/assister_la_seance"
+        android:background="@drawable/rectangle_11"
+        android:onClick="onClickAssister"
+        android:text="Assister Une Séance"
         android:textColor="#FFFFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintTop_toBottomOf="@+id/etud_action2"
+        app:layout_constraintVertical_bias="0.434" />
 
     <Button
         android:id="@+id/etud_action2"
-        android:onClick="onClickResources"
         android:layout_width="348dp"
         android:layout_height="72dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="300dp"
-        android:background="@drawable/my_buttons"
+        android:background="@drawable/rectangle_119"
+        android:onClick="onClickResources"
         android:text="@string/RESSOURCES"
         android:textColor="#FFFFFFFF"
         android:textSize="30sp"
@@ -67,6 +43,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etud_action1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="405dp"
+        android:layout_height="155dp"
+        android:background="@drawable/rectangle_118"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="4dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="40dp"
+            android:layout_height="34dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.631"
+            app:srcCompat="@drawable/trace_52" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="310dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/espace_etudiant"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.69"
+            tools:layout_editor_absoluteX="79dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.121"
+        app:srcCompat="@drawable/groupe_93" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
