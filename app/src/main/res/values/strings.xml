@@ -36,4 +36,9 @@
     <string name="reponses">Reponses</string>
     <string name="ajouter">Ajouter</string>
     <string name="creer_quiz">Creer quiz</string>
+    <string name="listes_des_s_ances">Liste Des Filiere</string>
+    <string name="liste_des_filieres">liste Des Filieres</string>
+    <string name="connexion">CONNEXION</string>
+    <string name="espace_tudiant">Espace Étudiant</string>
+    <string name="espace_enseignant">Espace Enseignant</string>
 </resources>

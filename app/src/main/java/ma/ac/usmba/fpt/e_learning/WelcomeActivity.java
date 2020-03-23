@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void playVideo() {
-        videoView = (VideoView) findViewById(R.id.welcome_video);
+        videoView = (VideoView) findViewById(R.id.videoView);
         String videopath = "android.resource://" + getPackageName() + "/" + R.raw.welcome_video;
         videoView.setVideoPath(videopath);
         videoView.start();
