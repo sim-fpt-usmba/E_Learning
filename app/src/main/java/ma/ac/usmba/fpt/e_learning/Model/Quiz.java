@@ -1,10 +1,11 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Quiz {
+public class Quiz implements Serializable {
     private String question;
-    private static HashMap<String,Boolean> reponses;
+    private  HashMap<String,Boolean> reponses;
     public Quiz() {
     }
 
@@ -16,11 +17,11 @@ public class Quiz {
         this.question = question;
     }
 
-    public static HashMap<String, Boolean> getReponses() {
+    public  HashMap<String, Boolean> getReponses() {
         return reponses;
     }
 
-    public static void setReponses(HashMap<String, Boolean> reponses) {
-        Quiz.reponses = reponses;
+    public  void setReponses(HashMap<String, Boolean> reponses) {
+        this.reponses = reponses;
     }
 }

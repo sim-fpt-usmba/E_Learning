@@ -93,58 +93,68 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_create_session"
             app:layout_constraintVertical_bias="0.0" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_file"
-            android:layout_width="71dp"
-            android:layout_height="78dp"
-            android:layout_marginStart="189dp"
-            android:layout_marginLeft="189dp"
-            android:layout_marginEnd="199dp"
-            android:layout_marginRight="199dp"
-            android:layout_marginBottom="500dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@android:drawable/ic_input_add" />
-
         <Button
             android:id="@+id/button_valider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginLeft="148dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="68dp"
             android:background="@drawable/my_buttons"
             android:text="@string/valider"
             android:textColor="#FFFFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
         <Button
             android:id="@+id/button_creer_quiz"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="72dp"
             android:background="@drawable/my_buttons"
             android:text="@string/creer_quiz"
             android:textColor="#FFFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_file" />
+            app:layout_constraintTop_toBottomOf="@+id/img_view_attach_file" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="267dp"
-            android:layout_height="106dp"
-            android:layout_marginBottom="140dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_valider"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:layout_marginTop="52dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_creer_quiz"></androidx.recyclerview.widget.RecyclerView>
 
-        </androidx.recyclerview.widget.RecyclerView>
+        <ImageView
+            android:id="@+id/img_view_attach_file"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginLeft="176dp"
+            android:layout_marginTop="40dp"
+            android:clickable="true"
+            android:contentDescription="attach_file"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_contenu"
+            app:srcCompat="@drawable/ic_attach" />
+
+        <TextView
+            android:id="@+id/txt_view_file_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginLeft="176dp"
+            android:layout_marginTop="28dp"
+            android:text="path"
+            app:layout_constraintBottom_toTopOf="@+id/button_creer_quiz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_view_attach_file"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
