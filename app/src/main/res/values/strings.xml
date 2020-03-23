@@ -34,4 +34,6 @@
     <string name="listes_des_sances">Liste des seances</string>
     <string name="listes_des_s_ances">Liste Des Filiere</string>
     <string name="liste_des_filieres">liste Des Filieres</string>
+    <string name="connexion">CONNEXION</string>
+    <string name="espace_tudiant">Espace Étudiant</string>
 </resources>
