@@ -1,4 +1,4 @@
-package ma.ac.usmba.fpt.e_learning;
+package ma.ac.usmba.fpt.e_learning.Model;
 
 public class Etudiant {
 

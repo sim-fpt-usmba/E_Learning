@@ -21,6 +21,9 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import ma.ac.usmba.fpt.e_learning.Model.Etudiant;
+import ma.ac.usmba.fpt.e_learning.Utils.APIEndPoint;
+import ma.ac.usmba.fpt.e_learning.Utils.NetworkUtils;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

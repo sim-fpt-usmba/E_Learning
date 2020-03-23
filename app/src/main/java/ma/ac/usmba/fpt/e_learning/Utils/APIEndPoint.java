@@ -1,4 +1,4 @@
-package ma.ac.usmba.fpt.e_learning;
+package ma.ac.usmba.fpt.e_learning.Utils;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
