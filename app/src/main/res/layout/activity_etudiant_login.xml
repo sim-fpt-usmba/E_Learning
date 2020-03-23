@@ -9,18 +9,47 @@
     tools:context=".EtudiantLoginActivity">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:background="@drawable/rectangle_118"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/GoBackIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goback"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:contentDescription="@string/back" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Espace Étudiant"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.727"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.729" />
+
+            <ImageView
+                android:id="@+id/GoBackIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/back"
+                android:onClick="goback"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.696"
+                app:srcCompat="@drawable/trace_12" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
@@ -30,64 +59,107 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/Espace_Etudiant"
-            android:textColor="@color/greencolor"
-            android:textSize="25sp"
-            android:textStyle="bold" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/img"
             android:layout_marginTop="40dp">
+
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/ic_school_black_24dp"
-                android:contentDescription="@string/student_hot" />
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/student_hot"
+                app:srcCompat="@drawable/groupe_91" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/cne"
-            android:layout_width="280dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:autofillHints="@string/cne"
-            android:background="@drawable/btn"
-            android:hint="@string/cne"
-            android:inputType="textEmailAddress"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            tools:ignore="RtlSymmetry" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/cin"
-            android:layout_width="280dp"
-            android:layout_height="45dp"
-            android:hint="@string/cin"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="15dp"
-            android:inputType="textPassword"
-            android:background="@drawable/btn"
-            android:paddingStart="15dp"
-            tools:ignore="RtlSymmetry"
-            android:autofillHints="@string/cin" />
-        <Button
-            android:onClick="onClickValider"
-            android:layout_width="280dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/valider"
-            android:textAllCaps="false"
-            android:background="@drawable/joinbtn"
-            android:textColor="@color/whitecolor"/>
+            <EditText
+                android:id="@+id/cne"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:autofillHints="@string/cne"
+                android:background="@drawable/ligne_1"
+                android:hint="@string/cne"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.857"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.239"
+                tools:ignore="RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/cin"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:autofillHints="@string/cin"
+                android:background="@drawable/btn"
+                android:hint="@string/cin"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.857"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.45"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="280dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle_11"
+                android:onClick="onClickValider"
+                android:text="CONNEXION"
+                android:textAllCaps="false"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.633"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.744" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="41dp"
+                android:layout_height="43dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.091"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.225"
+                app:srcCompat="@drawable/icon_feather_user" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="39dp"
+                android:layout_height="37dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.086"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.478"
+                app:srcCompat="@drawable/icon_feather_lock" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>
