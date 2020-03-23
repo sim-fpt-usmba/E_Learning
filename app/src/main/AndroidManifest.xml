@@ -29,7 +29,6 @@
             />
 
         <activity android:name=".ProfFiliereActivity" />
-        <activity android:name=".ProfCreerSeanceActivity" />
 
         <activity android:name=".ProfModuleActivity" />
         <activity android:name=".EtudiantSeanceActivity" />
