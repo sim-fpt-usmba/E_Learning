@@ -15,12 +15,12 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="230dp"
             android:layout_height="37dp"
             android:layout_gravity="center"
@@ -31,10 +31,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.58"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.68" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/GoBackIcon"
@@ -43,24 +41,20 @@
             android:contentDescription="@string/back"
             android:onClick="goback"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.696"
             app:srcCompat="@drawable/trace_12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="363dp"
+        android:layout_width="0dp"
         android:layout_height="263dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        app:layout_constraintVertical_bias="0.258"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <EditText
             android:id="@+id/cne"
@@ -73,12 +67,10 @@
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/cin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.801"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.125"
             tools:ignore="RtlSymmetry" />
 
         <EditText
@@ -92,12 +84,10 @@
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.801"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.402"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/cne"
             tools:ignore="RtlSymmetry" />
 
         <Button
@@ -114,42 +104,37 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.71"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.86" />
+            app:layout_constraintTop_toBottomOf="@+id/cin"/>
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.129"
+            app:layout_constraintEnd_toStartOf="@+id/cne"
             app:srcCompat="@drawable/icon_feather_user" />
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.426"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toStartOf="@+id/cin"
             app:srcCompat="@drawable/icon_feather_lock" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="355dp"
-        android:layout_height="231dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
