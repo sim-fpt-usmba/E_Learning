@@ -6,46 +6,47 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".EtudiantLoginActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/constraintLayout4"
-    android:layout_width="match_parent"
-    android:layout_height="131dp"
-    android:background="@drawable/rectangle_118"
-    android:orientation="horizontal"
-    android:padding="10dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0">
-
-    <TextView
-        android:id="@+id/espace_enseignant"
-        android:layout_width="230dp"
-        android:layout_height="37dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/espace_enseignant"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="25sp"
-        android:textStyle="bold"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:background="@drawable/rectangle_118"
+        android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/GoBackIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/back"
-        android:onClick="goback"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/trace_12" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/espace_enseignant"
+            android:layout_width="230dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/espace_enseignant"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/GoBackIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back"
+            android:onClick="goback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/trace_12" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -53,6 +54,7 @@ tools:context=".EtudiantLoginActivity">
         android:layout_height="262dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
@@ -84,12 +86,11 @@ tools:context=".EtudiantLoginActivity">
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            tools:ignore="RtlSymmetry"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toBottomOf="@+id/email"
-             />
+            tools:ignore="RtlSymmetry" />
 
         <Button
             android:id="@+id/button"
@@ -105,6 +106,7 @@ tools:context=".EtudiantLoginActivity">
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
@@ -113,9 +115,9 @@ tools:context=".EtudiantLoginActivity">
             android:layout_width="42dp"
             android:layout_height="42dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintEnd_toStartOf="@+id/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/email"
             app:srcCompat="@drawable/icon_feather_user" />
 
         <ImageView
@@ -123,9 +125,9 @@ tools:context=".EtudiantLoginActivity">
             android:layout_width="42dp"
             android:layout_height="42dp"
             app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView5"
-            app:layout_constraintEnd_toStartOf="@+id/password"
             app:srcCompat="@drawable/icon_feather_lock" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
