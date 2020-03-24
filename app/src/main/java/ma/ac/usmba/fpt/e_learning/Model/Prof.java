@@ -1,7 +1,6 @@
-package ma.ac.usmba.fpt.e_learning;
+package ma.ac.usmba.fpt.e_learning.Model;
 
-public class Etudiant {
-
+public class Prof {
     private int id;
     private int user_id;
     private String name;
@@ -10,5 +9,5 @@ public class Etudiant {
     private String avatar;
     private String phone;
     private String cin;
-    private String cne;
+    private String matricule;
 }

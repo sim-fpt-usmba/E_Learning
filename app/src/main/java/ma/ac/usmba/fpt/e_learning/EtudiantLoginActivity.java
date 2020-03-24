@@ -21,6 +21,7 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import ma.ac.usmba.fpt.e_learning.Model.Etudiant;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +46,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
 
         SessionData = getSharedPreferences("user_details",MODE_PRIVATE);
 
-        if( SessionData.contains("UserLogin") ){
+        if( SessionData.contains("ProfLogin") ){
             openMain();
         }
 
@@ -131,11 +132,11 @@ public class EtudiantLoginActivity extends AppCompatActivity {
                         etudiant = gson.fromJson(p.text(), collectionType);
 
                         SharedPreferences.Editor editor = SessionData.edit();
-                        editor.putString("UserLogin", etudiant.toString());
+                        editor.putString("ProfLogin", etudiant.toString());
                         editor.commit();
 
                         openMain();
-                    } else if (response.code() == 404) {
+                    } else {
                         showMessage( "Failed to login, please check your ID or password" );
                     }
                 } catch (IOException e) {
