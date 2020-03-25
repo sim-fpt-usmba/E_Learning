@@ -121,7 +121,5 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         semestre1.setText(semesters.get(0).get_semestre());
         semestre2.setText(semesters.get(1).get_semestre());
     }
-
-
-
 }
+
