@@ -67,7 +67,7 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         for(int i=0;i<modS1.size();i++) {
             buttonModules_S1.add(new Button(this));
             buttonModules_S1.get(i).setBackgroundResource(R.drawable.rectangle_11);
-            buttonModules_S1.get(i).setHeight(150);
+            buttonModules_S1.get(i).setHeight(100);
             buttonModules_S1.get(i).setWidth(700);
             buttonModules_S1.get(i).setTextColor(Color.WHITE);
             buttonModules_S1.get(i).setTextSize(20);
@@ -84,7 +84,7 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         for(int i=0;i<modS2.size();i++) {
             buttonModules_S2.add(new Button(this));
             buttonModules_S2.get(i).setBackgroundResource(R.drawable.rectangle_11);
-            buttonModules_S2.get(i).setHeight(150);
+            buttonModules_S2.get(i).setHeight(100);
             buttonModules_S2.get(i).setWidth(700);
             buttonModules_S2.get(i).setTextColor(Color.WHITE);
             buttonModules_S2.get(i).setTextSize(20);
@@ -121,5 +121,7 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         semestre1.setText(semesters.get(0).get_semestre());
         semestre2.setText(semesters.get(1).get_semestre());
     }
-}
 
+
+
+}
