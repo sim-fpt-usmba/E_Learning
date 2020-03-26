@@ -16,20 +16,19 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="230dp"
+            android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/espace_professeur"
             android:textColor="@color/design_default_color_background"
-            android:textSize="22sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,12 +39,10 @@
             android:id="@+id/GoBackIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
             android:contentDescription="@string/back"
             android:onClick="goback"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/trace_52" />
@@ -57,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/gerer_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
@@ -80,33 +77,40 @@
         android:id="@+id/gerer_btn"
         android:layout_width="294dp"
         android:layout_height="63dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="252dp"
         android:background="@drawable/rectangle_11"
-
         android:drawableRight="@drawable/groupe_36"
+        android:drawableEnd="@drawable/groupe_36"
+        android:paddingRight="25dp"
+        android:paddingEnd="25dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
 
         android:onClick="onClickProfModule"
         android:text="@string/gerer_mes_seance"
-        android:textAllCaps="false"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         android:textStyle="bold"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/creer_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        />
 
     <Button
         android:id="@+id/creer_btn"
         android:layout_width="297dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="136dp"
-        android:background="@drawable/rectangle_119"
+        android:background="@drawable/rectangle_119_1"
 
         android:drawableRight="@drawable/groupe_90"
+        android:drawableEnd="@drawable/groupe_90"
+        android:paddingRight="25dp"
+        android:paddingEnd="25dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+
         android:onClick="onClickProfCreer"
         android:text="@string/creer_une_seance"
         android:textAllCaps="false"
@@ -114,8 +118,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gerer_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
 

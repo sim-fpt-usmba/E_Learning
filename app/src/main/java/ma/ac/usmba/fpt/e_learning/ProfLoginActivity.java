@@ -23,6 +23,8 @@ import java.lang.reflect.Type;
 import java.util.regex.Pattern;
 
 import ma.ac.usmba.fpt.e_learning.Model.Prof;
+import ma.ac.usmba.fpt.e_learning.Utils.APIEndPoint;
+import ma.ac.usmba.fpt.e_learning.Utils.NetworkUtils;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
