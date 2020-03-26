@@ -101,6 +101,8 @@ public class EtudiantLoginActivity extends AppCompatActivity {
         } else{
             checkEtudientExists();
         }
+        //TODO: remove this line after testing
+        openMain();
     }
 
     public void showMessage(String msg){

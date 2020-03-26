@@ -10,11 +10,11 @@ public class ProfFiliereController {
 
     public static ArrayList<Filiere> set_Filiere() {
         ArrayList<Filiere> filieres = new ArrayList<Filiere>();
-        filieres.add(new Filiere("SMI", "Sciences mathématique et informatique"));
-        filieres.add(new Filiere("SMA", "Sciences mathématique appliqué"));
-        filieres.add(new Filiere("SMP", "Sciences de la matière physique"));
-        filieres.add(new Filiere("SMC", "Sciences de la matière chimie"));
-        filieres.add(new Filiere("SMG", "Sciences de la matière gélogie"));
+        filieres.add(new Filiere("SMI", "Filière SMI"));
+        filieres.add(new Filiere("SMA", "Filière SMA"));
+        filieres.add(new Filiere("SMP", "Filière SMP"));
+        filieres.add(new Filiere("SMC", "Filière SMC"));
+        filieres.add(new Filiere("SMG", "Filière SMG"));
         return filieres;
     }
 }

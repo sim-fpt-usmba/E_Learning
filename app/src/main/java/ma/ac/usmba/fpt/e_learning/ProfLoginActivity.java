@@ -41,30 +41,32 @@ public class ProfLoginActivity extends AppCompatActivity {
                     //"(?=.*[A-Z])" +         //at least 1 upper case letter
                     "(?=.*[a-zA-Z])" +      //any letter
                     "(?=\\S+$)"
-                    );
+            );
 
     private EditText email;
-    private EditText  password;
+    private EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_login);
 
-        SessionData = getSharedPreferences("user_details",MODE_PRIVATE);
+        SessionData = getSharedPreferences("user_details", MODE_PRIVATE);
 
-        if( SessionData.contains("EtudiantLogin") ){
+        if (SessionData.contains("EtudiantLogin")) {
             openMain();
         }
 
         networkUtils = new NetworkUtils();
 
-        email= findViewById(R.id.email);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
     }
+
     public void goback(View view) {
 
     }
+
     private boolean validateEmail() {
         String emailInput = email.getText().toString().trim();
 
@@ -79,6 +81,7 @@ public class ProfLoginActivity extends AppCompatActivity {
             return true;
         }
     }
+
     private boolean validatePassword() {
         String passwordInput = password.getText().toString().trim();
 
@@ -95,33 +98,35 @@ public class ProfLoginActivity extends AppCompatActivity {
     }
 
 
-
     public void onClickValider(View view) {
-     if ((!validateEmail()) ||(!validatePassword())){
+        if ((!validateEmail()) || (!validatePassword())) {
 
 
-        String input = "Email: " + email.getText().toString();
-        input += "\n";
+            String input = "Email: " + email.getText().toString();
+            input += "\n";
 
-        input += "Password: " + password.getText().toString();
+            input += "Password: " + password.getText().toString();
 
-        Toast.makeText(this,input, Toast.LENGTH_SHORT).show();showMessage(input);
-     } else{
-         checkEtudientExists();
-     }
+            Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+            showMessage(input);
+        } else {
+            checkEtudientExists();
+        }
+        //TODO: remove this line after testing
+        openMain();
     }
 
-    public void showMessage(String msg){
+    public void showMessage(String msg) {
         Toast.makeText(ProfLoginActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void openMain(){
+    public void openMain() {
         Intent intent = new Intent(ProfLoginActivity.this, ProfAccueilActivity.class);
         startActivity(intent);
     }
 
 
-    public void  checkEtudientExists(){
+    public void checkEtudientExists() {
         APIEndPoint apiEndPoint = networkUtils.getApiEndPoint();
 
         Call<ResponseBody> call = apiEndPoint.prof_login(
@@ -149,17 +154,17 @@ public class ProfLoginActivity extends AppCompatActivity {
 
                         openMain();
                     } else {
-                        showMessage( "Failed to login, please check your ID or password" );
+                        showMessage("Failed to login, please check your ID or password");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                    showMessage( "Failed : " + e.getMessage());
+                    showMessage("Failed : " + e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                showMessage( "Failed : " + t.getMessage());
+                showMessage("Failed : " + t.getMessage());
             }
         });
     }
