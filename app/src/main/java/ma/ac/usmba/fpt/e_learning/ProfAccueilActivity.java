@@ -14,7 +14,7 @@ public class ProfAccueilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prof_accueil);
     }
 
-    public void onClickProfModule(View view) {
+    public void onClickProfFiliere(View view) {
         Intent intent = new Intent(ProfAccueilActivity.this, ProfFiliereActivity.class);
         intent.putExtra("from", "Gerer");
         startActivity(intent);

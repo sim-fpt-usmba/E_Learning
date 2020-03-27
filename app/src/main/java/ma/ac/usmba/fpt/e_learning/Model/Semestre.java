@@ -3,46 +3,30 @@ package ma.ac.usmba.fpt.e_learning.Model;
 import java.util.ArrayList;
 
 public class Semestre {
-    private String nom_semestre;
-    private ArrayList<Module> listof_module;
-    public Semestre(){
+    private String name;
+    private ArrayList<Module> modules;
 
-    }
-    public Semestre(String nom_semestre) {
-        this.nom_semestre = nom_semestre;
-        listof_module=new ArrayList<Module>();
+    public Semestre() {
     }
 
-    public String get_semestre() {
-        return nom_semestre;
+    public Semestre(String name, ArrayList<Module> modules) {
+        this.name = name;
+        this.modules = modules;
     }
 
-    public void set_semestre(String nom_semestre) {
-        this.nom_semestre = nom_semestre;
+    public String getName() {
+        return name;
     }
 
-    public ArrayList<Module> getListof_module() {
-        return listof_module;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setListof_module(ArrayList<Module> listof_module) {
-        this.listof_module = listof_module;
+    public ArrayList<Module> getModules() {
+        return modules;
     }
 
-    public void add_module(Module m){
-        if (!exists(this,m))
-            listof_module.add(m);
-    }
-    public void remove_module(Module m){
-        if (exists(this,m))
-            listof_module.remove(m);
-    }
-    public boolean exists(Semestre sem, Module m){
-        for(Module x:sem.getListof_module()){
-            if((x.getNom_module()).equals(m.getNom_module()))
-                return true;
-            break;
-        }
-        return false;
+    public void setModules(ArrayList<Module> modules) {
+        this.modules = modules;
     }
 }

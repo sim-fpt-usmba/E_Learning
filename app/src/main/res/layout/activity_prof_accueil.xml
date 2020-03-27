@@ -11,7 +11,7 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="131dp"
-        android:background="@drawable/rectangle_119"
+        android:background="@drawable/rectangle_118"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/groupe_94" />
+            app:srcCompat="@drawable/groupe_94"
+            android:contentDescription="@string/contenu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,8 +86,8 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
 
-        android:onClick="onClickProfModule"
-        android:text="@string/gerer_mes_seance"
+        android:onClick="onClickProfCreer"
+        android:text="@string/creer_une_seance"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -111,8 +112,8 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
 
-        android:onClick="onClickProfCreer"
-        android:text="@string/creer_une_seance"
+        android:onClick="onClickProfFiliere"
+        android:text="@string/gerer_mes_seance"
         android:textAllCaps="false"
         android:textColor="@color/whitecolor"
         android:textSize="20sp"
