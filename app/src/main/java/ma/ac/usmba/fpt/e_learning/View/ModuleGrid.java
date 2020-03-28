@@ -10,6 +10,8 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 
 import ma.ac.usmba.fpt.e_learning.EtudiantModuleActivity;
+import ma.ac.usmba.fpt.e_learning.EtudiantSemestreActivity;
+import ma.ac.usmba.fpt.e_learning.Model.Etudiant;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.R;
 
@@ -37,6 +39,7 @@ public class ModuleGrid extends GridLayout {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, EtudiantModuleActivity.class);
+                    intent.putExtra("from", EtudiantSemestreActivity.class.getName());
                     context.startActivity(intent);
                 }
             });

@@ -24,4 +24,6 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goback(View view) {
+    }
 }

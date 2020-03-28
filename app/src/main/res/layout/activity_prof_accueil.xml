@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/gerer_btn"
+        app:layout_constraintBottom_toTopOf="@+id/assister_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
@@ -75,7 +75,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/gerer_btn"
+        android:id="@+id/assister_btn"
         android:layout_width="294dp"
         android:layout_height="63dp"
         android:background="@drawable/rectangle_11"
@@ -92,14 +92,14 @@
         android:textSize="20sp"
         android:textStyle="bold"
 
-        app:layout_constraintBottom_toTopOf="@+id/creer_btn"
+        app:layout_constraintBottom_toTopOf="@+id/ressources_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         />
 
     <Button
-        android:id="@+id/creer_btn"
+        android:id="@+id/ressources_btn"
         android:layout_width="297dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
@@ -119,7 +119,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gerer_btn"
+        app:layout_constraintTop_toBottomOf="@+id/assister_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

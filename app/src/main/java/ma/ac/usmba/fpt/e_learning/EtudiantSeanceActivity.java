@@ -41,4 +41,7 @@ public class EtudiantSeanceActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+
+    public void goback(View view) {
+    }
 }

@@ -58,6 +58,7 @@ public class ProfFiliereActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else if (from.equals("Gerer")) {
                         Intent intent = new Intent(ProfFiliereActivity.this, ProfModuleActivity.class);
+                        intent.putExtra("from", ProfFiliereActivity.class.getName());
                         startActivity(intent);
                     }
                 }

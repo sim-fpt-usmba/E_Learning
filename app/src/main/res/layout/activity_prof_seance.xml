@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".EtudiantSeanceActivity">
+    tools:context=".ProfSeanceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="131dp"
-        android:background="@drawable/rectangle_118"
+        android:background="@drawable/rectangle_119"
         android:orientation="horizontal"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +25,7 @@
             android:layout_height="37dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/espace_etudiant"
+            android:text="@string/espace_enseignant"
             android:textColor="@color/design_default_color_background"
             android:textSize="25sp"
             android:textStyle="bold"
