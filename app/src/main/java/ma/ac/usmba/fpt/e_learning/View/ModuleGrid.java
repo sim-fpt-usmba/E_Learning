@@ -1,19 +1,22 @@
 package ma.ac.usmba.fpt.e_learning.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.EtudiantModuleActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.R;
 
 
 public class ModuleGrid extends GridLayout {
     ArrayList<Button>  moduleBtnList;
-    public ModuleGrid(Context context, ArrayList<Module> modules) {
+    public ModuleGrid(final Context context, ArrayList<Module> modules) {
         super(context);
 
         this.setUseDefaultMargins(true);
@@ -30,6 +33,13 @@ public class ModuleGrid extends GridLayout {
             tempBtn.setBackgroundColor(getResources().getColor(R.color.dark_gray));
             tempBtn.setHeight((int)(tempBtn.getHeight() * 1.2));
             tempBtn.setWidth(tempBtn.getWidth());
+            tempBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EtudiantModuleActivity.class);
+                    context.startActivity(intent);
+                }
+            });
             this.addView(tempBtn);
         }
     }

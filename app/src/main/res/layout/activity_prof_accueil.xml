@@ -11,7 +11,7 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="131dp"
-        android:background="@drawable/rectangle_118"
+        android:background="@drawable/rectangle_119"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

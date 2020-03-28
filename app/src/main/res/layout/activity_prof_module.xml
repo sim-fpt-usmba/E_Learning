@@ -5,13 +5,13 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EtudiantModuleActivity">
+    tools:context=".ProfModuleActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headConstraint"
         android:layout_width="match_parent"
         android:layout_height="131dp"
-        android:background="@drawable/rectangle_118"
+        android:background="@drawable/rectangle_119"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,19 +1,22 @@
 package ma.ac.usmba.fpt.e_learning.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.EtudiantSeanceActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Seance;
 import ma.ac.usmba.fpt.e_learning.R;
 
 
 public class SeanceGrid extends GridLayout {
     ArrayList<Button> seanceBtnList;
-    public SeanceGrid(Context context, ArrayList<Seance> seances) {
+    public SeanceGrid(final Context context, ArrayList<Seance> seances) {
         super(context);
 
         this.setUseDefaultMargins(true);
@@ -30,6 +33,13 @@ public class SeanceGrid extends GridLayout {
             tempBtn.setBackgroundColor(getResources().getColor(R.color.dark_gray));
             tempBtn.setHeight((int)(tempBtn.getHeight() * 1.2));
             tempBtn.setWidth(tempBtn.getWidth());
+            tempBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EtudiantSeanceActivity.class);
+                    context.startActivity(intent);
+                }
+            });
             this.addView(tempBtn);
         }
     }

@@ -1,8 +1,10 @@
 package ma.ac.usmba.fpt.e_learning.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -10,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
+import ma.ac.usmba.fpt.e_learning.EtudiantModuleActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Semestre;
 import ma.ac.usmba.fpt.e_learning.R;
 
@@ -17,7 +20,7 @@ public class SemestreModuleView extends ConstraintLayout {
     TextView semestreTxt;
     ModuleGrid moduleGrid;
     static int TAG = 0;
-    public SemestreModuleView(Context context, Semestre semestre) {
+    public SemestreModuleView(final Context context, Semestre semestre) {
         super(context);
 
         LayoutParams layoutParams = new LayoutParams(
@@ -34,8 +37,8 @@ public class SemestreModuleView extends ConstraintLayout {
         semestreTxt.setGravity(Gravity.CENTER);
         semestreTxt.setTextColor(getResources().getColor(R.color.whitecolor));
         semestreTxt.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_119_1));
-        this.addView(semestreTxt);
 
+        this.addView(semestreTxt);
         moduleGrid = new ModuleGrid(context, semestre.getModules());
         moduleGrid.setId(ViewCompat.generateViewId());
         this.addView(moduleGrid);
