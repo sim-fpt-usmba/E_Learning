@@ -5,42 +5,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
-import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.R;
+import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
-public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>{
-    ArrayList<Quiz> quiz_array;
+public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> {
     Context context;
-
-    public QuizAdapter(Context context,ArrayList<Quiz> quiz_array) {
-        this.quiz_array = quiz_array;
+    ArrayList<String> filenames;
+    public FilesAdapter(Context context,ArrayList<String> filenames) {
         this.context = context;
+        this.filenames = filenames;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row,parent,false);
+        ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Quiz q = quiz_array.get(position);
-        String content = q.getQuestion() + "\t\t" + q.getReponses().size() + " Choix";
-        holder.textView.setText(content);
-        holder.delete_button.setOnClickListener(new View.OnClickListener() {
+        String filename = filenames.get(position);
+        holder.filename.setText(FileUtils.getFileName(filename));
+        holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quiz_array.remove(position);
+                filenames.remove(position);
                 notifyItemRemoved(position);
             }
         });
@@ -48,19 +46,16 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return quiz_array.size();
+        return filenames.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-        Button delete_button;
-
+        TextView filename;
+        Button delete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.txt_view_question);
-            delete_button = itemView.findViewById(R.id.delete_button);
+            filename = itemView.findViewById(R.id.txt_view_question);
+            delete   = itemView.findViewById(R.id.delete_button);
         }
-
-
     }
 }

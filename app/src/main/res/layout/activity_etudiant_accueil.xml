@@ -77,16 +77,15 @@
     <Button
         android:id="@+id/assister_btn"
         android:layout_width="294dp"
-        android:layout_height="63dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rectangle_11"
-        android:drawableRight="@drawable/groupe_66"
         android:drawableEnd="@drawable/groupe_66"
-        android:paddingRight="15dp"
-        android:paddingEnd="15dp"
+        android:drawableRight="@drawable/groupe_66"
+        android:onClick="onClickAssister"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
-
-        android:onClick="onClickAssister"
+        android:paddingEnd="15dp"
+        android:paddingRight="15dp"
         android:text="@string/assister_la_seance"
         android:textColor="@color/design_default_color_background"
         android:textSize="20sp"
@@ -95,33 +94,33 @@
         app:layout_constraintBottom_toTopOf="@+id/ressources_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <Button
         android:id="@+id/ressources_btn"
         android:layout_width="297dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rectangle_119_1"
 
-        android:drawableRight="@drawable/groupe_10"
         android:drawableEnd="@drawable/groupe_10"
-        android:paddingRight="25dp"
-        android:paddingEnd="25dp"
+        android:drawableRight="@drawable/groupe_10"
+        android:onClick="onClickResources"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
+        android:paddingEnd="25dp"
 
-        android:onClick="onClickResources"
+        android:paddingRight="25dp"
         android:text="@string/ressources"
         android:textAllCaps="false"
         android:textColor="@color/whitecolor"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assister_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assister_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
