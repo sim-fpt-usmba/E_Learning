@@ -8,8 +8,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +26,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
+import ma.ac.usmba.fpt.e_learning.Controller.FilesAdapter;
+import ma.ac.usmba.fpt.e_learning.Controller.ModuleController;
 import ma.ac.usmba.fpt.e_learning.Controller.QuizAdapter;
+import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
@@ -34,26 +42,49 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     final String QUIZ = "Quiz";
     ArrayList<Quiz> quizzes = new ArrayList<>();
     ArrayList<String> paths = new ArrayList<>();
-    Button button_valider, creer_quiz;
-    RecyclerView recyclerView;
+    Button button_valider;
+    RecyclerView recyclerView,file_names_recycler;
     QuizAdapter quizAdapter;
+    FilesAdapter filesAdapter;
     ImageView attach_file;
-    TextView file_path;
+    TextView creer_quiz;
+    ArrayAdapter<String> adapter;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE};
     final int FILE_CHOOSER = 50;
     final String PATHS = "paths";
-
+    Spinner modules;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_creer_seance);
-        //Necessary Declarations
-        creer_quiz = findViewById(R.id.button_creer_quiz);
+        //Instantiations
+        creer_quiz = findViewById(R.id.creer_quiz);
         button_valider = findViewById(R.id.button_valider);
         recyclerView = findViewById(R.id.recyclerView);
         attach_file = findViewById(R.id.img_view_attach_file);
-        file_path = findViewById(R.id.txt_view_file_path);
+        modules = findViewById(R.id.spinner_modules);
+        file_names_recycler = findViewById(R.id.selected_files_recycler);
+        //Populate the Modules dropDown
+        ArrayList<String> array_modules = new ArrayList<>();
+        array_modules.add("Sélectionner un module...");
+        //Filling the array modules with modules names.
+        for(Module m : ModuleController.getModule())array_modules.add(m.getName());
+        //Setting an adapter for the spinner.
+        adapter = new ArrayAdapter<>(this,R.layout.dropdown,array_modules);
+        modules.setAdapter(adapter);
+        //TODO : ACTIONS WHEN THE USER SELECT AN ITEM OR NOT.
+        modules.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //Move to the QuizPopUp
         creer_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +94,14 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 String array_quizzes = gson.toJson(quizzes);
                 intent.putExtra(QUIZ, array_quizzes);
                 intent.putStringArrayListExtra("paths", paths);
+                intent.putExtra("modules",modules.getSelectedItem().toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_right,R.anim.slide_out_left);
             }
         });
-        //Populate the recycler view
         update_quizzes();
+        update_files();
+        //Populate the recycler view
         quizAdapter = new QuizAdapter(this, quizzes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(quizAdapter);
@@ -93,6 +127,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(ProfCreerSeanceActivity.this, PERMISSIONS, FILE_CHOOSER);
                 }
+                for(String path:paths) System.out.println(path);
             }
         });
 
@@ -115,11 +150,21 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
 
     //Update the quizzes arrayList
     public void update_quizzes() {
-        if (getIntent().getSerializableExtra(QUIZ) != null)
+        if (getIntent().getSerializableExtra(QUIZ) != null){
             quizzes = (ArrayList<Quiz>) getIntent().getSerializableExtra(QUIZ);
+        }
+        String module = getIntent().getStringExtra("modules");
+        int pos = adapter.getPosition(module);
+        modules.setSelection(pos);
+    }
+    //Update the selected files
+    public void update_files(){
         if (getIntent().getStringArrayListExtra(PATHS) != null) {
             paths = getIntent().getStringArrayListExtra(PATHS);
         }
+        filesAdapter = new FilesAdapter(this,paths);
+        file_names_recycler.setLayoutManager(new LinearLayoutManager(this));
+        file_names_recycler.setAdapter(filesAdapter);
     }
 
     //Ask the user for permission to read and write from the externale storage.
@@ -156,11 +201,10 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         return true;
     }
     //
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        StringBuilder path = new StringBuilder();
+        String path = "";
         if (requestCode == FILE_CHOOSER && resultCode == RESULT_OK) {
             //Check if the user select multiple files
             if (data.getClipData() != null) {
@@ -168,18 +212,20 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 while (count < data.getClipData().getItemCount()) {
                     Uri uri = data.getClipData().getItemAt(count).getUri();
                     paths.add(FileUtils.getPath(ProfCreerSeanceActivity.this, uri));
-                    path.append(FileUtils.getFileName(paths.get(count))).append("  ");
+                    path += "  "+FileUtils.getFileName(paths.get(count));
                     count++;
                 }
             } else if (data.getData() != null) {
                 paths.add(FileUtils.getPath(ProfCreerSeanceActivity.this, data.getData()));
-                path.append(FileUtils.getFileName(FileUtils.getPath(ProfCreerSeanceActivity.this, data.getData())));
+                path += "  "+FileUtils.getFileName(paths.get(paths.size()-1));
             }
-            file_path.setText(path.toString());
-//                    Toast.makeText(this, "Selected File ///" + path +"///", Toast.LENGTH_SHORT).show();
+            //setPaths();
+            //Populate the file names recycler
+            update_files();
             Toast.makeText(this, "Selected File ---" + paths.size() + "---", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
 
 

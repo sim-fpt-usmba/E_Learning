@@ -1,47 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    >
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id="@+id/txt_view_question"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/text_views"
-        android:gravity="start"
+        android:layout_width="342dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:background="@drawable/reponses_edittext"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
         android:text="TextView"
-        android:textSize="20sp"
+        android:textColor="#22499d"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/img_view_delete"
-        android:layout_width="44dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:clickable="true"
-        android:focusable="auto"
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="58dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/my_buttons"
+        android:drawableLeft="@drawable/ic_delete_white"
+        android:paddingLeft="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete" />
-
-    <TextView
-        android:id="@+id/text_view_nbr_choix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toEndOf="@+id/txt_view_question"
         app:layout_constraintTop_toTopOf="parent" />
 

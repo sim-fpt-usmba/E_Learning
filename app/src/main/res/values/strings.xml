@@ -26,7 +26,6 @@
     <string name="m1_seance_1">M1: SEANCE 1</string>
     <string name="contenu">Contenu</string>
     <string name="discussion">Discussion</string>
-    <string name="quiz">Quiz</string>
     <string name="module_1">Module 1</string>
     <string name="REF">REF</string>
     <string name="module">module</string>
@@ -42,4 +41,14 @@
     <string name="espace_tudiant">Espace Étudiant</string>
     <string name="espace_enseignant">Espace Enseignant</string>
     <string name="liste_des_modules">Liste des Modules</string>
+    <string name="title_activity_prof_create_seance">ProfCreateSeance</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="quiz">QUIZ</string>
+    <string name="creer_une_quiz">CREER UN QUIZ</string>
+    <string name="ajouter_une_question">Ajouter une question...</string>
+    <string name="ajouter_les_reponses">Ajouter les réponses</string>
 </resources>

@@ -9,7 +9,7 @@ tools:context=".EtudiantLoginActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="131dp"
+        android:layout_height="130dp"
         android:background="@drawable/rectangle_119"
         android:orientation="horizontal"
         android:padding="10dp"
@@ -77,8 +77,8 @@ tools:context=".EtudiantLoginActivity">
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="267dp"
-            android:layout_height="47dp"
+            android:layout_width="256dp"
+            android:layout_height="41dp"
             android:layout_gravity="center"
             android:autofillHints="@string/mot_de_pass"
             android:background="@drawable/btn"
@@ -106,7 +106,6 @@ tools:context=".EtudiantLoginActivity">
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
