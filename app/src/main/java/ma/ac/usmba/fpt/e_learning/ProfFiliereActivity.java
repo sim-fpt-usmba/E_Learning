@@ -69,4 +69,7 @@ public class ProfFiliereActivity extends AppCompatActivity {
     }
 
 
+    public void goback(View view) {
+        finish();
+    }
 }

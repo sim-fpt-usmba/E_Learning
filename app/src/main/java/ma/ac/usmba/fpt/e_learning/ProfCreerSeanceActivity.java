@@ -224,6 +224,9 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         }
     }
 
+    public void goback(View view) {
+        finish();
+    }
 }
 
 

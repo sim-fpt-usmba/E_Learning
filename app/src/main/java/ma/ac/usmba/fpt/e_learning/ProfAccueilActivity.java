@@ -26,6 +26,6 @@ public class ProfAccueilActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goback(View view) {
-
+        finish();
     }
 }

@@ -64,7 +64,7 @@ public class ProfLoginActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
-
+        finish();
     }
 
     private boolean validateEmail() {

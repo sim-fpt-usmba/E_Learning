@@ -60,7 +60,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
-
+        finish();
     }
     private boolean validatecne() {
         String cnee= cne.getText().toString().trim();

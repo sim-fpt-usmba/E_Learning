@@ -43,5 +43,6 @@ public class EtudiantSeanceActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
+        finish();
     }
 }

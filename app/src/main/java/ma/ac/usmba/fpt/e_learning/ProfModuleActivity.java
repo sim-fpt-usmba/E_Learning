@@ -2,6 +2,7 @@ package ma.ac.usmba.fpt.e_learning;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,4 +75,7 @@ public class ProfModuleActivity extends AppCompatActivity {
 
     }
 
+    public void goback(View view) {
+        finish();
+    }
 }

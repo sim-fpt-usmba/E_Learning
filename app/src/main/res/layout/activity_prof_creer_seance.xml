@@ -45,12 +45,13 @@
 
             <ImageView
                 android:id="@+id/GoBackIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:contentDescription="@string/back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
                 app:layout_constraintHorizontal_bias="0.39"
+                android:onClick="goback"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.53"
