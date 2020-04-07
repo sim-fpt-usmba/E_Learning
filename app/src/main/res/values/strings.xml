@@ -51,4 +51,10 @@
     <string name="creer_une_quiz">CREER UN QUIZ</string>
     <string name="ajouter_une_question">Ajouter une question...</string>
     <string name="ajouter_les_reponses">Ajouter les réponses</string>
+    <string name="ecrire_un_message">Ecrire un message</string>
+    <string name="envoyer_le_message">envoyer le message</string>
+    <string name="nom_utilisatuer">Nom et Prenom</string>
+    <string name="contenu_de_message">contenu de message</string>
+    <string name="moi">Moi</string>
+    <string name="date_et_temp">Date et temp</string>
 </resources>

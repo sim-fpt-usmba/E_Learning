@@ -26,14 +26,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Objects;
 
-import ma.ac.usmba.fpt.e_learning.Controller.FilesAdapter;
+import ma.ac.usmba.fpt.e_learning.Adapters.FilesAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.ModuleController;
-import ma.ac.usmba.fpt.e_learning.Controller.QuizAdapter;
+import ma.ac.usmba.fpt.e_learning.Adapters.QuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
