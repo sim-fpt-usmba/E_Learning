@@ -39,7 +39,6 @@
         android:layout_height="200dp"
         android:contentDescription="@string/fac_name"
         android:src="@drawable/logo_univ"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraint_background" />
@@ -48,6 +47,7 @@
         android:id="@+id/name_univ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/univ_name"
         android:textColor="@color/blue"
         android:textSize="17sp"
