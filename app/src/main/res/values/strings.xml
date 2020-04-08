@@ -57,4 +57,8 @@
     <string name="contenu_de_message">contenu de message</string>
     <string name="moi">Moi</string>
     <string name="date_et_temp">Date et temp</string>
+    <string name="accuil_backgrouond">Accuil backgrouond</string>
+    <string name="e_learning">E-learning</string>
+    <string name="fac_name">FACULTE POLYDSCIPLINAIRE DE TAZA</string>
+    <string name="univ_name">UNIVERSITE SIDI MOHAMED BEN ABDELLAH</string>
 </resources>
