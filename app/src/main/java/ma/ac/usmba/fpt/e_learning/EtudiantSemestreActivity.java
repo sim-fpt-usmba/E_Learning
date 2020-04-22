@@ -66,10 +66,11 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         modS1=semesters.get(0).getListof_module();
         for(int i=0;i<modS1.size();i++) {
             buttonModules_S1.add(new Button(this));
-            buttonModules_S1.get(i).setHeight(150);
+            buttonModules_S1.get(i).setBackgroundResource(R.drawable.rectangle_11);
+            buttonModules_S1.get(i).setHeight(100);
             buttonModules_S1.get(i).setWidth(700);
-            buttonModules_S1.get(i).setBackgroundColor(Color.DKGRAY);
             buttonModules_S1.get(i).setTextColor(Color.WHITE);
+            buttonModules_S1.get(i).setTextSize(20);
             buttonModules_S1.get(i).setText(modS1.get(i).getNom_module());
             buttonModules_S1.get(i).setTag(i);
             linear1_s1.addView(buttonModules_S1.get(i));
@@ -82,10 +83,11 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         modS2=semesters.get(1).getListof_module();
         for(int i=0;i<modS2.size();i++) {
             buttonModules_S2.add(new Button(this));
-            buttonModules_S2.get(i).setHeight(150);
+            buttonModules_S2.get(i).setBackgroundResource(R.drawable.rectangle_11);
+            buttonModules_S2.get(i).setHeight(100);
             buttonModules_S2.get(i).setWidth(700);
-            buttonModules_S2.get(i).setBackgroundColor(Color.DKGRAY);
             buttonModules_S2.get(i).setTextColor(Color.WHITE);
+            buttonModules_S2.get(i).setTextSize(20);
             buttonModules_S2.get(i).setText(modS2.get(i).getNom_module());
             buttonModules_S2.get(i).setTag(i);
             linear1_s2.addView(buttonModules_S2.get(i));
