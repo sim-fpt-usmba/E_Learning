@@ -1,34 +1,30 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
 public class Seance {
-    private String nom_seance;
-    private String intitule_seance;
+    private String id;
+    private String title;
+
     public Seance() {
-
     }
 
-    public Seance(String nom_seance) {
-        this.nom_seance = nom_seance;
+    public Seance(String id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
-    public Seance(String nom_seance, String intitule_seance) {
-        this.nom_seance = nom_seance;
-        this.intitule_seance = intitule_seance;
+    public String getId() {
+        return id;
     }
 
-    public String getIntitule_seance() {
-        return intitule_seance;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setIntitule_seance(String intitule_seance) {
-        this.intitule_seance = intitule_seance;
+    public String getTitle() {
+        return title;
     }
 
-    public String getNom_seance() {
-        return nom_seance;
-    }
-
-    public void setNom_seance(String nom_seance) {
-        this.nom_seance = nom_seance;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

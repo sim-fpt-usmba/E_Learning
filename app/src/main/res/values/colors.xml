@@ -8,4 +8,15 @@
     <color name="lightwhite">#F5F5F3</color>
     <color name="whitecolor">#fff</color>
     <color name="fullwhite">#C6C6C6</color>
+    <color name="dark_gray">#313131</color>
+    <color name="dark">#000</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#f1c40f</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="green">#27AE60</color>
+    <color name="light_purple">#E8E1E7</color>
+    <color name="light_green">#50d050</color>
+    <color name="dark_green">#008000</color>
+    <color name="blue">#0000ff</color>
 </resources>

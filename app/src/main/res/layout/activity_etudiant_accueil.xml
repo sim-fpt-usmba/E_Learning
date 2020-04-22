@@ -6,92 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".EtudiantAccueilActivity">
 
-    <Button
-        android:id="@+id/etud_action1"
-        android:layout_width="370dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/rectangle_11"
-        android:onClick="onClickAssister"
-        android:text="Assister Une Séance"
-        android:textColor="#FFFFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etud_action2"
-        app:layout_constraintVertical_bias="0.434" />
-
-    <Button
-        android:id="@+id/etud_action2"
-        android:layout_width="348dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/rectangle_119"
-        android:onClick="onClickResources"
-        android:text="@string/RESSOURCES"
-        android:textColor="#FFFFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.248" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="405dp"
-        android:layout_height="155dp"
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
         android:background="@drawable/rectangle_118"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="4dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="40dp"
-            android:layout_height="34dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.081"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.631"
-            app:srcCompat="@drawable/trace_52" />
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="310dp"
-            android:layout_height="58dp"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/espace_etudiant"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/design_default_color_background"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/GoBackIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/back"
+            android:onClick="goback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.69"
-            tools:layout_editor_absoluteX="79dp" />
+            app:srcCompat="@drawable/trace_52" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/assister_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="284dp"
+            android:layout_height="258dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/groupe_93"
+            android:contentDescription="@string/contenu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/assister_btn"
+        android:layout_width="294dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_11"
+        android:drawableEnd="@drawable/groupe_66"
+        android:drawableRight="@drawable/groupe_66"
+        android:onClick="onClickAssister"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/assister_la_seance"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/ressources_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <Button
+        android:id="@+id/ressources_btn"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/rectangle_119_1"
+
+        android:drawableEnd="@drawable/groupe_10"
+        android:drawableRight="@drawable/groupe_10"
+        android:onClick="onClickResources"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="25dp"
+
+        android:paddingRight="25dp"
+        android:text="@string/ressources"
+        android:textAllCaps="false"
+        android:textColor="@color/whitecolor"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/groupe_93" />
+        app:layout_constraintTop_toBottomOf="@+id/assister_btn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

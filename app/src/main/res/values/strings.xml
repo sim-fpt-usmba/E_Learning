@@ -8,7 +8,7 @@
     <string name="Professeur">Professeur</string>
     <string name="Etudiant">Etudiant</string>
     <string name="Espace_Etudiant">Espace Etudiant</string>
-    <string name="RESSOURCES">Resources</string>
+    <string name="ressources">Ressources</string>
     <string name="espace_etudiant">ESPACE ETUDIANT</string>
     <string name="assister_la_seance">ASSISTER LA SEANCE</string>
     <string name="back">back</string>
@@ -26,7 +26,6 @@
     <string name="m1_seance_1">M1: SEANCE 1</string>
     <string name="contenu">Contenu</string>
     <string name="discussion">Discussion</string>
-    <string name="quiz">Quiz</string>
     <string name="module_1">Module 1</string>
     <string name="REF">REF</string>
     <string name="module">module</string>
@@ -41,4 +40,25 @@
     <string name="connexion">CONNEXION</string>
     <string name="espace_tudiant">Espace Étudiant</string>
     <string name="espace_enseignant">Espace Enseignant</string>
+    <string name="liste_des_modules">Liste des Modules</string>
+    <string name="title_activity_prof_create_seance">ProfCreateSeance</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="quiz">QUIZ</string>
+    <string name="creer_une_quiz">CREER UN QUIZ</string>
+    <string name="ajouter_une_question">Ajouter une question...</string>
+    <string name="ajouter_les_reponses">Ajouter les réponses</string>
+    <string name="ecrire_un_message">Ecrire un message</string>
+    <string name="envoyer_le_message">envoyer le message</string>
+    <string name="nom_utilisatuer">Nom et Prenom</string>
+    <string name="contenu_de_message">contenu de message</string>
+    <string name="moi">Moi</string>
+    <string name="date_et_temp">Date et temp</string>
+    <string name="accuil_backgrouond">Accuil backgrouond</string>
+    <string name="e_learning">E-learning</string>
+    <string name="fac_name">FACULTE POLYDSCIPLINAIRE DE TAZA</string>
+    <string name="univ_name">UNIVERSITE SIDI MOHAMED BEN ABDELLAH</string>
 </resources>

@@ -36,9 +36,13 @@ public class EtudiantSeanceActivity extends AppCompatActivity {
     public void setupViewPager(ViewPager viewPager) {
         EtudiantSeanceFPA adapter = new EtudiantSeanceFPA(getSupportFragmentManager());
         adapter.addFragment(new EtudiantSeanceContenuFrag(), "Contenu");
-        adapter.addFragment(new EtudiantSeanceDiscussionFrag(), "Discussion");
+        adapter.addFragment(new SeanceDiscussionFrag(), "Discussion");
         adapter.addFragment(new EtudiantSeanceQuizFrag(), "Quiz");
         viewPager.setAdapter(adapter);
 
+    }
+
+    public void goback(View view) {
+        finish();
     }
 }

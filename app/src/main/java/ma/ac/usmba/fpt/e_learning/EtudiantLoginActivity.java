@@ -60,7 +60,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
-
+        finish();
     }
     private boolean validatecne() {
         String cnee= cne.getText().toString().trim();
@@ -101,6 +101,8 @@ public class EtudiantLoginActivity extends AppCompatActivity {
         } else{
             checkEtudientExists();
         }
+        //TODO: remove this line after testing
+        openMain();
     }
 
     public void showMessage(String msg){
