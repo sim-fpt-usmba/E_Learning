@@ -43,6 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraint_background" />
 
+
     <TextView
         android:id="@+id/name_univ"
         android:layout_width="wrap_content"
