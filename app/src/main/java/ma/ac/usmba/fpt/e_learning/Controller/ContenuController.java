@@ -12,7 +12,9 @@ public class ContenuController {
 
     public static ContenuModel getContenu(){
         Date date = new Date();
-        String description = "description from databse : ";
+        String description = "Test description : \n\n\nBonjour les étudiants ci-joint la derniére partie du cour " +
+                "Développement mobile hybride.\n\n\nSi Vous avez des questions n'hésitez pas de me contacter\n\n\n" +
+                "Cordialement.";
         ArrayList<File> files = new ArrayList<>();
         files.add(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"fichier de test 1"));
         files.add(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"fichier de test 2"));

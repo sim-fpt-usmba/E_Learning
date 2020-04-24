@@ -19,12 +19,14 @@ import ma.ac.usmba.fpt.e_learning.Model.ContenuModel;
 
 public class ProfSeanceContenuFrag extends Fragment {
     private TextView date_textview;
+    private TextView description_textview;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_seance_contenu, container, false);
 
         date_textview = view.findViewById(R.id.date_textview);
+        description_textview = view.findViewById(R.id.description_textview);
 
         return view;
 
@@ -36,10 +38,11 @@ public class ProfSeanceContenuFrag extends Fragment {
         ContenuModel contenu = ContenuController.getContenu();
 
         date_textview.setText(formatDate(contenu.getDate()));
+        description_textview.setText(contenu.getDescription());
     }
 
     private String formatDate(Date date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E dd.MM.yyyy hh:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy  '('HH:mm')'");
         return simpleDateFormat.format(date) ;
     }
 }
