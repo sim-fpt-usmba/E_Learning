@@ -40,6 +40,7 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
             public void onClick(View v) {
                 filenames.remove(position);
                 notifyItemRemoved(position);
+                notifyDataSetChanged();
             }
         });
     }

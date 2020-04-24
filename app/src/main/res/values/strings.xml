@@ -51,4 +51,7 @@
     <string name="creer_une_quiz">CREER UN QUIZ</string>
     <string name="ajouter_une_question">Ajouter une question...</string>
     <string name="ajouter_les_reponses">Ajouter les réponses</string>
+    <string name="ajouter_des_fichier">Ajouter des fichier</string>
+    <string name="attach_file">attach_file</string>
+    <string name="date_du_cour">Date du cour</string>
 </resources>
