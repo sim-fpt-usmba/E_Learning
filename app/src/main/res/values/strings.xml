@@ -5,6 +5,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="AR">AR</string>
     <string name="FR">FR</string>
+    <string name="EN">EN</string>
     <string name="Professeur">Enseignant</string>
     <string name="Etudiant">Etudiant</string>
     <string name="Espace_Etudiant">Espace Etudiant</string>
@@ -61,4 +62,5 @@
     <string name="e_learning">E-learning</string>
     <string name="fac_name">FACULTE POLYDISCIPLINAIRE DE TAZA</string>
     <string name="univ_name">UNIVERSITE SIDI MOHAMED BEN ABDELLAH</string>
+
 </resources>
