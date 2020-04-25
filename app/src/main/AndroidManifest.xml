@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <activity
             android:name=".QuizPopUp"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -32,10 +33,10 @@
         <activity android:name=".EtudiantLoginActivity" />
         <activity android:name=".EtudiantAccueilActivity" />
         <activity android:name=".EtudiantSemestreActivity" />
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".WelcomeActivity"/>
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

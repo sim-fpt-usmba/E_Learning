@@ -33,12 +33,13 @@ public class ProfSeanceActivity extends AppCompatActivity {
     public void setupViewPager(ViewPager viewPager) {
         ProfSeanceFPA adapter = new ProfSeanceFPA(getSupportFragmentManager());
         adapter.addFragment(new ProfSeanceContenuFrag(), "Contenu");
-        adapter.addFragment(new ProfSeanceDiscussionFrag(), "Discussion");
+        adapter.addFragment(new SeanceDiscussionFrag(), "Discussion");
         adapter.addFragment(new ProfSeanceQuizFrag(), "Quiz");
         viewPager.setAdapter(adapter);
 
     }
 
     public void goback(View view) {
+        finish();
     }
 }

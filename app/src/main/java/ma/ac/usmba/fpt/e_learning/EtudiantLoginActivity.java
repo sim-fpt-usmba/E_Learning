@@ -33,12 +33,9 @@ import retrofit2.Response;
 
 
 public class EtudiantLoginActivity extends AppCompatActivity {
-    private SharedPreferences SessionData;
+    private SharedPreferences sessionData;
     private NetworkUtils networkUtils;
     private Etudiant etudiant;
-    /*private static final Pattern PASSWORD_PATTERN =
-            //Pattern.compile("[A-Z]{1,2}" + "[0-9]*");//
-    Pattern.compile("[A-Z]{1,2}\\-[0-9]*");*/
     private EditText cne;
     private EditText cin;
 
@@ -47,9 +44,9 @@ public class EtudiantLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant_login);
 
-        SessionData = getSharedPreferences("user_details",MODE_PRIVATE);
+        sessionData = getSharedPreferences("user_details",MODE_PRIVATE);
 
-        if( SessionData.contains("ProfLogin") ){
+        if( sessionData.contains("ProfLogin") ){
             openMain();
         }
 
@@ -60,7 +57,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
-
+        finish();
     }
     private boolean validatecne() {
         String cnee= cne.getText().toString().trim();
@@ -136,7 +133,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
 
                         etudiant = gson.fromJson(p.text(), collectionType);
 
-                        SharedPreferences.Editor editor = SessionData.edit();
+                        SharedPreferences.Editor editor = sessionData.edit();
                         editor.putString("ProfLogin", etudiant.toString());
                         editor.commit();
 

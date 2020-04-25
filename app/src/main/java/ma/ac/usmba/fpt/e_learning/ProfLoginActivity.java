@@ -31,9 +31,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfLoginActivity extends AppCompatActivity {
-    private SharedPreferences SessionData;
+    private SharedPreferences sessionData;
     private NetworkUtils networkUtils;
     private Prof prof;
+    private EditText emailTxt;
+    private EditText passwordTxt;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     //"(?=.*[0-9])" +         //at least 1 digit
@@ -43,78 +45,112 @@ public class ProfLoginActivity extends AppCompatActivity {
                     "(?=\\S+$)"
             );
 
-    private EditText email;
-    private EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_login);
 
-        SessionData = getSharedPreferences("user_details", MODE_PRIVATE);
+        sessionData = getSharedPreferences("user_details", MODE_PRIVATE);
 
-        if (SessionData.contains("EtudiantLogin")) {
+        if (sessionData.contains("EtudiantLogin")) {
             openMain();
         }
 
         networkUtils = new NetworkUtils();
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+        emailTxt = findViewById(R.id.email);
+        passwordTxt = findViewById(R.id.password);
     }
-
-    public void goback(View view) {
-
-    }
-
-    private boolean validateEmail() {
-        String emailInput = email.getText().toString().trim();
-
-        if (emailInput.isEmpty()) {
-            email.setError("Field can't be empty");
-            return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            email.setError("Please enter a valid email address");
-            return false;
-        } else {
-            email.setError(null);
-            return true;
-        }
-    }
-
-    private boolean validatePassword() {
-        String passwordInput = password.getText().toString().trim();
-
-        if (passwordInput.isEmpty()) {
-            password.setError("Field can't be empty");
-            return false;
-        } else if (passwordInput.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%_\\w]{8,15})$")) {//PASSWORD_PATTERN.matcher(passwordInput).matches()
-            password.setError("Password too weak");
-            return false;
-        } else {
-            password.setError(null);
-            return true;
-        }
-    }
-
 
     public void onClickValider(View view) {
         if ((!validateEmail()) || (!validatePassword())) {
-
-
-            String input = "Email: " + email.getText().toString();
-            input += "\n";
-
-            input += "Password: " + password.getText().toString();
-
-            Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
-            showMessage(input);
+            showMessage("Votre Email ou mot de pass et incorrect !");
         } else {
             checkEtudientExists();
         }
         //TODO: remove this line after testing
         openMain();
     }
+
+    public void goback(View view) {
+        finish();
+    }
+
+    public void checkEtudientExists() {
+        APIEndPoint apiEndPoint = networkUtils.getApiEndPoint();
+
+        Call<ResponseBody> call = apiEndPoint.prof_login(
+                "application/json",
+                emailTxt.getText().toString(),
+                passwordTxt.getText().toString()
+        );
+        call.enqueue(new Callback<ResponseBody>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if (response.code() == 200) {
+                        assert response.body() != null;
+                        Document document = Jsoup.parse(response.body().string());
+                        Element p = document.select("body").first();
+                        Gson gson = new Gson();
+                        Type collectionType = new TypeToken<Prof>() {
+                        }.getType();
+
+                        prof = gson.fromJson(p.text(), collectionType);
+
+                        SharedPreferences.Editor editor = sessionData.edit();
+                        editor.putString("EtudiantLogin", prof.toString());
+                        editor.apply();
+
+                        openMain();
+                    } else {
+                        showMessage("Failed to login, please check your ID or password");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                showMessage("Connection Failure");
+            }
+        });
+    }
+
+    private boolean validateEmail() {
+        String emailInput = emailTxt.getText().toString().trim();
+
+        if (emailInput.isEmpty()) {
+            emailTxt.setError("Field can't be empty");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            emailTxt.setError("Please enter a valid email address");
+            return false;
+        } else {
+            emailTxt.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePassword() {
+        String passwordInput = passwordTxt.getText().toString().trim();
+
+        if (passwordInput.isEmpty()) {
+            passwordTxt.setError("Field can't be empty");
+            return false;
+        } else if (passwordInput.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%_\\w]{8,15})$")) {//PASSWORD_PATTERN.matcher(passwordInput).matches()
+            passwordTxt.setError("Password too weak");
+            return false;
+        } else {
+            passwordTxt.setError(null);
+            return true;
+        }
+    }
+
 
     public void showMessage(String msg) {
         Toast.makeText(ProfLoginActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -125,47 +161,4 @@ public class ProfLoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void checkEtudientExists() {
-        APIEndPoint apiEndPoint = networkUtils.getApiEndPoint();
-
-        Call<ResponseBody> call = apiEndPoint.prof_login(
-                "application/json",
-                email.getText().toString(),
-                password.getText().toString()
-        );
-        call.enqueue(new Callback<ResponseBody>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.code() == 200) {
-                        Document document = Jsoup.parse(response.body().string());
-                        Element p = document.select("body").first();
-                        Gson gson = new Gson();
-                        Type collectionType = new TypeToken<Prof>() {
-                        }.getType();
-
-                        prof = gson.fromJson(p.text(), collectionType);
-
-                        SharedPreferences.Editor editor = SessionData.edit();
-                        editor.putString("EtudiantLogin", prof.toString());
-                        editor.commit();
-
-                        openMain();
-                    } else {
-                        showMessage("Failed to login, please check your ID or password");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    showMessage("Failed : " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                showMessage("Failed : " + t.getMessage());
-            }
-        });
-    }
 }

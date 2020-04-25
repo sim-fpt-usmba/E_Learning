@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".ProfSeanceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,11 +12,7 @@
         android:layout_height="131dp"
         android:background="@drawable/rectangle_119"
         android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView"
@@ -36,8 +31,8 @@
 
         <ImageView
             android:id="@+id/GoBackIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:contentDescription="@string/back"
             android:onClick="goback"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -53,14 +48,31 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout4" />
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@+id/constraintLayout4"
+        app:tabTextColor="@color/whitecolor"
+        android:background="#3655A5"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="#313131"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorGravity="stretch"
+        />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="25dp"
+        android:layout_below="@+id/tabs"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

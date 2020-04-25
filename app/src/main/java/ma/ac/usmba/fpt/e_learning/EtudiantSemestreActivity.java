@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
@@ -69,4 +70,7 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         set.applyTo(constraintLayout);
     }
 
+    public void goback(View view) {
+        finish();
+    }
 }

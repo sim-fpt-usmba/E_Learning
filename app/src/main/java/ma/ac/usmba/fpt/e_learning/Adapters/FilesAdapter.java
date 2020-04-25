@@ -1,4 +1,4 @@
-package ma.ac.usmba.fpt.e_learning.Controller;
+package ma.ac.usmba.fpt.e_learning.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

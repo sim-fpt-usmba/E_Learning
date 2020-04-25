@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -71,4 +72,7 @@ public class EtudiantModuleActivity extends AppCompatActivity {
 
     }
 
+    public void goback(View view) {
+        finish();
+    }
 }
