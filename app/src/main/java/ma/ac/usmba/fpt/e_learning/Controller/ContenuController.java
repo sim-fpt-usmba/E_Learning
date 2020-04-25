@@ -15,9 +15,11 @@ public class ContenuController {
         String description = "Test description : \n\n\nBonjour les étudiants ci-joint la derniére partie du cour " +
                 "Développement mobile hybride.\n\n\nSi Vous avez des questions n'hésitez pas de me contacter\n\n\n" +
                 "Cordialement.";
-        ArrayList<File> files = new ArrayList<>();
-        files.add(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"fichier de test 1"));
-        files.add(new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"fichier de test 2"));
+        ArrayList<String> files = new ArrayList<>();
+        files.add(new File("Nom du fichier 1").toString());
+        files.add(new File("Nom du fichier 2").toString());
+        files.add(new File("Nom du fichier 3").toString());
+        files.add(new File("Nom du fichier 4").toString());
 
         return new ContenuModel(date,description,files);
     }

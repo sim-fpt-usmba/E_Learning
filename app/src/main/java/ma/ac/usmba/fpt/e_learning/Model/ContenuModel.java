@@ -8,7 +8,7 @@ public class ContenuModel {
     private Date date;
     private String description;
    // private ArrayList<AudioModel> audios;
-    private ArrayList<File> files;
+    private ArrayList<String> files;
 
     public ContenuModel(){}
 
@@ -20,7 +20,7 @@ public class ContenuModel {
         return description;
     }
 
-    public ArrayList<File> getFiles() {
+    public ArrayList<String> getFiles() {
         return files;
     }
 
@@ -32,11 +32,11 @@ public class ContenuModel {
         this.description = description;
     }
 
-    public void setFiles(ArrayList<File> files) {
+    public void setFiles(ArrayList<String> files) {
         this.files = files;
     }
 
-    public ContenuModel(Date date, String description, ArrayList<File> files){
+    public ContenuModel(Date date, String description, ArrayList<String> files){
         this.date = date;
         this.description = description;
         this.files = files;
