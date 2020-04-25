@@ -8,6 +8,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import ma.ac.usmba.fpt.e_learning.Controller.QuizController;
+import ma.ac.usmba.fpt.e_learning.Model.Quiz;
+
 import static org.junit.Assert.*;
 
 /**

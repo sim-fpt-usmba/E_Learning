@@ -1,6 +1,8 @@
 package ma.ac.usmba.fpt.e_learning;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,9 +13,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Map;
 
 import ma.ac.usmba.fpt.e_learning.Adapters.FilesAdapter;
@@ -44,8 +49,12 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     RecyclerView recyclerView,file_names_recycler;
     QuizAdapter quizAdapter;
     FilesAdapter filesAdapter;
-    ImageView attach_file;
-    TextView creer_quiz;
+    Button attach_file;
+    TextView creer_quiz,cour_date,cour_time;
+    DatePickerDialog datePickerDialog;
+    DatePickerDialog.OnDateSetListener onDateSetListener;
+    ImageView calendar,time;
+
     ArrayAdapter<String> adapter;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE};
@@ -63,9 +72,13 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         attach_file = findViewById(R.id.img_view_attach_file);
         modules = findViewById(R.id.spinner_modules);
         file_names_recycler = findViewById(R.id.selected_files_recycler);
+        calendar = findViewById(R.id.calendar_btn);
+        time = findViewById(R.id.time_btn);
+        cour_date = findViewById(R.id.cour_date);
+        cour_time = findViewById(R.id.cour_time);
         //Populate the Modules dropDown
         ArrayList<String> array_modules = new ArrayList<>();
-        array_modules.add("Sélectionner un module...");
+        array_modules.add("SELECTIONNER UN MODULE");
         //Filling the array modules with modules names.
         for(Module m : ModuleController.getModule())array_modules.add(m.getName());
         //Setting an adapter for the spinner.
@@ -95,6 +108,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 intent.putExtra("modules",modules.getSelectedItem().toString());
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_to_right,R.anim.slide_out_left);
+                finish();
             }
         });
         update_quizzes();
@@ -129,6 +143,60 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
             }
         });
 
+        // Show a calendar
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar1 = Calendar.getInstance();
+                int year,month,day;
+                year = calendar1.get(Calendar.YEAR);
+                month = calendar1.get(Calendar.MONTH);
+                day = calendar1.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(
+                        ProfCreerSeanceActivity.this,onDateSetListener,year,month,day);
+                datePickerDialog.setTitle("Date du cour");
+                datePickerDialog.show();
+            }
+        });
+        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = dayOfMonth+"/"+month+"/"+year;
+                cour_date.setText(date);
+            }
+        };
+        // Show time chooser
+        time.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(ProfCreerSeanceActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                        String time = "";//hour +":" + minute;
+                        if(hour < 10){
+                            time += "0" + hour;
+                        }else{
+                            time += hour;
+                        }
+                        if(minute < 10){
+                            time += ":0" + minute;
+                        }else{
+                            time += ":"+ minute;
+                        }
+                        cour_time.setText(time);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Début de cour");
+                mTimePicker.show();
+
+            }
+        });
     }
 
     //Display the content of the quizzes

@@ -100,6 +100,9 @@ public class QuizPopUp extends Activity {
         }else if(radioGroup.getChildCount() < 2){
             Toast.makeText(this, "Ajouter plusieurs réponses svp", Toast.LENGTH_SHORT).show();
         }
+        else if(radioGroup.getCheckedRadioButtonId() == -1){
+            Toast.makeText(this, "Selectionner une réponse vrai spv", Toast.LENGTH_SHORT).show();
+        }
         else{
             String Question = editText_question.getText().toString();
             for (int i = 0; i < radioGroup.getChildCount(); i++) {
@@ -124,6 +127,7 @@ public class QuizPopUp extends Activity {
             intent.putExtra("modules",module);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            finish();
         }
     }
 

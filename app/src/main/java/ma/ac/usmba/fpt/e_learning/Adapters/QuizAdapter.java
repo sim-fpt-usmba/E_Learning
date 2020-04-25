@@ -41,6 +41,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>{
             public void onClick(View v) {
                 quiz_array.remove(position);
                 notifyItemRemoved(position);
+                notifyDataSetChanged();
             }
         });
     }
