@@ -38,12 +38,13 @@ import ma.ac.usmba.fpt.e_learning.Adapters.FilesAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.ModuleController;
 import ma.ac.usmba.fpt.e_learning.Adapters.QuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
 public class ProfCreerSeanceActivity extends AppCompatActivity {
     final String QUIZ = "Quiz";
-    ArrayList<Quiz> quizzes = new ArrayList<>();
+    ArrayList<QuestionAnswer> quizzes = new ArrayList<>();
     ArrayList<String> paths = new ArrayList<>();
     Button button_valider;
     RecyclerView recyclerView,file_names_recycler;
@@ -202,9 +203,9 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     //Display the content of the quizzes
     public void show_quizzes() {
         if (!quizzes.isEmpty()) {
-            for (Quiz quiz : quizzes) {
+            for (QuestionAnswer quiz : quizzes) {
                 System.out.println(quiz.getQuestion());
-                for (Map.Entry<String, Boolean> answers : quiz.getReponses().entrySet())
+                for (Map.Entry<String, Boolean> answers : quiz.getAnswers().entrySet())
                     System.out.println("Key : " + answers.getKey() + " Value : " + answers.getValue());
             }
         } else {
@@ -217,7 +218,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     //Update the quizzes arrayList
     public void update_quizzes() {
         if (getIntent().getSerializableExtra(QUIZ) != null){
-            quizzes = (ArrayList<Quiz>) getIntent().getSerializableExtra(QUIZ);
+            quizzes = (ArrayList<QuestionAnswer>) getIntent().getSerializableExtra(QUIZ);
         }
         String module = getIntent().getStringExtra("modules");
         int pos = adapter.getPosition(module);

@@ -16,10 +16,11 @@ import java.util.ArrayList;
 
 import ma.ac.usmba.fpt.e_learning.Controller.EtudiantQuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.QuizController;
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 
 public class EtudiantSeanceQuizFrag extends Fragment {
-    ArrayList<Quiz> quizzes;
+    ArrayList<QuestionAnswer> quizzes;
     EtudiantQuizAdapter adapter;
     RecyclerView recyclerView;
     @Nullable

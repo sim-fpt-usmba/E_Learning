@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ma.ac.usmba.fpt.e_learning.EtudiantSeanceContenuFrag;
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.R;
 
 public class EtudiantQuizAdapter extends RecyclerView.Adapter<EtudiantQuizAdapter.ViewHolder> {
-    ArrayList<Quiz> arrayList;
+    ArrayList<QuestionAnswer> arrayList;
     Context context;
-    public EtudiantQuizAdapter(Context context, ArrayList<Quiz> arrayList) {
+    public EtudiantQuizAdapter(Context context, ArrayList<QuestionAnswer> arrayList) {
         this.arrayList = arrayList;
         this.context   = context;
     }
@@ -39,9 +40,9 @@ public class EtudiantQuizAdapter extends RecyclerView.Adapter<EtudiantQuizAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    Quiz q = arrayList.get(position);
+    QuestionAnswer q = arrayList.get(position);
     holder.question.setText(q.getQuestion());
-    for(Map.Entry reponse : q.getReponses().entrySet()){
+    for(Map.Entry reponse : q.getAnswers().entrySet()){
         RadioButton radioButton = new RadioButton(context);
         radioButton.setId(ViewCompat.generateViewId());
         radioButton.setText(reponse.getKey().toString());

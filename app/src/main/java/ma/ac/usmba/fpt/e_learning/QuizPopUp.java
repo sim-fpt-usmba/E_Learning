@@ -23,6 +23,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 public class QuizPopUp extends Activity {
     RadioGroup radioGroup;
@@ -111,13 +112,13 @@ public class QuizPopUp extends Activity {
                     answers.put(rd.getText().toString(), true);
                 else answers.put(rd.getText().toString(), false);
             }
-            Quiz quiz = new Quiz();
+            QuestionAnswer quiz = new QuestionAnswer();
             quiz.setQuestion(Question);
-            quiz.setReponses(answers);
+            quiz.setAnswers(answers);
             Gson gson = new Gson();
             Type type = new TypeToken<ArrayList<Quiz>>() {
             }.getType();
-            ArrayList<Quiz> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
+            ArrayList<QuestionAnswer> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
             quiz_array.add(quiz);
             Intent intent = new Intent(QuizPopUp.this, ProfCreerSeanceActivity.class);
             ArrayList<String> paths = getIntent().getStringArrayListExtra("paths");
