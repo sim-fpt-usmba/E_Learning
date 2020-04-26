@@ -20,7 +20,7 @@
     <string name="espace_professeur">فضاء المدرس</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="password">القن السري</string>
-    <string name="mot_de_pass">القن السري</string>
+    <string name="mot_de_pass">االقن السري</string>
     <string name="modules">الوحدات</string>
     <string name="creer_une_seance">إنشاء حصة</string>
     <string name="gerer_mes_seance">إدارة الحصص</string>
@@ -58,7 +58,7 @@
     <string name="moi">أنا</string>
     <string name="date_et_temp">التاريخ و الوقت</string>
     <string name="accuil_backgrouond">خلفية الواجهة</string>
-    <string name="e_learning">E-learning</string>
+    <string name="e_learning">التعلم عن بعد</string>
     <string name="fac_name">الكلية متعددة التخصصات تازة</string>
     <string name="univ_name">جامعة سيدي محمد بن عبد الله</string>
 </resources>
