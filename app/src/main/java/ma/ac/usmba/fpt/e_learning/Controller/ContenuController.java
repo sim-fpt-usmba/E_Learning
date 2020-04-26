@@ -26,6 +26,7 @@ public class ContenuController {
         files.add(new File("Nom du fichier 4").toString());
 
         ArrayList<AudioModel> audios = new ArrayList<>();
+        //TODO: We should add Audios from DataBase, below just a test.
         for(int i=0;i<4;i++)
             audios.add(new AudioModel(new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
                     "recording"+i+".mp3").toString()));
