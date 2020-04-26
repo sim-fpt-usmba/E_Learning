@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.Adapters.ProfSeanceQuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Adapters.ProfSeanceQuizAnswersAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.QuizController;
 import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
@@ -25,19 +26,14 @@ public class ProfSeanceQuizFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prof_seance_quiz, container, false);
 
-        TextView name = view.findViewById(R.id.name);
-        name.setText("Ali Elaissaoui");
-        TextView score = view.findViewById(R.id.score_text);
-        score.setText("5/6");
-
         ArrayList<Quiz> quizzes = QuizController.getEtudiantAnswer();
-        ArrayList<QuestionAnswer> answers = (ArrayList<QuestionAnswer>) quizzes.get(0).getQuestionAnswers();
-        RecyclerView answersRecycler = (RecyclerView) view.findViewById(R.id.answers_recyclerview);
-        ProfSeanceQuizAnswersAdapter answersAdapter = new ProfSeanceQuizAnswersAdapter(getContext(), answers);
-        answersRecycler.setAdapter(answersAdapter);
+
+        RecyclerView answersRecycler = (RecyclerView) view.findViewById(R.id.quiz_recycler);
+        ProfSeanceQuizAdapter adapter = new ProfSeanceQuizAdapter(getContext(), quizzes);
+        answersRecycler.setAdapter(adapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         answersRecycler.setLayoutManager(manager);
 
         return view;

@@ -4,7 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
+<!--    <include
         android:id="@+id/card_view"
-        layout="@layout/prof_seance_quiz_item"/>
+        layout="@layout/prof_seance_quiz_item"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quiz_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
