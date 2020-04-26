@@ -18,16 +18,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ma.ac.usmba.fpt.e_learning.Adapters.ProfContenuAudiosAdapter;
 import ma.ac.usmba.fpt.e_learning.Adapters.ProfContenuFilesAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.ContenuController;
+import ma.ac.usmba.fpt.e_learning.Model.AudioModel;
 import ma.ac.usmba.fpt.e_learning.Model.ContenuModel;
 
 public class ProfSeanceContenuFrag extends Fragment {
     private TextView date_textview,description_textview;
-    private RecyclerView files;
-    private ProfContenuFilesAdapter filesAdapter;
-    private RecyclerView.Adapter adapter;
-    private ArrayList<String> paths;
+    private RecyclerView files,audios;
+    private RecyclerView.Adapter files_adapter,audios_adapter;
+    private ArrayList<String> file_path;
+    private ArrayList<AudioModel> audio_path;
     private ContenuModel contenu = ContenuController.getContenu();
 
     @Override
@@ -37,23 +39,23 @@ public class ProfSeanceContenuFrag extends Fragment {
         date_textview = view.findViewById(R.id.date_textview);
         description_textview = view.findViewById(R.id.description_textview);
         files = view.findViewById(R.id.files_recycler);
+        audios = view.findViewById(R.id.audios_recycler);
 
         //TODO: Adding files paths to the recyclerView
-        paths = contenu.getFiles();
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        files.setLayoutManager(layoutManager);
-        adapter = new ProfContenuFilesAdapter(getContext(),paths);
-        files.setAdapter(adapter);
+        file_path = contenu.getFiles();
+        RecyclerView.LayoutManager file_layoutManager = new LinearLayoutManager(getContext());
+        files.setLayoutManager(file_layoutManager);
+        files_adapter = new ProfContenuFilesAdapter(getContext(),file_path);
+        files.setAdapter(files_adapter);
 
-/*
-        private void add_audios(ArrayList list, String audio_path) {
-            list.add(new AudioModel(audio_path));
-            this.audios = (RecyclerView) findViewById(R.id.audio_list);
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-            this.audios.setLayoutManager(mLayoutManager);
-            adapter = new AudioAdapter(this, list);
-            this.audios.setAdapter(adapter);
-        }*/
+
+        //TODO: Adding audios to the recyclerView
+        audio_path = contenu.getAudios();
+        RecyclerView.LayoutManager audio_layoutManager = new LinearLayoutManager(getContext());
+        audios.setLayoutManager(audio_layoutManager);
+        audios_adapter = new ProfContenuAudiosAdapter(getContext(), audio_path);
+        audios.setAdapter(audios_adapter);
+
         return view;
 
     }

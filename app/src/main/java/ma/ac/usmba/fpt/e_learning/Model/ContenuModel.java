@@ -7,8 +7,16 @@ import java.util.Date;
 public class ContenuModel {
     private Date date;
     private String description;
-   // private ArrayList<AudioModel> audios;
+    private ArrayList<AudioModel> audios;
     private ArrayList<String> files;
+
+    public ArrayList<AudioModel> getAudios() {
+        return audios;
+    }
+
+    public void setAudios(ArrayList<AudioModel> audios) {
+        this.audios = audios;
+    }
 
     public ContenuModel(){}
 
@@ -36,10 +44,11 @@ public class ContenuModel {
         this.files = files;
     }
 
-    public ContenuModel(Date date, String description, ArrayList<String> files){
+    public ContenuModel(Date date, String description, ArrayList<String> files, ArrayList<AudioModel> audios){
         this.date = date;
         this.description = description;
         this.files = files;
+        this.audios = audios;
     }
 
 
