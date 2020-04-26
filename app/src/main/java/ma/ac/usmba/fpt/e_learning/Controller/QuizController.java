@@ -37,25 +37,31 @@ public class QuizController {
     public static ArrayList<Quiz> getEtudiantAnswer() {
         ArrayList<Quiz> etudiantAnswers = new ArrayList<>();
 
-        for (int e = 0; e < 25; e++) {
+        for (int e = 0; e < 10; e++) {
             User etudiant = new Etudiant();
             etudiant.setName("Etudiant " + e);
             Quiz quiz = new Quiz();
             quiz.setUser(etudiant);
-            int nbrQuestions = new Random().nextInt(10);
+            int nbrQuestions = new Random().nextInt(20)+1;
             ArrayList<QuestionAnswer> questionAnswers = new ArrayList<>();
             for (int q = 0; q < nbrQuestions; q++) {
                 QuestionAnswer questionAnswer = new QuestionAnswer();
                 questionAnswer.setQuestion("Question " + q);
                 HashMap<String, Boolean> answers = new HashMap<>();
-                int randomAnswer = new Random().nextInt(3);
+                int randomAnswer = new Random().nextInt(3)+1;
                 for (int a = 0; a < 3; a++) {
+                    String s = "";
                     if (a == randomAnswer) {
-                        answers.put("Answer " + a, true);
+                        s = "Answer correct" + a;
+                        answers.put(s, true);
+
                     } else {
-                        answers.put("Answer " + a, false);
+                        s = "Answer wrong" + a;
+                        answers.put(s, false);
                     }
+                        questionAnswer.setStudentAnswer(s);
                 }
+
                 questionAnswer.setAnswers(answers);
                 questionAnswers.add(questionAnswer);
             }

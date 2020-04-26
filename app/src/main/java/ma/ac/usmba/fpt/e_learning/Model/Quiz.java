@@ -1,15 +1,16 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
     private User user;
-    private List<QuestionAnswer> questionAnswers;
+    private ArrayList<QuestionAnswer> questionAnswers;
 
     public Quiz() {
     }
 
-    public Quiz(User user, List<QuestionAnswer> questionAnswers) {
+    public Quiz(User user, ArrayList<QuestionAnswer> questionAnswers) {
         this.user = user;
         this.questionAnswers = questionAnswers;
     }
@@ -22,11 +23,22 @@ public class Quiz {
         this.user = user;
     }
 
-    public List<QuestionAnswer> getQuestionAnswers() {
+    public ArrayList<QuestionAnswer> getQuestionAnswers() {
         return questionAnswers;
     }
 
-    public void setQuestionAnswers(List<QuestionAnswer> questionAnswers) {
+    public void setQuestionAnswers(ArrayList<QuestionAnswer> questionAnswers) {
         this.questionAnswers = questionAnswers;
     }
+
+    public String getScore() {
+        int score = 0;
+        for (QuestionAnswer answer : questionAnswers) {
+            if (answer.isCorrect()) {
+                score++;
+            }
+        }
+        return score + "/" + questionAnswers.size();
+    }
+
 }
