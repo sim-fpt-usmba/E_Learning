@@ -2,6 +2,7 @@ package ma.ac.usmba.fpt.e_learning.Adapters;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -43,7 +45,7 @@ public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAu
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         AudioModel audioModel = audios.get(position);
-        if(!audioModel.getPath().isEmpty())
+        if(new File(audioModel.getPath()).exists())
             holder.audio_duration.setText(audioModel.getAudio_duration(audioModel.getPath()));
         holder.play_audio.setOnClickListener(new View.OnClickListener() {
             @Override
