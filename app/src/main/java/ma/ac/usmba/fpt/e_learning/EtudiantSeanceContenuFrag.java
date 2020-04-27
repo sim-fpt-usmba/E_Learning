@@ -21,6 +21,15 @@ import ma.ac.usmba.fpt.e_learning.Adapters.ProfContenuFilesAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.ContenuController;
 import ma.ac.usmba.fpt.e_learning.Model.AudioModel;
 import ma.ac.usmba.fpt.e_learning.Model.ContenuModel;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+import ma.ac.usmba.fpt.e_learning.Controller.EtudiantQuizAdapter;
+import ma.ac.usmba.fpt.e_learning.Controller.QuizController;
+import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 
 public class EtudiantSeanceContenuFrag extends Fragment {
     private TextView date_textview,description_textview;

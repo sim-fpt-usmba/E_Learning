@@ -23,6 +23,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 public class QuizPopUp extends Activity {
     RadioGroup radioGroup;
@@ -100,6 +101,9 @@ public class QuizPopUp extends Activity {
         }else if(radioGroup.getChildCount() < 2){
             Toast.makeText(this, "Ajouter plusieurs réponses svp", Toast.LENGTH_SHORT).show();
         }
+        else if(radioGroup.getCheckedRadioButtonId() == -1){
+            Toast.makeText(this, "Selectionner une réponse vrai spv", Toast.LENGTH_SHORT).show();
+        }
         else{
             String Question = editText_question.getText().toString();
             for (int i = 0; i < radioGroup.getChildCount(); i++) {
@@ -108,13 +112,13 @@ public class QuizPopUp extends Activity {
                     answers.put(rd.getText().toString(), true);
                 else answers.put(rd.getText().toString(), false);
             }
-            Quiz quiz = new Quiz();
+            QuestionAnswer quiz = new QuestionAnswer();
             quiz.setQuestion(Question);
-            quiz.setReponses(answers);
+            quiz.setAnswers(answers);
             Gson gson = new Gson();
             Type type = new TypeToken<ArrayList<Quiz>>() {
             }.getType();
-            ArrayList<Quiz> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
+            ArrayList<QuestionAnswer> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
             quiz_array.add(quiz);
             Intent intent = new Intent(QuizPopUp.this, ProfCreerSeanceActivity.class);
             ArrayList<String> paths = getIntent().getStringArrayListExtra("paths");
@@ -124,6 +128,7 @@ public class QuizPopUp extends Activity {
             intent.putExtra("modules",module);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            finish();
         }
     }
 
