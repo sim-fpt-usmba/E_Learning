@@ -25,12 +25,7 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".ProfFiliereActivity" />
         <activity android:name=".ProfModuleActivity" />
-        <activity android:name=".ProfSeanceActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ProfSeanceActivity" />
         <activity android:name=".EtudiantSeanceActivity" />
         <activity android:name=".ProfAccueilActivity" />
         <activity android:name=".EtudiantModuleActivity" />
@@ -39,7 +34,12 @@
         <activity android:name=".EtudiantAccueilActivity" />
         <activity android:name=".EtudiantSemestreActivity" />
         <activity android:name=".WelcomeActivity"/>
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
