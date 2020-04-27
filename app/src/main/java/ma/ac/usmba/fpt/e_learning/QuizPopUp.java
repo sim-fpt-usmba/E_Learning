@@ -24,13 +24,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
-import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 public class QuizPopUp extends Activity {
     RadioGroup radioGroup;
     EditText edit_text_reponse;
     EditText editText_question;
     HashMap<String, Boolean> answers;
-    final String QUIZ = "Quiz";
+    final String QUIZ = "QuestionAnswer";
     Button button_ajouter, button_valider;
     final ColorStateList colorStateList = new ColorStateList(new int[][]{
             new int[]{-android.R.attr.state_selected}, //disabled
@@ -116,13 +115,14 @@ public class QuizPopUp extends Activity {
             quiz.setQuestion(Question);
             quiz.setAnswers(answers);
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<Quiz>>() {
+            Type type = new TypeToken<ArrayList<QuestionAnswer>>() {
             }.getType();
             ArrayList<QuestionAnswer> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
             quiz_array.add(quiz);
             Intent intent = new Intent(QuizPopUp.this, ProfCreerSeanceActivity.class);
             ArrayList<String> paths = getIntent().getStringArrayListExtra("paths");
             intent.putStringArrayListExtra("paths", paths);
+            intent.putExtra(QUIZ, quiz_array);
             intent.putExtra(QUIZ, quiz_array);
             String module = getIntent().getStringExtra("modules");
             intent.putExtra("modules",module);

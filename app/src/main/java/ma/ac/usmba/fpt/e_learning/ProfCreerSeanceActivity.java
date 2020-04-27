@@ -39,11 +39,10 @@ import ma.ac.usmba.fpt.e_learning.Controller.ModuleController;
 import ma.ac.usmba.fpt.e_learning.Adapters.QuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
-import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
 public class ProfCreerSeanceActivity extends AppCompatActivity {
-    final String QUIZ = "Quiz";
+    final String QUIZ = "QuestionAnswer";
     ArrayList<QuestionAnswer> quizzes = new ArrayList<>();
     ArrayList<String> paths = new ArrayList<>();
     Button button_valider;
