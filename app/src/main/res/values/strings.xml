@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">E_learning</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="AR">AR</string>
@@ -51,6 +50,7 @@
     <string name="creer_une_quiz">CREER UN QUIZ</string>
     <string name="ajouter_une_question">Ajouter une question...</string>
     <string name="ajouter_les_reponses">Ajouter les réponses</string>
+
     <string name="ecrire_un_message">Ecrire un message</string>
     <string name="envoyer_le_message">envoyer le message</string>
     <string name="nom_utilisatuer">Nom et Prenom</string>
@@ -61,4 +61,8 @@
     <string name="e_learning">E-learning</string>
     <string name="fac_name">FACULTE POLYDSCIPLINAIRE DE TAZA</string>
     <string name="univ_name">UNIVERSITE SIDI MOHAMED BEN ABDELLAH</string>
+    <string name="cree_le">Créé le : </string>
+    <string name="ajouter_des_fichier">Ajouter des fichier</string>
+    <string name="attach_file">attach_file</string>
+    <string name="date_du_cour">Date du cour</string>
 </resources>

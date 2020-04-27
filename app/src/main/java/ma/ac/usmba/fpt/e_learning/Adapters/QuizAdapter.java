@@ -11,14 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 import ma.ac.usmba.fpt.e_learning.R;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>{
-    ArrayList<Quiz> quiz_array;
+    ArrayList<QuestionAnswer> quiz_array;
     Context context;
 
-    public QuizAdapter(Context context,ArrayList<Quiz> quiz_array) {
+    public QuizAdapter(Context context,ArrayList<QuestionAnswer> quiz_array) {
         this.quiz_array = quiz_array;
         this.context = context;
     }
@@ -33,14 +34,15 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Quiz q = quiz_array.get(position);
-        String content = q.getQuestion() + "\t\t" + q.getReponses().size() + " Choix";
+        QuestionAnswer q = quiz_array.get(position);
+        String content = q.getQuestion() + "\t\t" + q.getAnswers().size() + " Choix";
         holder.textView.setText(content);
         holder.delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 quiz_array.remove(position);
                 notifyItemRemoved(position);
+                notifyDataSetChanged();
             }
         });
     }

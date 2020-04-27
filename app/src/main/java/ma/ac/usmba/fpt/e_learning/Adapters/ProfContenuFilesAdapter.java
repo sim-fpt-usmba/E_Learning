@@ -16,10 +16,11 @@ import java.util.ArrayList;
 import ma.ac.usmba.fpt.e_learning.R;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
-public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> {
+public class ProfContenuFilesAdapter extends RecyclerView.Adapter<ProfContenuFilesAdapter.ViewHolder> {
     Context context;
     ArrayList<String> filenames;
-    public FilesAdapter(Context context,ArrayList<String> filenames) {
+
+    public ProfContenuFilesAdapter(Context context,ArrayList<String> filenames) {
         this.context = context;
         this.filenames = filenames;
     }
@@ -27,7 +28,7 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_files,parent,false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
@@ -36,12 +37,11 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         String filename = filenames.get(position);
         holder.filename.setText(FileUtils.getFileName(filename));
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                filenames.remove(position);
-                notifyItemRemoved(position);
-                notifyDataSetChanged();
+                //Do Something
+                //TODO: La partie de backend / Telechargement des fichiers
             }
         });
     }
@@ -53,11 +53,11 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView filename;
-        Button delete;
+        Button download;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            filename = itemView.findViewById(R.id.txt_view_question);
-            delete   = itemView.findViewById(R.id.delete_button);
+            filename = itemView.findViewById(R.id.path_textview);
+            download   = itemView.findViewById(R.id.download_button);
         }
     }
 }
