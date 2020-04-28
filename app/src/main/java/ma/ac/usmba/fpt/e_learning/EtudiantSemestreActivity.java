@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.ScrollView;
 
 import java.util.ArrayList;
 
+import ma.ac.usmba.fpt.e_learning.Adapters.EtudiantSemestreRecycler;
 import ma.ac.usmba.fpt.e_learning.Controller.SemestreController;
 import ma.ac.usmba.fpt.e_learning.Model.Semestre;
 import ma.ac.usmba.fpt.e_learning.View.ModuleGrid;
@@ -29,45 +32,14 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
 
         semestres = SemestreController.getSemestres();
 
-        constraintLayout = findViewById(R.id.semestre_container);
 
-        for (int i = 0; i < semestres.size(); i++) {
-            SemestreModuleView semestreModuleView = new SemestreModuleView(this, semestres.get(i));
-            semestreModuleView.setId(ViewCompat.generateViewId());
-            constraintLayout.addView(semestreModuleView);
-        }
+        RecyclerView moduleRecycler = (RecyclerView) findViewById(R.id.semestre_recycler);
+        EtudiantSemestreRecycler adapter = new EtudiantSemestreRecycler(this, semestres);
+        moduleRecycler.setAdapter(adapter);
 
-        ConstraintSet set = new ConstraintSet();
-        set.clone(constraintLayout);
-        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-            //first
-            if (i == 0) {
-                set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.TOP,
-                        ConstraintSet.PARENT_ID, ConstraintSet.TOP);
-                if (i + 1 < semestres.size()) {
-                    set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.BOTTOM,
-                            constraintLayout.getChildAt(i + 1).getId(), ConstraintSet.TOP);
-                }
-            }
-            //last
-            if (i == semestres.size() - 1) {
-                if (i!=0) {
-                    set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.TOP,
-                            constraintLayout.getChildAt(i - 1).getId(), ConstraintSet.BOTTOM,50);
-                } else {
-                    set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.BOTTOM,
-                            ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
-                }
-            }
-            //middle
-            if (i != 0 && i != semestres.size() - 1) {
-                set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.TOP,
-                        constraintLayout.getChildAt(i - 1).getId(), ConstraintSet.BOTTOM,50);
-                set.connect(constraintLayout.getChildAt(i).getId(), ConstraintSet.BOTTOM,
-                        constraintLayout.getChildAt(i + 1).getId(), ConstraintSet.TOP);
-            }
-        }
-        set.applyTo(constraintLayout);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(RecyclerView.VERTICAL);
+        moduleRecycler.setLayoutManager(manager);
     }
 
     public void goback(View view) {
