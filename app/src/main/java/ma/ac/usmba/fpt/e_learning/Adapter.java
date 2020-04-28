@@ -49,13 +49,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textTitle,textDescription;
+        TextView textTitle,textDescription,textTitle1,textDescription1;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle=itemView.findViewById(R.id.textTitle);
-            textTitle=itemView.findViewById(R.id.textDescription);
+            textDescription=itemView.findViewById(R.id.textDescription);
+
 
 
 
