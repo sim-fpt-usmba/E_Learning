@@ -6,13 +6,17 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,7 +30,10 @@ public class ProfFiliereActivity extends AppCompatActivity {
     ArrayList<Filiere> list_filiere = ProfFiliereController.set_Filiere();
     LinearLayout filier_layout;
     Button bouton;
+    RecyclerView recyclerView;
+    Adapter adapter;
     ArrayList<Button> button_filier_list = new ArrayList<>();
+    ArrayList<String> itmes;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,6 +41,18 @@ public class ProfFiliereActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_filiere);
         filier_layout = (LinearLayout) findViewById(R.id.filiere_layout);
+        itmes=new ArrayList<>();
+        itmes.add("SMI");
+        itmes.add("SMA");
+        itmes.add("SMP");
+        itmes.add("SVT");
+        itmes.add("GGA");
+        itmes.add("SMC");
+        recyclerView= (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter=new Adapter(this,itmes);
+        recyclerView.setAdapter(adapter);
 
         filier_layout.addView(new TextView(this));
         Iterator<Filiere> iter_filiere = list_filiere.iterator();

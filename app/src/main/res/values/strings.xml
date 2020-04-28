@@ -65,4 +65,5 @@
     <string name="ajouter_des_fichier">Ajouter des fichier</string>
     <string name="attach_file">attach_file</string>
     <string name="date_du_cour">Date du cour</string>
+    <string name="title_activity_list_filiere">listFiliere</string>
 </resources>
