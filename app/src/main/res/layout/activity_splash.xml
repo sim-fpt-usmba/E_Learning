@@ -14,9 +14,12 @@
         android:background="@drawable/bg_splash"
         android:paddingTop="100dp"
         android:paddingBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,6 +49,7 @@
 
         <ImageView
             android:id="@+id/logo_univ"
+
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:contentDescription="@string/fac_name"

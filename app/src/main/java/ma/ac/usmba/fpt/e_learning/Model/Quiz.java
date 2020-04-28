@@ -1,27 +1,44 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Quiz implements Serializable {
-    private String question;
-    private  HashMap<String,Boolean> reponses;
+public class Quiz {
+    private User user;
+    private ArrayList<QuestionAnswer> questionAnswers;
+
     public Quiz() {
     }
 
-    public String getQuestion() {
-        return question;
+    public Quiz(User user, ArrayList<QuestionAnswer> questionAnswers) {
+        this.user = user;
+        this.questionAnswers = questionAnswers;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public User getUser() {
+        return user;
     }
 
-    public  HashMap<String, Boolean> getReponses() {
-        return reponses;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public  void setReponses(HashMap<String, Boolean> reponses) {
-        this.reponses = reponses;
+    public ArrayList<QuestionAnswer> getQuestionAnswers() {
+        return questionAnswers;
     }
+
+    public void setQuestionAnswers(ArrayList<QuestionAnswer> questionAnswers) {
+        this.questionAnswers = questionAnswers;
+    }
+
+    public String getScore() {
+        int score = 0;
+        for (QuestionAnswer answer : questionAnswers) {
+            if (answer.isCorrect()) {
+                score++;
+            }
+        }
+        return score + "/" + questionAnswers.size();
+    }
+
 }

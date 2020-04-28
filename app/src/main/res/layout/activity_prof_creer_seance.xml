@@ -7,123 +7,18 @@
     android:background="#FFFFFF"
     android:fillViewport="true"
     tools:context=".ProfCreerSeanceActivity">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="131dp"
-            android:background="@drawable/rectangle_119"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:id="@+id/espace_enseignant"
-                android:layout_width="294dp"
-                android:layout_height="33dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/creer_une_seance"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.52" />
-
-            <ImageView
-                android:id="@+id/GoBackIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
-                app:layout_constraintHorizontal_bias="0.39"
-                android:onClick="goback"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.53"
-                app:srcCompat="@drawable/trace_52" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/button_valider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/my_buttons"
-            android:text="@string/valider"
-            android:textColor="#FFFFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creer_quiz" />
-
-        <ImageView
-            android:id="@+id/img_view_attach_file"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="176dp"
-            android:layout_marginLeft="176dp"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:contentDescription="attach_file"
-            android:focusable="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:srcCompat="@drawable/ic_attach" />
-
-        <Spinner
-            android:id="@+id/spinner_modules"
-            android:layout_width="408dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/rectangle_11"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="409dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/groupe_99"
-            android:padding="10dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_modules" />
+            app:layout_constraintTop_toBottomOf="@+id/creer_quiz" />
 
         <TextView
             android:id="@+id/Quiz"
@@ -142,18 +37,70 @@
             android:textColor="#FFFFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.633"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selected_files_recycler" />
+
+        <TextView
+            android:id="@+id/cour_time"
+            android:layout_width="330dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/text_views"
+            android:gravity="center_vertical"
+            android:hint="@string/date_du_cour"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#FFFF"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contenu" />
+
+        <ImageView
+            android:id="@+id/time_btn"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/date_du_cour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.368"
+            app:layout_constraintStart_toEndOf="@+id/cour_date"
+            app:layout_constraintTop_toBottomOf="@+id/contenu"
+            app:srcCompat="@drawable/clock" />
+
+        <TextView
+            android:id="@+id/cour_date"
+            android:layout_width="330dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_views"
+            android:gravity="center_vertical"
+            android:hint="@string/date_du_cour"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#FFFF"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contenu" />
 
         <TextView
             android:id="@+id/creer_quiz"
             android:layout_width="405dp"
             android:layout_height="49dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_12"
             android:clickable="true"
             android:drawableRight="@drawable/groupe_36"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -163,20 +110,151 @@
             android:textColor="#FFFFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Quiz" />
 
+        <TextView
+            android:id="@+id/contenu"
+            android:layout_width="385dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/text_views"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/contenu"
+            android:textColor="#FFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_modules" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/selected_files_recycler"
-            android:layout_width="415dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_view_attach_file" />
+
+        <Button
+            android:id="@+id/img_view_attach_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginLeft="128dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/my_buttons"
+            android:clickable="true"
+            android:contentDescription="@string/attach_file"
+            android:focusable="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/ajouter_des_fichier"
+            android:textColor="#FFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_btn"
+            app:srcCompat="@drawable/ic_attach" />
+
+        <ImageView
+            android:id="@+id/calendar_btn"
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/date_du_cour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toEndOf="@+id/cour_date"
+            app:layout_constraintTop_toBottomOf="@+id/contenu"
+            app:srcCompat="@drawable/calendar" />
+
+        <Spinner
+            android:id="@+id/spinner_modules"
+            android:layout_width="385dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/my_buttons"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+        <Button
+            android:id="@+id/button_valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/my_buttons"
+            android:text="@string/valider"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="131dp"
+            android:background="@drawable/rectangle_119"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/espace_enseignant"
+                android:layout_width="242dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/creer_une_seance"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.52" />
+
+            <ImageView
+                android:id="@+id/GoBackIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:contentDescription="@string/back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
+                app:layout_constraintHorizontal_bias="0.39"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.53"
+                app:srcCompat="@drawable/trace_52" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -23,13 +23,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ma.ac.usmba.fpt.e_learning.Model.Quiz;
+import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
 public class QuizPopUp extends Activity {
     RadioGroup radioGroup;
     EditText edit_text_reponse;
     EditText editText_question;
     HashMap<String, Boolean> answers;
-    final String QUIZ = "Quiz";
+    final String QUIZ = "QuestionAnswer";
     Button button_ajouter, button_valider;
     final ColorStateList colorStateList = new ColorStateList(new int[][]{
             new int[]{-android.R.attr.state_selected}, //disabled
@@ -100,6 +100,9 @@ public class QuizPopUp extends Activity {
         }else if(radioGroup.getChildCount() < 2){
             Toast.makeText(this, "Ajouter plusieurs réponses svp", Toast.LENGTH_SHORT).show();
         }
+        else if(radioGroup.getCheckedRadioButtonId() == -1){
+            Toast.makeText(this, "Selectionner une réponse vrai spv", Toast.LENGTH_SHORT).show();
+        }
         else{
             String Question = editText_question.getText().toString();
             for (int i = 0; i < radioGroup.getChildCount(); i++) {
@@ -108,22 +111,24 @@ public class QuizPopUp extends Activity {
                     answers.put(rd.getText().toString(), true);
                 else answers.put(rd.getText().toString(), false);
             }
-            Quiz quiz = new Quiz();
+            QuestionAnswer quiz = new QuestionAnswer();
             quiz.setQuestion(Question);
-            quiz.setReponses(answers);
+            quiz.setAnswers(answers);
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<Quiz>>() {
+            Type type = new TypeToken<ArrayList<QuestionAnswer>>() {
             }.getType();
-            ArrayList<Quiz> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
+            ArrayList<QuestionAnswer> quiz_array = gson.fromJson(getIntent().getStringExtra(QUIZ), type);
             quiz_array.add(quiz);
             Intent intent = new Intent(QuizPopUp.this, ProfCreerSeanceActivity.class);
             ArrayList<String> paths = getIntent().getStringArrayListExtra("paths");
             intent.putStringArrayListExtra("paths", paths);
             intent.putExtra(QUIZ, quiz_array);
+            intent.putExtra(QUIZ, quiz_array);
             String module = getIntent().getStringExtra("modules");
             intent.putExtra("modules",module);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            finish();
         }
     }
 
