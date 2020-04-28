@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ma.ac.usmba.fpt.e_learning.EtudiantModuleActivity;
+import ma.ac.usmba.fpt.e_learning.EtudiantSemestreActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.R;
 
 public class EtudiantModuleAdapter extends RecyclerView.Adapter<EtudiantModuleAdapter.ModuleHolder> {
 
-    Context context;
-    ArrayList<Module> modules;
-    LayoutInflater inflater;
+    private Context context;
+    private ArrayList<Module> modules;
+    private LayoutInflater inflater;
 
     public EtudiantModuleAdapter(Context context, ArrayList<Module> modules) {
         this.context = context;
@@ -57,6 +57,7 @@ public class EtudiantModuleAdapter extends RecyclerView.Adapter<EtudiantModuleAd
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, EtudiantModuleActivity.class);
+                    intent.putExtra("from", EtudiantSemestreActivity.class.getName());
                     context.startActivity(intent);
                 }
             });
