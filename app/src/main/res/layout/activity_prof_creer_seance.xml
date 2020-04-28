@@ -8,8 +8,10 @@
     android:fillViewport="true"
     tools:context=".ProfCreerSeanceActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -148,9 +150,7 @@
             android:id="@+id/img_view_attach_file"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:layout_marginLeft="128dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/my_buttons"
             android:clickable="true"
             android:contentDescription="@string/attach_file"
@@ -159,8 +159,10 @@
             android:paddingRight="10dp"
             android:text="@string/ajouter_des_fichier"
             android:textColor="#FFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_btn"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
             app:srcCompat="@drawable/ic_attach" />
 
         <ImageView
@@ -220,7 +222,7 @@
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
@@ -255,6 +257,139 @@
                 app:layout_constraintVertical_bias="0.53"
                 app:srcCompat="@drawable/trace_52" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="338dp"
+            android:layout_height="187dp"
+            android:layout_marginTop="64dp"
+            android:autofillHints="@string/ajouter_description"
+            android:background="@drawable/my_buttons"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/ajouter_description"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:paddingLeft="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#C9FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cour_time" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cour_time"
+            app:layout_constraintVertical_bias="1.0">
+
+            <CheckBox
+                android:id="@+id/gras"
+                android:layout_width="50dp"
+                android:layout_height="36dp"
+                android:background="@drawable/rectangle_119_1"
+                android:text="G"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/plus"
+                app:layout_constraintHorizontal_bias="0.029"
+                app:layout_constraintStart_toEndOf="@+id/italique"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/plus"
+                android:layout_width="34dp"
+                android:layout_height="30dp"
+                android:background="@drawable/rectangle_119_1"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:typeface="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/moins"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rectangle_119_1"
+                android:clickable="true"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/plus"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/moins"
+                android:layout_width="34dp"
+                android:layout_height="30dp"
+                android:background="@drawable/rectangle_119_1"
+                android:text="-"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold|italic"
+                android:typeface="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:background="@drawable/rectangle_119_1"
+                android:clickable="true"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinner"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toEndOf="@+id/gras"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <CheckBox
+                android:id="@+id/italique"
+                android:layout_width="50dp"
+                android:layout_height="36dp"
+                android:background="@drawable/rectangle_119_1"
+                android:text="I"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:typeface="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.014"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.071" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

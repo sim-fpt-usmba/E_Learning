@@ -6,15 +6,21 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -24,6 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +39,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 import ma.ac.usmba.fpt.e_learning.Adapters.FilesAdapter;
@@ -54,6 +62,14 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     DatePickerDialog.OnDateSetListener onDateSetListener;
     ImageView calendar,time;
+    //Variables of Text Editor:
+    ConstraintLayout constr;
+    EditText myEditor;
+    Button plus,moins;
+    CheckBox g,i;
+    Spinner color,type_face;
+    float taille=14,s; //Incrémentation/Décrémentation du taille de texte
+    ////////
 
     ArrayAdapter<String> adapter;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -65,6 +81,169 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_creer_seance);
+        //Text Editor Fuctionalities:
+        constr = (ConstraintLayout)findViewById(R.id.constr);
+        myEditor = (EditText)findViewById(R.id.editText);
+        g = (CheckBox) findViewById(R.id.gras);
+        i = (CheckBox) findViewById(R.id.italique);
+        plus = (Button) findViewById(R.id.plus);
+        moins = (Button) findViewById(R.id.moins);
+        color = (Spinner) findViewById(R.id.spinner);
+        type_face = (Spinner) findViewById(R.id.spinner3);
+
+        //Création d'une liste des couleurs à mettre dans le Spinner
+        List colors = new ArrayList();
+        colors.add("Blanc");
+        colors.add("Noir");
+        colors.add("Vert");
+        colors.add("Rouge");
+        colors.add("Jaune");
+        colors.add("Gris");
+        ///////////////////////
+
+        //Création d'une liste des types faces
+        List face = new ArrayList();
+        face.add("Normal");
+        face.add("Serif");
+        face.add("Monospace");
+        ///////////////////////
+
+        constr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myEditor.setCursorVisible(false);
+            }
+        });
+        myEditor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myEditor.setCursorVisible(true);
+            }
+        });
+
+        //Importer les couleurs dans le spinner "spinner"
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                colors
+        );
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        color.setAdapter(adapter1);
+        /////////////////////////////////////////
+
+        //Importer les type faces dans le spinner type_face
+        ArrayAdapter adapter3 = new ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                face
+        );
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type_face.setAdapter(adapter3);
+        /////////////////////////////////////////
+
+//Italic
+        i.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i.isChecked() == true) {
+                    g.setChecked(false);
+                    myEditor.setTypeface(null, Typeface.ITALIC);
+                } else myEditor.setTypeface(null, Typeface.NORMAL);
+            }
+        });
+        /////////////////////////////
+
+        //gras
+        g.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (g.isChecked() == true) {
+                    i.setChecked(false);
+                    myEditor.setTypeface(null, Typeface.BOLD);
+                } else myEditor.setTypeface(null, Typeface.NORMAL);
+            }
+        });
+        ////////////////////////////
+
+        //maximiser la taille du texte
+        moins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                taille -= 1;
+                s -= 1;
+                myEditor.setTextSize(s);
+            }
+        });
+        ///////////////////////
+
+        //minimiser la taille
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                taille += 1;
+                s = taille;
+                myEditor.setTextSize(s);
+            }
+        });
+        //////////////////////
+        //Colorer le texte de l'EditText selon le choix
+        color.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                        ((TextView)parent.getChildAt(0)).setTextColor(Color.WHITE);
+                        Object item = color.getSelectedItem();
+                        if(item == "Noir"){
+                            myEditor.setTextColor(getColor(R.color.dark));
+                        }
+                        if(item == "Blanc"){
+                            myEditor.setTextColor(getColor(R.color.white));
+                        }
+                        if(item == "Vert"){
+                            myEditor.setTextColor(getColor(R.color.light_green));
+                        }
+                        if(item == "Rouge"){
+                            myEditor.setTextColor(getColor(R.color.red));
+                        }
+                        if(item == "Jaune"){
+                            myEditor.setTextColor(getColor(R.color.yellow));
+                        }
+                        if(item == "Gris"){
+                            myEditor.setTextColor(getColor(R.color.fullwhite));
+                        }
+
+                    }
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+        ///////////////////////////////////////
+
+        type_face.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        ((TextView)parent.getChildAt(0)).setTextColor(Color.WHITE);
+                        Object type = type_face.getSelectedItem();
+                        if (type == "Monospace")
+                            myEditor.setTypeface(Typeface.MONOSPACE);
+
+                        if (type == "Normal")
+                            myEditor.setTypeface(null, Typeface.NORMAL);
+
+                        if (type == "Serif")
+                            myEditor.setTypeface(Typeface.SERIF);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
+        ////////////////////////////////////////////////////////////////////*/
+
+        //EndTextEditor
         //Instantiations
         creer_quiz = findViewById(R.id.creer_quiz);
         button_valider = findViewById(R.id.button_valider);
