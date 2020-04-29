@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -33,6 +35,12 @@ public class ProfFiliereActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_filiere);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Enseignant");
+        toolbar.setBackgroundColor(Color.parseColor("#E31731"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         filier_layout = (LinearLayout) findViewById(R.id.filiere_layout);
 
         filier_layout.addView(new TextView(this));
@@ -71,5 +79,11 @@ public class ProfFiliereActivity extends AppCompatActivity {
 
     public void goback(View view) {
         finish();
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 }

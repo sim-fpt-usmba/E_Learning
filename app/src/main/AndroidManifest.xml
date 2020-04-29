@@ -15,28 +15,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <activity
             android:name=".QuizPopUp"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateVisible" />
         <activity
             android:name=".ProfCreerSeanceActivity"
+            android:theme="@style/AppEns"
             android:configChanges="orientation|screenSize" />
-        <activity android:name=".ProfFiliereActivity" />
-        <activity android:name=".ProfModuleActivity" />
-        <activity android:name=".ProfSeanceActivity" />
-        <activity android:name=".EtudiantSeanceActivity" />
-        <activity android:name=".ProfAccueilActivity" />
-        <activity android:name=".EtudiantModuleActivity" />
-        <activity android:name=".ProfLoginActivity" />
-        <activity android:name=".EtudiantLoginActivity" />
-        <activity android:name=".EtudiantAccueilActivity" />
-        <activity android:name=".EtudiantSemestreActivity" />
-        <activity android:name=".WelcomeActivity"/>
+        <activity android:name=".ProfFiliereActivity"
+            android:theme="@style/AppEns"
+            />
+        <activity android:name=".ProfModuleActivity"
+            android:theme="@style/AppEns"
+            />
+        <activity android:name=".ProfSeanceActivity"
+            android:theme="@style/AppEns"
+            />
+        <activity android:name=".EtudiantSeanceActivity"
+            android:theme="@style/AppEtud"
+            />
+        <activity android:name=".ProfAccueilActivity"
+            android:theme="@style/AppEns"
+            />
+        <activity android:name=".EtudiantModuleActivity"
+            android:theme="@style/AppEtud"
+            />
+        <activity android:name=".ProfLoginActivity"
+            android:theme="@style/AppEns"
+            />
+        <activity android:name=".EtudiantLoginActivity"
+            android:theme="@style/AppEtud"
+            />
+        <activity android:name=".EtudiantAccueilActivity"
+            android:theme="@style/AppEtud"
+            />
+        <activity android:name=".EtudiantSemestreActivity"
+            android:theme="@style/AppEtud"
+            />
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/AppEns"
+            />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

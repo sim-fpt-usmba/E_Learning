@@ -5,51 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whitecolor">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@drawable/rectangle_119"
+        android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/espace_enseignant"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="148dp"
-            android:layout_marginRight="148dp"
-            android:gravity="center"
-            android:text="@string/creer_quiz"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.525" />
-
-        <ImageView
-            android:id="@+id/GoBackIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:contentDescription="@string/back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/espace_enseignant"
-            app:layout_constraintHorizontal_bias="0.471"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52"
-            app:srcCompat="@drawable/trace_52" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintVertical_bias="0.0"
+        layout="@layout/tool_bor"/>
 
     <EditText
         android:id="@+id/edit_txt_question"

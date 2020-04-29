@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -29,6 +32,12 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant_semestre);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Etudiant");
+        toolbar.setBackgroundColor(Color.parseColor("#3556A3"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         semestres = SemestreController.getSemestres();
 
@@ -44,5 +53,11 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
 
     public void goback(View view) {
         finish();
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 }

@@ -3,9 +3,13 @@ package ma.ac.usmba.fpt.e_learning;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.TextView;
 
 public class EtudiantAccueilActivity extends AppCompatActivity {
 
@@ -13,6 +17,12 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant_accueil);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Etudiant");
+        toolbar.setBackgroundColor(Color.parseColor("#3556A3"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     public void onClickAssister(View view) {
@@ -27,5 +37,11 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
 
     public void goback(View view) {
         finish();
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 }

@@ -6,9 +6,13 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.ViewCompat;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,6 +31,12 @@ public class EtudiantModuleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant_module);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Etudiant");
+        toolbar.setBackgroundColor(Color.parseColor("#3556A3"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         modules = ModuleController.getModule();
 
@@ -74,5 +84,11 @@ public class EtudiantModuleActivity extends AppCompatActivity {
 
     public void goback(View view) {
         finish();
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 }

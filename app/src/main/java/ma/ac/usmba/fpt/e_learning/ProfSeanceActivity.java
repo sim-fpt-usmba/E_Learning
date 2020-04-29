@@ -1,7 +1,11 @@
 package ma.ac.usmba.fpt.e_learning;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -19,6 +23,12 @@ public class ProfSeanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_seance);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Enseignant");
+        toolbar.setBackgroundColor(Color.parseColor("#E31731"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         profSeanceFPA = new ProfSeanceFPA(getSupportFragmentManager());
 
@@ -41,5 +51,11 @@ public class ProfSeanceActivity extends AppCompatActivity {
 
     public void goback(View view) {
         finish();
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 }
