@@ -9,14 +9,16 @@
     </style>
     <style name="AppEtud" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorControlNormal">#fff</item>
         <item name="colorPrimary">#3556A3</item>
-        <item name="colorPrimaryDark">#3556A3</item>
+        <item name="colorPrimaryDark">#253d74</item>
         <item name="colorAccent">#3556A3</item>
     </style>
     <style name="AppEns" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorControlNormal">#fff</item>
         <item name="colorPrimary">#E31731</item>
-        <item name="colorPrimaryDark">#E31731</item>
+        <item name="colorPrimaryDark">#ba1229</item>
         <item name="colorAccent">#E31731</item>
     </style>
     <style name="AppTheme.MyTheme">
