@@ -6,47 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".EtudiantLoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="131dp"
-        android:background="@drawable/rectangle_118"
+        android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="230dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/espace_tudiant"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/GoBackIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:contentDescription="@string/back"
-            android:onClick="goback"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/trace_12" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintVertical_bias="0.0"
+        layout="@layout/tool_bor"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class EtudiantAccueilActivity extends AppCompatActivity {
@@ -21,6 +22,8 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Etudiant");
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         toolbar.setBackgroundColor(Color.parseColor("#3556A3"));
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }

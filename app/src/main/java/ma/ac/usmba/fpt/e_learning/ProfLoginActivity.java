@@ -3,10 +3,15 @@ package ma.ac.usmba.fpt.e_learning;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +55,14 @@ public class ProfLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_login);
+        androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
+        setSupportActionBar(toolbar);
+        TextView txt=findViewById(R.id.textView);
+        txt.setText("Espace Etseignant");
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_12);
+        toolbar.setBackgroundColor(Color.parseColor("#E31731"));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         sessionData = getSharedPreferences("user_details", MODE_PRIVATE);
 
@@ -159,6 +172,12 @@ public class ProfLoginActivity extends AppCompatActivity {
     public void openMain() {
         Intent intent = new Intent(ProfLoginActivity.this, ProfAccueilActivity.class);
         startActivity(intent);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+
     }
 
 }

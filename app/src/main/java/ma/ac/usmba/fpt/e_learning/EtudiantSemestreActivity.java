@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_etudiant_semestre);
         androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
         setSupportActionBar(toolbar);
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Etudiant");
         toolbar.setBackgroundColor(Color.parseColor("#3556A3"));

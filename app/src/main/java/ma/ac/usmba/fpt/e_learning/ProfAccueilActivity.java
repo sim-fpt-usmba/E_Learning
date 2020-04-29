@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -21,6 +23,8 @@ public class ProfAccueilActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Enseignant");
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         toolbar.setBackgroundColor(Color.parseColor("#E31731"));
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }

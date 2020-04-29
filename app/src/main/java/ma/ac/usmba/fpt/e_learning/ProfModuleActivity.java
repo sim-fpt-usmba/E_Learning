@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ public class ProfModuleActivity extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
         setSupportActionBar(toolbar);
         TextView txt=findViewById(R.id.textView);
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         txt.setText("Espace Enseignant");
         toolbar.setBackgroundColor(Color.parseColor("#E31731"));
         getSupportActionBar().setDisplayShowTitleEnabled(false);

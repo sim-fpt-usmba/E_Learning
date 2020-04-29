@@ -72,6 +72,8 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Enseignant");
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         toolbar.setBackgroundColor(Color.parseColor("#E31731"));
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Instantiations

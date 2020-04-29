@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ public class ProfSeanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prof_seance);
         androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
         setSupportActionBar(toolbar);
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Enseignant");
         toolbar.setBackgroundColor(Color.parseColor("#E31731"));

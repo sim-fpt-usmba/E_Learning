@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,8 @@ public class ProfFiliereActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prof_filiere);
         androidx.appcompat.widget.Toolbar toolbar= findViewById(R.id.constraintLayout4);
         setSupportActionBar(toolbar);
+        ImageView img=findViewById(R.id.GoBackIcon);
+        img.setImageResource(R.drawable.trace_52);
         TextView txt=findViewById(R.id.textView);
         txt.setText("Espace Enseignant");
         toolbar.setBackgroundColor(Color.parseColor("#E31731"));
