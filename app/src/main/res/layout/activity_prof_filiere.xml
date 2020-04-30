@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfFiliereActivity"
+    tools:showIn="@layout/toolbar_main"
     android:id="@+id/ll"
     android:orientation="vertical">
    <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +22,7 @@
        app:layout_constraintVertical_bias="0.0">
 
       <TextView
-          android:id="@+id/textView4"
+          android:id="@+id/textView"
           style="@style/Widget.AppCompat.TextView"
           android:layout_width="230dp"
           android:layout_height="37dp"
@@ -47,10 +49,14 @@
           app:layout_constraintTop_toTopOf="parent"
           app:srcCompat="@drawable/trace_52" />
    </androidx.constraintlayout.widget.ConstraintLayout>
-   <LinearLayout
-       android:orientation="vertical"
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recyclerView"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/filiere_layout">
-   </LinearLayout>
+       android:layout_height="wrap_content" >
+
+
+   </androidx.recyclerview.widget.RecyclerView>
+
+
 </LinearLayout>

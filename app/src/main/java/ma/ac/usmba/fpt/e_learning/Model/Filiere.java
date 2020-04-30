@@ -1,10 +1,14 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
 public class Filiere {
-private String id_filiere;
-private String nom_filere;
+    private String id_filiere;
+    private String nom_filere;
+    int back;
 
-    public Filiere() {
+    public Filiere(int back,String id_filiere,String nom_filere) {
+        this.back=back;
+        this.id_filiere=id_filiere;
+        this.nom_filere=nom_filere;
 
     }
 
@@ -32,4 +36,13 @@ private String nom_filere;
     public void setNom_filere(String nom_filere) {
         this.nom_filere = nom_filere;
     }
+
+    public int getBack() {
+        return back;
+    }
+    public void setBack(int back) {
+        this.back = back;
+    }
+
+
 }

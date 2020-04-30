@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +28,10 @@ public class ProfFiliereActivity extends AppCompatActivity {
     ArrayList<Filiere> list_filiere = ProfFiliereController.set_Filiere();
     LinearLayout filier_layout;
     Button bouton;
+    RecyclerView recyclerView;
+    Adapter adapter;
     ArrayList<Button> button_filier_list = new ArrayList<>();
+    ArrayList <Filiere> itmes;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,6 +39,17 @@ public class ProfFiliereActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_filiere);
         filier_layout = (LinearLayout) findViewById(R.id.filiere_layout);
+        recyclerView= (RecyclerView) findViewById(R.id.recyclerView);
+        itmes=new ArrayList<>();
+        itmes.add(new Filiere(R.drawable.original,"SMI", "Filière SMI"));
+        itmes.add(new Filiere(R.drawable.original,"SMA", "Filière SMA"));
+        itmes.add(new Filiere(R.drawable.original,"SMP", "Filière SMP"));
+        itmes.add(new Filiere(R.drawable.original,"SMC", "Filière SMC"));
+        itmes.add(new Filiere(R.drawable.original,"SVT", "Filière SVT"));
+        itmes.add(new Filiere(R.drawable.original,"GGA", "Filière GGA"));
+        adapter=new Adapter(ProfFiliereActivity.this,itmes);
+        recyclerView.setLayoutManager(new GridLayoutManager(ProfFiliereActivity.this,2));
+        recyclerView.setAdapter(adapter);
 
         filier_layout.addView(new TextView(this));
         Iterator<Filiere> iter_filiere = list_filiere.iterator();
