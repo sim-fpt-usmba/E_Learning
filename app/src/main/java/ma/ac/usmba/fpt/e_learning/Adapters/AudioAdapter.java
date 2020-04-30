@@ -23,14 +23,15 @@ import java.util.ArrayList;
 
 
 import ma.ac.usmba.fpt.e_learning.Model.AudioModel;
+import ma.ac.usmba.fpt.e_learning.ProfCreerSeanceActivity;
 import ma.ac.usmba.fpt.e_learning.R;
 
 
-public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAudiosAdapter.ViewHolder>  {
+public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder>  {
     Context context;
     ArrayList<AudioModel> audios;
 
-    public ProfContenuAudiosAdapter(Context context, ArrayList<AudioModel> audios) {
+    public AudioAdapter(Context context, ArrayList<AudioModel> audios) {
         this.context = context;
         this.audios = audios;
     }
@@ -38,16 +39,19 @@ public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAu
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_audios,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_audios_list,parent,false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         AudioModel audioModel = audios.get(position);
-        if(new File(audioModel.getPath()).exists())
+
+        if(new File(audioModel.getPath()).exists()) {
             holder.audio_duration.setText(audioModel.getAudio_duration(audioModel.getPath()));
-        holder.play_audio.setOnClickListener(new View.OnClickListener() {
+        }
+
+            holder.play_audio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -100,6 +104,8 @@ public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAu
                                 Toast.makeText(context, "Audio Paused" , Toast.LENGTH_LONG).show();
                             }else{
                                 holder.play_audio.setBackground(context.getResources().getDrawable(R.drawable.ic_pause));
+                                holder.play_audio.setWidth(10);
+                                holder.play_audio.setHeight(10);
                                 currentAudio.resume();
                                 Toast.makeText(context, "Audio Resumed", Toast.LENGTH_LONG).show();
                             }
@@ -125,6 +131,16 @@ public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAu
                 }
             }
         });
+
+        holder.delete_audio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new File(audios.get(position).getPath()).delete();
+                audios.remove(position);
+                notifyItemRemoved(position);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -137,15 +153,18 @@ public class ProfContenuAudiosAdapter extends RecyclerView.Adapter<ProfContenuAu
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView audio_duration;
-        Button play_audio;
+        Button play_audio,delete_audio;
         SeekBar seekBar;
         Handler handler;
+        ProfCreerSeanceActivity pf;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             audio_duration = itemView.findViewById(R.id.audio_duration);
-            play_audio = itemView.findViewById(R.id.play_button);
-            seekBar = itemView.findViewById(R.id.seekBar);
+            play_audio = itemView.findViewById(R.id.play_audio);
+            delete_audio = itemView.findViewById(R.id.delete_audio);
+            seekBar = itemView.findViewById(R.id.audio_seekBar);
             handler = new Handler();
+            pf = new ProfCreerSeanceActivity();
         }
     }
 }

@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Environment;
+import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,16 +41,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import ma.ac.usmba.fpt.e_learning.Adapters.AudioAdapter;
 import ma.ac.usmba.fpt.e_learning.Adapters.FilesAdapter;
 import ma.ac.usmba.fpt.e_learning.Controller.ModuleController;
 import ma.ac.usmba.fpt.e_learning.Adapters.QuizAdapter;
+import ma.ac.usmba.fpt.e_learning.Model.AudioModel;
 import ma.ac.usmba.fpt.e_learning.Model.Module;
 import ma.ac.usmba.fpt.e_learning.Model.QuestionAnswer;
+import ma.ac.usmba.fpt.e_learning.Model.RecorderModel;
 import ma.ac.usmba.fpt.e_learning.Utils.FileUtils;
 
 public class ProfCreerSeanceActivity extends AppCompatActivity {
@@ -71,6 +81,22 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     float taille=14,s; //Incrémentation/Décrémentation du taille de texte
     ////////
 
+    //Variables of Recorder
+    Button publier, record, trash;
+    TextView audio_timer, point_rouge,recorder_audio_ici;
+    MediaRecorder myAudioRecorder;
+    public static ArrayList<AudioModel> audioModel = new ArrayList<>();
+    RecyclerView audios_list;
+    AudioAdapter audioAdapter;
+    ///////
+    //timer variables
+    long count = 0;
+    private static final long START_TIME_IN_MILLIS = 600000;
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    private CountDownTimer mCountDownTimer;
+    private String audio_duration;
+    private boolean mTimerRunning;
+    ////////////
     ArrayAdapter<String> adapter;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE};
@@ -81,6 +107,92 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_creer_seance);
+        //VoiceRecorder Functionnalities:
+        //Instanciation
+        publier = (Button) findViewById(R.id.publier);
+        record = (Button) findViewById(R.id.recorder);
+        trash = (Button) findViewById(R.id.trash);
+        audios_list = (RecyclerView) findViewById(R.id.audios_list);
+        audio_timer = (TextView) findViewById(R.id.timer);
+        point_rouge = (TextView) findViewById(R.id.point_rouge);
+        recorder_audio_ici = (TextView) findViewById(R.id.recorder_audio_ici);
+
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    publier.setVisibility(View.VISIBLE);
+                    record.setVisibility(View.INVISIBLE);
+                    recorder_audio_ici.setVisibility(View.INVISIBLE);
+                    point_rouge.setVisibility(View.VISIBLE);
+                    audio_timer.setVisibility(View.VISIBLE);
+                    trash.setVisibility(View.VISIBLE);
+                    startTimer();
+                myAudioRecorder = new MediaRecorder();
+                myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+                myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+                myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+                try {
+                    audioModel.add(new AudioModel(Environment.getExternalStorageDirectory().getAbsolutePath()+
+                                    "/e_learning_recording"+
+                                    audioModel.size()+
+                                    ".mp3"));
+                    myAudioRecorder.setOutputFile(audioModel.get(audioModel.size()-1).getPath());
+                    myAudioRecorder.prepare();
+                    myAudioRecorder.start();
+                    Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Sorry something went wrong !", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        final ArrayList list = new ArrayList();
+        publier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                publier.setVisibility(View.INVISIBLE);
+                record.setVisibility(View.VISIBLE);
+                recorder_audio_ici.setVisibility(View.VISIBLE);
+                point_rouge.setVisibility(View.INVISIBLE);
+                audio_timer.setVisibility(View.INVISIBLE);
+                trash.setVisibility(View.INVISIBLE);
+                pauseTimer();
+                resetTimer();
+                myAudioRecorder.stop();
+                myAudioRecorder.release();
+                myAudioRecorder  = null;
+                add_audios(list,audioModel.get(audioModel.size()-1).getPath());
+                Toast.makeText(getApplicationContext(), "Audio Recorder stopped ", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                publier.setVisibility(View.INVISIBLE);
+                record.setVisibility(View.VISIBLE);
+                point_rouge.setVisibility(View.INVISIBLE);
+                recorder_audio_ici.setVisibility(View.VISIBLE);
+                audio_timer.setVisibility(View.INVISIBLE);
+                trash.setVisibility(View.INVISIBLE);
+                pauseTimer();
+                resetTimer();
+                myAudioRecorder.stop();
+                myAudioRecorder.release();
+                myAudioRecorder  = null;
+
+                boolean deleteFile = new File(audioModel.get(audioModel.size() - 1).getPath()).delete();
+                if (deleteFile) {
+                    Toast.makeText(getApplicationContext(), "Audio deleted", Toast.LENGTH_LONG).show();
+                    audioModel.remove(audioModel.size() - 1);
+                }else {
+                    Toast.makeText(getApplicationContext(), "something went wrong! ", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //End VoiceRecorder
+
         //Text Editor Fuctionalities:
         constr = (ConstraintLayout)findViewById(R.id.constr);
         myEditor = (EditText)findViewById(R.id.editText);
@@ -91,7 +203,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         color = (Spinner) findViewById(R.id.spinner);
         type_face = (Spinner) findViewById(R.id.spinner3);
 
-        //Création d'une liste des couleurs à mettre dans le Spinner
+        //Création d'une liste des couleurs à mettre dans le Spinner des couleurs
         List colors = new ArrayList();
         colors.add("Blanc");
         colors.add("Noir");
@@ -141,7 +253,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         type_face.setAdapter(adapter3);
         /////////////////////////////////////////
 
-//Italic
+        //Italic
         i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -474,6 +586,57 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     public void goback(View view) {
         finish();
     }
+
+    private void add_audios(ArrayList list, String audio_path) {
+        list.add(new AudioModel(audio_path));
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        this.audios_list.setLayoutManager(mLayoutManager);
+        audioAdapter = new AudioAdapter(this,list);
+        this.audios_list.setAdapter(audioAdapter);
+    }
+
+    //Audio Timer
+    private void startTimer() {
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                audio_timer.setText(String.valueOf(count));
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+                count += 1000;
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                startTimer();
+            }
+        }.start();
+
+        mTimerRunning = true;
+    }
+
+    private void pauseTimer() {
+        mCountDownTimer.cancel();
+        mTimerRunning = false;
+    }
+
+    private void resetTimer() {
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        count = 0;
+        audio_timer.setText("");
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (count / 1000) / 60;
+        int seconds = (int) (count / 1000) % 60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        audio_timer.setText(timeLeftFormatted);
+        audio_duration = timeLeftFormatted;
+    }
+    ///////
 }
 
 
