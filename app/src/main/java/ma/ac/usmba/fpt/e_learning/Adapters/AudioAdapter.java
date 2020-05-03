@@ -29,9 +29,9 @@ import ma.ac.usmba.fpt.e_learning.R;
 
 public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder>  {
     Context context;
-    ArrayList<AudioModel> audios;
+    ArrayList<String> audios;
 
-    public AudioAdapter(Context context, ArrayList<AudioModel> audios) {
+    public AudioAdapter(Context context, ArrayList<String> audios) {
         this.context = context;
         this.audios = audios;
     }
@@ -45,8 +45,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        AudioModel audioModel = audios.get(position);
-
+        final AudioModel audioModel = new AudioModel(audios.get(position));
         if(new File(audioModel.getPath()).exists()) {
             holder.audio_duration.setText(audioModel.getAudio_duration(audioModel.getPath()));
         }
@@ -55,7 +54,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 try{
-                    final AudioModel currentAudio = audios.get(position);
+                    final AudioModel currentAudio = audioModel;
                     currentAudio.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
                         public void onCompletion(MediaPlayer mp) {
@@ -91,7 +90,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
                                     }
                                 });
                                 currentAudio.start();
-                                Toast.makeText(context, "Playing Audio" + currentAudio.isPaused(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Playing Audio", Toast.LENGTH_LONG).show();
                             }catch (IOException e){
                                 e.printStackTrace();
                                 Log.d("onClick: ", e.toString());
@@ -116,16 +115,6 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
                         holder.play_audio.setBackground(context.getResources().getDrawable(R.drawable.ic_pause));
                         currentAudio.start();
                     }
-              /*      holder.outputFile= Environment.getExternalStorageDirectory().getAbsolutePath() +
-                            "/recording"+
-                            position+
-                            ".mp3";
-                    holder.i += 1;
-                    MediaPlayer mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setDataSource(holder.outputFile);
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-*/
                 } catch (Exception e) {
                     // make something
                 }
@@ -135,7 +124,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
         holder.delete_audio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new File(audios.get(position).getPath()).delete();
+                new File(audios.get(position)).delete();
                 audios.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();

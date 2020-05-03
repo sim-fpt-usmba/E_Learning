@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,8 +37,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
 
@@ -64,28 +67,32 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     ArrayList<QuestionAnswer> quizzes = new ArrayList<>();
     ArrayList<String> paths = new ArrayList<>();
     Button button_valider;
-    RecyclerView recyclerView,file_names_recycler;
+    RecyclerView recyclerView, file_names_recycler;
     QuizAdapter quizAdapter;
     FilesAdapter filesAdapter;
     Button attach_file;
-    TextView creer_quiz,cour_date,cour_time;
+    TextView creer_quiz, cour_date, cour_time;
     DatePickerDialog datePickerDialog;
     DatePickerDialog.OnDateSetListener onDateSetListener;
-    ImageView calendar,time;
+    ImageView calendar, time;
     //Variables of Text Editor:
     ConstraintLayout constr;
     EditText myEditor;
-    Button plus,moins;
-    CheckBox g,i;
-    Spinner color,type_face;
-    float taille=14,s; //Incrémentation/Décrémentation du taille de texte
+    Button plus, moins;
+    CheckBox g, i;
+    Spinner color, type_face;
+    float taille = 14, s=14; //Incrémentation/Décrémentation du taille de texte
+    private String text;
+    ArrayAdapter<String> adapter_color;
+    ArrayAdapter adapter_face;
     ////////
 
     //Variables of Recorder
     Button publier, record, trash;
-    TextView audio_timer, point_rouge,recorder_audio_ici;
+    TextView audio_timer, point_rouge, recorder_audio_ici;
     MediaRecorder myAudioRecorder;
     public static ArrayList<AudioModel> audioModel = new ArrayList<>();
+    ArrayList<String> get_audios = new ArrayList<>();
     RecyclerView audios_list;
     AudioAdapter audioAdapter;
     ///////
@@ -102,9 +109,11 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE};
     final int FILE_CHOOSER = 50;
     final String PATHS = "paths";
+    final String AUDIOS = "audios";
     Spinner modules;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_creer_seance);
         //VoiceRecorder Functionnalities:
@@ -120,23 +129,23 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    publier.setVisibility(View.VISIBLE);
-                    record.setVisibility(View.INVISIBLE);
-                    recorder_audio_ici.setVisibility(View.INVISIBLE);
-                    point_rouge.setVisibility(View.VISIBLE);
-                    audio_timer.setVisibility(View.VISIBLE);
-                    trash.setVisibility(View.VISIBLE);
-                    startTimer();
+                publier.setVisibility(View.VISIBLE);
+                record.setVisibility(View.INVISIBLE);
+                recorder_audio_ici.setVisibility(View.INVISIBLE);
+                point_rouge.setVisibility(View.VISIBLE);
+                audio_timer.setVisibility(View.VISIBLE);
+                trash.setVisibility(View.VISIBLE);
+                startTimer();
                 myAudioRecorder = new MediaRecorder();
                 myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                 myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
                 myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
                 try {
-                    audioModel.add(new AudioModel(Environment.getExternalStorageDirectory().getAbsolutePath()+
-                                    "/e_learning_recording"+
-                                    audioModel.size()+
-                                    ".mp3"));
-                    myAudioRecorder.setOutputFile(audioModel.get(audioModel.size()-1).getPath());
+                    audioModel.add(new AudioModel(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                            "/e_learning_recording" +
+                            audioModel.size() +
+                            ".mp3"));
+                    myAudioRecorder.setOutputFile(audioModel.get(audioModel.size() - 1).getPath());
                     myAudioRecorder.prepare();
                     myAudioRecorder.start();
                     Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
@@ -146,7 +155,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 }
             }
         });
-        final ArrayList list = new ArrayList();
+
         publier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,8 +169,9 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 resetTimer();
                 myAudioRecorder.stop();
                 myAudioRecorder.release();
-                myAudioRecorder  = null;
-                add_audios(list,audioModel.get(audioModel.size()-1).getPath());
+                myAudioRecorder = null;
+                add_audios(audioModel.get(audioModel.size()-1).getPath());
+                audios_list.setAdapter(audioAdapter);
                 Toast.makeText(getApplicationContext(), "Audio Recorder stopped ", Toast.LENGTH_LONG).show();
 
             }
@@ -180,13 +190,13 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 resetTimer();
                 myAudioRecorder.stop();
                 myAudioRecorder.release();
-                myAudioRecorder  = null;
+                myAudioRecorder = null;
 
                 boolean deleteFile = new File(audioModel.get(audioModel.size() - 1).getPath()).delete();
                 if (deleteFile) {
                     Toast.makeText(getApplicationContext(), "Audio deleted", Toast.LENGTH_LONG).show();
                     audioModel.remove(audioModel.size() - 1);
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "something went wrong! ", Toast.LENGTH_LONG).show();
                 }
             }
@@ -194,8 +204,8 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         //End VoiceRecorder
 
         //Text Editor Fuctionalities:
-        constr = (ConstraintLayout)findViewById(R.id.constr);
-        myEditor = (EditText)findViewById(R.id.editText);
+        constr = (ConstraintLayout) findViewById(R.id.constr);
+        myEditor = (EditText) findViewById(R.id.editText);
         g = (CheckBox) findViewById(R.id.gras);
         i = (CheckBox) findViewById(R.id.italique);
         plus = (Button) findViewById(R.id.plus);
@@ -214,7 +224,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         ///////////////////////
 
         //Création d'une liste des types faces
-        List face = new ArrayList();
+        final List face = new ArrayList();
         face.add("Normal");
         face.add("Serif");
         face.add("Monospace");
@@ -234,23 +244,23 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         });
 
         //Importer les couleurs dans le spinner "spinner"
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
+        adapter_color = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_item,
                 colors
         );
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        color.setAdapter(adapter1);
+        adapter_color.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        color.setAdapter(adapter_color);
         /////////////////////////////////////////
 
         //Importer les type faces dans le spinner type_face
-        ArrayAdapter adapter3 = new ArrayAdapter(
+        adapter_face = new ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
                 face
         );
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        type_face.setAdapter(adapter3);
+        adapter_face.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type_face.setAdapter(adapter_face);
         /////////////////////////////////////////
 
         //Italic
@@ -304,38 +314,40 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.M)
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                        ((TextView)parent.getChildAt(0)).setTextColor(Color.WHITE);
+                        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                         Object item = color.getSelectedItem();
-                        if(item == "Noir"){
+                        if (item == "Noir") {
                             myEditor.setTextColor(getColor(R.color.dark));
                         }
-                        if(item == "Blanc"){
+                        if (item == "Blanc") {
                             myEditor.setTextColor(getColor(R.color.white));
                         }
-                        if(item == "Vert"){
+                        if (item == "Vert") {
                             myEditor.setTextColor(getColor(R.color.light_green));
                         }
-                        if(item == "Rouge"){
+                        if (item == "Rouge") {
                             myEditor.setTextColor(getColor(R.color.red));
                         }
-                        if(item == "Jaune"){
+                        if (item == "Jaune") {
                             myEditor.setTextColor(getColor(R.color.yellow));
                         }
-                        if(item == "Gris"){
+                        if (item == "Gris") {
                             myEditor.setTextColor(getColor(R.color.fullwhite));
                         }
 
                     }
+
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
         ///////////////////////////////////////
 
+        //Type de font
         type_face.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        ((TextView)parent.getChildAt(0)).setTextColor(Color.WHITE);
+                        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                         Object type = type_face.getSelectedItem();
                         if (type == "Monospace")
                             myEditor.setTypeface(Typeface.MONOSPACE);
@@ -371,9 +383,9 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         ArrayList<String> array_modules = new ArrayList<>();
         array_modules.add("SELECTIONNER UN MODULE");
         //Filling the array modules with modules names.
-        for(Module m : ModuleController.getModule())array_modules.add(m.getName());
+        for (Module m : ModuleController.getModule()) array_modules.add(m.getName());
         //Setting an adapter for the spinner.
-        adapter = new ArrayAdapter<>(this,R.layout.dropdown,array_modules);
+        adapter = new ArrayAdapter<>(this, R.layout.dropdown, array_modules);
         modules.setAdapter(adapter);
         //TODO : ACTIONS WHEN THE USER SELECT AN ITEM OR NOT.
         modules.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -387,6 +399,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
 
             }
         });
+
         //Move to the QuizPopUp
         creer_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -396,14 +409,25 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 String array_quizzes = gson.toJson(quizzes);
                 intent.putExtra(QUIZ, array_quizzes);
                 intent.putStringArrayListExtra("paths", paths);
-                intent.putExtra("modules",modules.getSelectedItem().toString());
+                intent.putStringArrayListExtra("audios", get_audios);
+                //Text_Editor
+                intent.putExtra("text",myEditor.getText().toString());
+                intent.putExtra("size",String.valueOf(s));
+                intent.putExtra("color",color.getSelectedItem().toString());
+                intent.putExtra("type_face",type_face.getSelectedItem().toString());
+                intent.putExtra("gras",String.valueOf(g.isChecked()));
+                intent.putExtra("italic",String.valueOf(i.isChecked()));
+                ///
+                intent.putExtra("modules", modules.getSelectedItem().toString());
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_to_right,R.anim.slide_out_left);
+                overridePendingTransition(R.anim.slide_to_right, R.anim.slide_out_left);
                 finish();
             }
         });
         update_quizzes();
         update_files();
+        update_text();
+        update_audios();
         //Populate the recycler view
         quizAdapter = new QuizAdapter(this, quizzes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -430,7 +454,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(ProfCreerSeanceActivity.this, PERMISSIONS, FILE_CHOOSER);
                 }
-                for(String path:paths) System.out.println(path);
+                for (String path : paths) System.out.println(path);
             }
         });
 
@@ -439,12 +463,12 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar calendar1 = Calendar.getInstance();
-                int year,month,day;
+                int year, month, day;
                 year = calendar1.get(Calendar.YEAR);
                 month = calendar1.get(Calendar.MONTH);
                 day = calendar1.get(Calendar.DAY_OF_MONTH);
                 datePickerDialog = new DatePickerDialog(
-                        ProfCreerSeanceActivity.this,onDateSetListener,year,month,day);
+                        ProfCreerSeanceActivity.this, onDateSetListener, year, month, day);
                 datePickerDialog.setTitle("Date du cour");
                 datePickerDialog.show();
             }
@@ -452,8 +476,8 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = dayOfMonth+"/"+month+"/"+year;
+                month = month + 1;
+                String date = dayOfMonth + "/" + month + "/" + year;
                 cour_date.setText(date);
             }
         };
@@ -470,15 +494,15 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String time = "";//hour +":" + minute;
-                        if(hour < 10){
+                        if (hour < 10) {
                             time += "0" + hour;
-                        }else{
+                        } else {
                             time += hour;
                         }
-                        if(minute < 10){
+                        if (minute < 10) {
                             time += ":0" + minute;
-                        }else{
-                            time += ":"+ minute;
+                        } else {
+                            time += ":" + minute;
                         }
                         cour_time.setText(time);
                     }
@@ -507,19 +531,20 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
 
     //Update the quizzes arrayList
     public void update_quizzes() {
-        if (getIntent().getSerializableExtra(QUIZ) != null){
+        if (getIntent().getSerializableExtra(QUIZ) != null) {
             quizzes = (ArrayList<QuestionAnswer>) getIntent().getSerializableExtra(QUIZ);
         }
         String module = getIntent().getStringExtra("modules");
         int pos = adapter.getPosition(module);
         modules.setSelection(pos);
     }
+
     //Update the selected files
-    public void update_files(){
+    public void update_files() {
         if (getIntent().getStringArrayListExtra(PATHS) != null) {
             paths = getIntent().getStringArrayListExtra(PATHS);
         }
-        filesAdapter = new FilesAdapter(this,paths);
+        filesAdapter = new FilesAdapter(this, paths);
         file_names_recycler.setLayoutManager(new LinearLayoutManager(this));
         file_names_recycler.setAdapter(filesAdapter);
     }
@@ -557,6 +582,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         }
         return true;
     }
+
     //
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -569,12 +595,12 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 while (count < data.getClipData().getItemCount()) {
                     Uri uri = data.getClipData().getItemAt(count).getUri();
                     paths.add(FileUtils.getPath(ProfCreerSeanceActivity.this, uri));
-                    path += "  "+FileUtils.getFileName(paths.get(count));
+                    path += "  " + FileUtils.getFileName(paths.get(count));
                     count++;
                 }
             } else if (data.getData() != null) {
                 paths.add(FileUtils.getPath(ProfCreerSeanceActivity.this, data.getData()));
-                path += "  "+FileUtils.getFileName(paths.get(paths.size()-1));
+                path += "  " + FileUtils.getFileName(paths.get(paths.size() - 1));
             }
             //setPaths();
             //Populate the file names recycler
@@ -587,11 +613,57 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         finish();
     }
 
-    private void add_audios(ArrayList list, String audio_path) {
-        list.add(new AudioModel(audio_path));
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        this.audios_list.setLayoutManager(mLayoutManager);
-        audioAdapter = new AudioAdapter(this,list);
+    private void update_text(){
+        if (getIntent().getStringExtra("text") != null) {
+            text = getIntent().getStringExtra("text");
+        }
+        myEditor.setText(text);
+        if (getIntent().getStringExtra("size") != null) {
+            s = Float.valueOf(getIntent().getStringExtra("size"));
+            myEditor.setTextSize(s);
+            taille = s;
+        }
+        if (getIntent().getStringExtra("color") != null) {
+            String coleur  = getIntent().getStringExtra("color");
+            int color_position = adapter_color.getPosition(coleur);
+            color.setSelection(color_position);
+        }
+        if (getIntent().getStringExtra("type_face") != null) {
+            String face  = getIntent().getStringExtra("type_face");
+            int face_position = adapter_face.getPosition(face);
+            type_face.setSelection(face_position);
+        }
+        if (getIntent().getStringExtra("gras") != null) {
+            String gras  = getIntent().getStringExtra("gras");
+            if(gras.equals("true")){
+                i.setChecked(false);
+                g.setChecked(true);
+                myEditor.setTypeface(null,Typeface.BOLD);
+            }
+        }
+        if (getIntent().getStringExtra("italic") != null) {
+                    String italic  = getIntent().getStringExtra("italic");
+                    if(italic.equals("true")){
+                        g.setChecked(false);
+                        i.setChecked(true);
+                        myEditor.setTypeface(null,Typeface.ITALIC);
+                    }
+                }
+
+    }
+    private void update_audios(){
+        if (getIntent().getStringArrayListExtra("audios") != null) {
+            get_audios = getIntent().getStringArrayListExtra("audios");
+        }
+        this.audios_list.setLayoutManager(new LinearLayoutManager(this));
+        audioAdapter = new AudioAdapter(this, get_audios);
+        this.audios_list.setAdapter(audioAdapter);
+    }
+
+    private void add_audios(String audio_path) {
+        get_audios.add(audio_path);
+        this.audios_list.setLayoutManager(new LinearLayoutManager(this));
+        audioAdapter = new AudioAdapter(this, get_audios);
         this.audios_list.setAdapter(audioAdapter);
     }
 
@@ -636,7 +708,6 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         audio_timer.setText(timeLeftFormatted);
         audio_duration = timeLeftFormatted;
     }
-    ///////
 }
 
 

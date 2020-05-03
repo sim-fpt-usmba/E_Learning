@@ -12,7 +12,7 @@ import ma.ac.usmba.fpt.e_learning.Model.ContenuModel;
 import ma.ac.usmba.fpt.e_learning.ProfCreerSeanceActivity;
 
 public class ContenuController {
-
+        public static ArrayList<AudioModel> audios;
     public static ContenuModel getContenu(){
         Date date = new Date();
         ProfCreerSeanceActivity pf = new ProfCreerSeanceActivity();
@@ -28,7 +28,7 @@ public class ContenuController {
         files.add(new File("Nom du fichier 4").toString());
 
         //TODO: We should add Audios from DataBase, below just a test.
-        ArrayList<AudioModel> audios = pf.audioModel;
+        audios = pf.audioModel;
         return new ContenuModel(date,description,files,audios);
     }
 }

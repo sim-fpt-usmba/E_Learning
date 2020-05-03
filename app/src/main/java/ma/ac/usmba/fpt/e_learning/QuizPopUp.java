@@ -126,6 +126,22 @@ public class QuizPopUp extends Activity {
             intent.putExtra(QUIZ, quiz_array);
             String module = getIntent().getStringExtra("modules");
             intent.putExtra("modules",module);
+            //Text Editor
+            String text = getIntent().getStringExtra("text");
+            intent.putExtra("text",text);
+            String s = getIntent().getStringExtra("size");
+            intent.putExtra("size",s);
+            String color = getIntent().getStringExtra("color");
+            intent.putExtra("color",color);
+            String type_face = getIntent().getStringExtra("type_face");
+            intent.putExtra("type_face",type_face);
+            String gras = getIntent().getStringExtra("gras");
+            intent.putExtra("gras",gras);
+            String italic = getIntent().getStringExtra("italic");
+            intent.putExtra("italic",italic);
+            ////
+            ArrayList<String> audios = getIntent().getStringArrayListExtra("audios");
+            intent.putStringArrayListExtra("audios", audios);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             finish();
