@@ -95,6 +95,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     ArrayList<String> get_audios = new ArrayList<>();
     RecyclerView audios_list;
     AudioAdapter audioAdapter;
+    final String[] per = {Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     ///////
     //timer variables
     long count = 0;
@@ -108,6 +109,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE};
     final int FILE_CHOOSER = 50;
+
     final String PATHS = "paths";
     final String AUDIOS = "audios";
     Spinner modules;
@@ -126,32 +128,38 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         point_rouge = (TextView) findViewById(R.id.point_rouge);
         recorder_audio_ici = (TextView) findViewById(R.id.recorder_audio_ici);
 
+
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                publier.setVisibility(View.VISIBLE);
-                record.setVisibility(View.INVISIBLE);
-                recorder_audio_ici.setVisibility(View.INVISIBLE);
-                point_rouge.setVisibility(View.VISIBLE);
-                audio_timer.setVisibility(View.VISIBLE);
-                trash.setVisibility(View.VISIBLE);
-                startTimer();
-                myAudioRecorder = new MediaRecorder();
-                myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-                myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-                myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-                try {
-                    audioModel.add(new AudioModel(Environment.getExternalStorageDirectory().getAbsolutePath() +
-                            "/e_learning_recording" +
-                            audioModel.size() +
-                            ".mp3"));
-                    myAudioRecorder.setOutputFile(audioModel.get(audioModel.size() - 1).getPath());
-                    myAudioRecorder.prepare();
-                    myAudioRecorder.start();
-                    Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Sorry something went wrong !", Toast.LENGTH_LONG).show();
+                if(hasPermissions(ProfCreerSeanceActivity.this, per)) {
+                    publier.setVisibility(View.VISIBLE);
+                    record.setVisibility(View.INVISIBLE);
+                    recorder_audio_ici.setVisibility(View.INVISIBLE);
+                    point_rouge.setVisibility(View.VISIBLE);
+                    audio_timer.setVisibility(View.VISIBLE);
+                    trash.setVisibility(View.VISIBLE);
+                    startTimer();
+                    myAudioRecorder = new MediaRecorder();
+                    myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+                    myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+                    myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+                    try {
+                        audioModel.add(new AudioModel(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                                "/e_learning_recording" +
+                                audioModel.size() +
+                                ".mp3"));
+                        myAudioRecorder.setOutputFile(audioModel.get(audioModel.size() - 1).getPath());
+                        myAudioRecorder.prepare();
+                        myAudioRecorder.start();
+                        Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Sorry something went wrong !", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    ActivityCompat.requestPermissions(ProfCreerSeanceActivity.this, per, 200);
+
                 }
             }
         });
