@@ -34,11 +34,10 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
 
             /*
              oubtou_log : check if has a lesson now
-                          you can use this, for show or hide " Assister Seance "
+                          you can use this function to show or hide " Assister Seance " button
             */
-            API.course_now(
+            API.assister(
                     etudiant.build_access_token(),
-                    "",
                     new Consumer<Seance>() {
                         @Override
                         public void accept(Seance s) {

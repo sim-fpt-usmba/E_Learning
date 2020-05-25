@@ -9,7 +9,7 @@ public class ModuleController {
 
     public static ArrayList<Module> getModule() {
         ArrayList<Module> modules = new ArrayList<>();
-        for (int m = 1; m < 5; m++) {
+        for (int m = 1; m < 2; m++) {
             Module module = new Module();
             module.setName("Module " + m);
             ArrayList<Seance> seances = new ArrayList<>();

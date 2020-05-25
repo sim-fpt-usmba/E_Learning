@@ -28,9 +28,15 @@ public class SeanceGrid extends GridLayout {
 
         seanceBtnList = new ArrayList<>();
 
+
+        /*
+         oubtou_log : you need to added cases of have a 1 or 2 items !!!!
+
         this.setRowCount(seances.size() / 3);
         this.setColumnCount(3);
-        for (Seance m : seances) {
+         */
+
+        for (final Seance m : seances) {
             Button tempBtn = new Button(context);
             tempBtn.setText(m.getTitre());
             tempBtn.setPadding(10, 10, 10, 10);
@@ -38,6 +44,7 @@ public class SeanceGrid extends GridLayout {
             tempBtn.setBackgroundColor(getResources().getColor(R.color.dark_gray));
             tempBtn.setHeight((int) (tempBtn.getHeight() * 1.2));
             tempBtn.setWidth(tempBtn.getWidth());
+
             tempBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -53,15 +60,14 @@ public class SeanceGrid extends GridLayout {
                     }
                     Toast.makeText(context, from + "", Toast.LENGTH_SHORT).show();
 
-                    if (isProf) {
-                        Intent intent = new Intent(context, ProfSeanceActivity.class);
-                        context.startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(context, EtudiantSeanceActivity.class);
-                        context.startActivity(intent);
-                    }
+                    Intent intent = new Intent(context, EtudiantSeanceActivity.class);
 
+                    if (isProf)
+                        intent = new Intent(context, ProfSeanceActivity.class);
 
+                    //
+                    intent.putExtra("seance_id", m.getId());
+                    context.startActivity(intent);
                 }
             });
             this.addView(tempBtn);

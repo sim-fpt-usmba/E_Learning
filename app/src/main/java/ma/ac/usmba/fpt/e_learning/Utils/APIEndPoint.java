@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ma.ac.usmba.fpt.e_learning.Model.Etudiant;
+import ma.ac.usmba.fpt.e_learning.Model.Message;
 import ma.ac.usmba.fpt.e_learning.Model.Seance;
 import ma.ac.usmba.fpt.e_learning.Model.Semestre;
 import okhttp3.ResponseBody;
@@ -33,8 +34,23 @@ public interface APIEndPoint {
             @Field("cin") String cin
     );
 
+    @GET("etudient/course")
+    Call<Seance> etudient_course(
+            @Header("accept") String type,
+            @Header("Authorization") String authorization,
+            @Query("id") int id
+    );
+
     @GET("etudient/courses")
-    Call<Seance> etudient_courses(
+    Call<Seance> etudient_course_now(
+            @Header("accept") String type,
+            @Header("Authorization") String authorization,
+            //@Query("filter") String filter,
+            @QueryMap(encoded=true) Map<String,String> filter
+    );
+
+    @GET("etudient/courses")
+    Call<ArrayList<Seance>> etudient_courses(
             @Header("accept") String type,
             @Header("Authorization") String authorization,
             //@Query("filter") String filter,
@@ -45,6 +61,22 @@ public interface APIEndPoint {
     Call<ArrayList<Semestre>> etudient_modules_semesters(
             @Header("accept") String type,
             @Header("Authorization") String authorization
+    );
+
+    @GET("etudient/course/messages")
+    Call<ArrayList<Message>> etudient_messages(
+            @Header("accept") String type,
+            @Header("Authorization") String authorization,
+            @Query("cours_id") int cours_id,
+            @Query("id") int id
+    );
+
+    @GET("etudient/course/messages/send")
+    Call<Boolean> etudient_send_message(
+            @Header("accept") String type,
+            @Header("Authorization") String authorization,
+            @Query("cours_id") int course_id,
+            @Query("msg") String msg
     );
 
     @GET("etudient/details")
