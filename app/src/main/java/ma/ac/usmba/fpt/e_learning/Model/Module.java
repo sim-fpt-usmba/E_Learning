@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Module {
     private String name;
     private String ref;
+    private String description;
+    private String semester_id;
     private ArrayList<Seance> seances;
 
     public Module() {

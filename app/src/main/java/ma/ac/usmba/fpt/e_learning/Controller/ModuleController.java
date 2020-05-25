@@ -15,8 +15,8 @@ public class ModuleController {
             ArrayList<Seance> seances = new ArrayList<>();
             for (int s = 1; s < 7; s++) {
                 Seance seance = new Seance();
-                seance.setId(""+ s);
-                seance.setTitle("Seance" + s);
+                seance.setId(s);
+                seance.setTitre("Seance" + s);
                 seances.add(seance);
             }
             module.setSeances(seances);

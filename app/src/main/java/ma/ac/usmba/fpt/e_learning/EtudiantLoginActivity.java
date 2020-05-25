@@ -2,40 +2,22 @@ package ma.ac.usmba.fpt.e_learning;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
 
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-
+import ma.ac.usmba.fpt.e_learning.Controller.EtudiantAPI;
 import ma.ac.usmba.fpt.e_learning.Model.Etudiant;
-
-import ma.ac.usmba.fpt.e_learning.Utils.APIEndPoint;
-import ma.ac.usmba.fpt.e_learning.Utils.NetworkUtils;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 
 
 public class EtudiantLoginActivity extends AppCompatActivity {
     private SharedPreferences sessionData;
-    private NetworkUtils networkUtils;
-    private Etudiant etudiant;
+    private EtudiantAPI API;
+    public Etudiant etudiant;
     private EditText cne;
     private EditText cin;
 
@@ -43,15 +25,16 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant_login);
+        API = new EtudiantAPI();
 
         sessionData = getSharedPreferences("user_details",MODE_PRIVATE);
 
-        if( sessionData.contains("ProfLogin") ){
+        if( sessionData.contains("Etudiant") ){
+            etudiant = API.Object_from_Json(
+                    sessionData.getString("Etudiant", null )
+            );
             openMain();
         }
-
-        networkUtils = new NetworkUtils();
-
         cne = findViewById(R.id.cne);
         cin = findViewById(R.id.cin);
     }
@@ -59,6 +42,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     public void goback(View view) {
         finish();
     }
+
     private boolean validatecne() {
         String cnee= cne.getText().toString().trim();
 
@@ -96,10 +80,27 @@ public class EtudiantLoginActivity extends AppCompatActivity {
             input += "cin: " + cin.getText().toString();
             showMessage(input);
         } else{
-            checkEtudientExists();
+            API.login(
+                    cne.getText().toString(),
+                    cin.getText().toString(),
+                    new Consumer<Etudiant>() {
+                        @Override
+                        public void accept(Etudiant etd) {
+                            etudiant = etd;
+                            SharedPreferences.Editor editor = sessionData.edit();
+                            editor.putString("Etudiant", API.Object_to_Json(etudiant) );
+                            editor.apply();
+                            openMain();
+                        }
+                    },
+                    new Consumer<String>() {
+                        @Override
+                        public void accept(String error) {
+                            showMessage(error);
+                        }
+                    }
+            );
         }
-        //TODO: remove this line after testing
-        openMain();
     }
 
     public void showMessage(String msg){
@@ -111,46 +112,4 @@ public class EtudiantLoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void  checkEtudientExists(){
-        APIEndPoint apiEndPoint = networkUtils.getApiEndPoint();
-
-        Call<ResponseBody> call = apiEndPoint.etudient_login(
-                "application/json",
-                cne.getText().toString(),
-                cin.getText().toString()
-        );
-        call.enqueue(new Callback<ResponseBody>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.code() == 200) {
-                        Document document = Jsoup.parse(response.body().string());
-                        Element p = document.select("body").first();
-                        Gson gson = new Gson();
-                        Type collectionType = new TypeToken<Etudiant>() {
-                        }.getType();
-
-                        etudiant = gson.fromJson(p.text(), collectionType);
-
-                        SharedPreferences.Editor editor = sessionData.edit();
-                        editor.putString("ProfLogin", etudiant.toString());
-                        editor.commit();
-
-                        openMain();
-                    } else {
-                        showMessage( "Failed to login, please check your ID or password" );
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    showMessage( "Failed : " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                showMessage( "Failed : " + t.getMessage());
-            }
-        });
-    }
 }

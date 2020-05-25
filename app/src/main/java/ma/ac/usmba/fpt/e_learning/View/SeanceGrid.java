@@ -11,9 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ma.ac.usmba.fpt.e_learning.EtudiantLoginActivity;
 import ma.ac.usmba.fpt.e_learning.EtudiantSeanceActivity;
-import ma.ac.usmba.fpt.e_learning.EtudiantSemestreActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Seance;
 import ma.ac.usmba.fpt.e_learning.ProfFiliereActivity;
 import ma.ac.usmba.fpt.e_learning.ProfSeanceActivity;
@@ -34,7 +32,7 @@ public class SeanceGrid extends GridLayout {
         this.setColumnCount(3);
         for (Seance m : seances) {
             Button tempBtn = new Button(context);
-            tempBtn.setText(m.getTitle());
+            tempBtn.setText(m.getTitre());
             tempBtn.setPadding(10, 10, 10, 10);
             tempBtn.setTextColor(getResources().getColor(R.color.whitecolor));
             tempBtn.setBackgroundColor(getResources().getColor(R.color.dark_gray));
