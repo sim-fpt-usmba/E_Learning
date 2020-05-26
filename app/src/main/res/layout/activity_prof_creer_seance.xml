@@ -7,6 +7,7 @@
     android:background="#FFFFFF"
     android:fillViewport="true"
     tools:context=".ProfCreerSeanceActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constr"
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
 
         <TextView
             android:id="@+id/Quiz"
-            android:layout_width="395dp"
+            android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -45,11 +46,11 @@
 
         <TextView
             android:id="@+id/cour_time"
-            android:layout_width="330dp"
+            android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="80dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/text_views"
             android:gravity="center_vertical"
             android:hint="@string/date_du_cour"
@@ -65,24 +66,24 @@
             android:id="@+id/time_btn"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="80dp"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/date_du_cour"
+            app:layout_constraintBottom_toTopOf="@+id/editText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.368"
-            app:layout_constraintStart_toEndOf="@+id/cour_date"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toEndOf="@+id/cour_time"
             app:layout_constraintTop_toBottomOf="@+id/contenu"
+            app:layout_constraintVertical_bias="0.94"
             app:srcCompat="@drawable/clock" />
 
         <TextView
             android:id="@+id/cour_date"
-            android:layout_width="330dp"
+            android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/text_views"
             android:gravity="center_vertical"
             android:hint="@string/date_du_cour"
@@ -96,7 +97,7 @@
 
         <TextView
             android:id="@+id/creer_quiz"
-            android:layout_width="405dp"
+            android:layout_width="match_parent"
             android:layout_height="49dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_12"
@@ -118,21 +119,16 @@
 
         <TextView
             android:id="@+id/contenu"
-            android:layout_width="385dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_margin="20dp"
             android:background="@drawable/text_views"
             android:gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/contenu"
             android:textColor="#FFFF"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_modules" />
 
@@ -150,7 +146,7 @@
             android:id="@+id/img_view_attach_file"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="164dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/my_buttons"
             android:clickable="true"
             android:contentDescription="@string/attach_file"
@@ -160,42 +156,32 @@
             android:text="@string/ajouter_des_fichier"
             android:textColor="#FFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/audios_list"
             app:srcCompat="@drawable/ic_attach" />
 
         <ImageView
             android:id="@+id/calendar_btn"
             android:layout_width="41dp"
             android:layout_height="40dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/date_du_cour"
+            app:layout_constraintBottom_toTopOf="@+id/cour_time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintHorizontal_bias="0.425"
             app:layout_constraintStart_toEndOf="@+id/cour_date"
             app:layout_constraintTop_toBottomOf="@+id/contenu"
+            app:layout_constraintVertical_bias="0.525"
             app:srcCompat="@drawable/calendar" />
 
         <Spinner
             android:id="@+id/spinner_modules"
-            android:layout_width="385dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
             android:background="@drawable/my_buttons"
             android:gravity="center|start"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
@@ -257,13 +243,125 @@
                 app:layout_constraintVertical_bias="0.53"
                 app:srcCompat="@drawable/trace_52" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginBottom="1dp"
+                    app:layout_constraintBottom_toTopOf="@+id/editText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOfid/cour_time"
+                    app:layout_constraintVertical_bias="1.0">
+
+                    <CheckBox
+                        android:id="@+id/gras"
+                        android:layout_width="50dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:text="G"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/plus"
+                        app:layout_constraintHorizontal_bias="0.029"
+                        app:layout_constraintStart_toEndOf="@+id/italique"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <Button
+                        android:id="@+id/plus"
+                        android:layout_width="34dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:text="+"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
+                        android:typeface="serif"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/moins"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="70dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:clickable="true"
+                        android:gravity="center_horizontal"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/plus"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <Button
+                        android:id="@+id/moins"
+                        android:layout_width="34dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:text="-"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold|italic"
+                        android:typeface="serif"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="100dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:clickable="true"
+                        android:gravity="center_horizontal"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/spinner"
+                        app:layout_constraintHorizontal_bias="0.3"
+                        app:layout_constraintStart_toEndOf="@+id/gras"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <CheckBox
+                        android:id="@+id/italique"
+                        android:layout_width="50dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/rectangle_119_1"
+                        android:text="I"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic"
+                        android:typeface="serif"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.014"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.071" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+ -->
         <EditText
             android:id="@+id/editText"
             android:layout_width="338dp"
             android:layout_height="187dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="12dp"
             android:autofillHints="@string/ajouter_description"
             android:background="@drawable/my_buttons"
             android:clickable="true"
@@ -283,116 +381,6 @@
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cour_time" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="29dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toTopOf="@+id/editText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cour_time"
-            app:layout_constraintVertical_bias="1.0">
-
-            <CheckBox
-                android:id="@+id/gras"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:background="@drawable/rectangle_119_1"
-                android:text="G"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/plus"
-                app:layout_constraintHorizontal_bias="0.029"
-                app:layout_constraintStart_toEndOf="@+id/italique"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/plus"
-                android:layout_width="34dp"
-                android:layout_height="30dp"
-                android:background="@drawable/rectangle_119_1"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold|italic"
-                android:typeface="serif"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/moins"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="70dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/rectangle_119_1"
-                android:clickable="true"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/plus"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/moins"
-                android:layout_width="34dp"
-                android:layout_height="30dp"
-                android:background="@drawable/rectangle_119_1"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold|italic"
-                android:typeface="serif"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="100dp"
-                android:layout_height="36dp"
-                android:background="@drawable/rectangle_119_1"
-                android:clickable="true"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spinner"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintStart_toEndOf="@+id/gras"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <CheckBox
-                android:id="@+id/italique"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:background="@drawable/rectangle_119_1"
-                android:text="I"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold|italic"
-                android:typeface="serif"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.014"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.071" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -483,17 +471,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/audios_list"
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            android:layout_marginTop="36dp"
-            android:clipToPadding="false"
-            android:stateListAnimator="@anim/slide_to_right"
-            app:layout_constraintBottom_toTopOf="@id/img_view_attach_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

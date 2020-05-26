@@ -78,10 +78,11 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     //Variables of Text Editor:
     ConstraintLayout constr;
     EditText myEditor;
-    Button plus, moins;
+   /* Button plus, moins;
     CheckBox g, i;
     Spinner color, type_face;
     float taille = 14, s=14; //Incrémentation/Décrémentation du taille de texte
+    */
     private String text;
     ArrayAdapter<String> adapter_color;
     ArrayAdapter adapter_face;
@@ -214,7 +215,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         //Text Editor Fuctionalities:
         constr = (ConstraintLayout) findViewById(R.id.constr);
         myEditor = (EditText) findViewById(R.id.editText);
-        g = (CheckBox) findViewById(R.id.gras);
+     /*   g = (CheckBox) findViewById(R.id.gras);
         i = (CheckBox) findViewById(R.id.italique);
         plus = (Button) findViewById(R.id.plus);
         moins = (Button) findViewById(R.id.moins);
@@ -236,7 +237,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         face.add("Normal");
         face.add("Serif");
         face.add("Monospace");
-        ///////////////////////
+        ///////////////////////*/
 
         constr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,7 +252,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
             }
         });
 
-        //Importer les couleurs dans le spinner "spinner"
+        /*/Importer les couleurs dans le spinner "spinner"
         adapter_color = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -420,11 +421,11 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 intent.putStringArrayListExtra("audios", get_audios);
                 //Text_Editor
                 intent.putExtra("text",myEditor.getText().toString());
-                intent.putExtra("size",String.valueOf(s));
+               /* intent.putExtra("size",String.valueOf(s));
                 intent.putExtra("color",color.getSelectedItem().toString());
                 intent.putExtra("type_face",type_face.getSelectedItem().toString());
                 intent.putExtra("gras",String.valueOf(g.isChecked()));
-                intent.putExtra("italic",String.valueOf(i.isChecked()));
+                intent.putExtra("italic",String.valueOf(i.isChecked()));*/
                 ///
                 intent.putExtra("modules", modules.getSelectedItem().toString());
                 startActivity(intent);
@@ -626,7 +627,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
             text = getIntent().getStringExtra("text");
         }
         myEditor.setText(text);
-        if (getIntent().getStringExtra("size") != null) {
+      /*  if (getIntent().getStringExtra("size") != null) {
             s = Float.valueOf(getIntent().getStringExtra("size"));
             myEditor.setTextSize(s);
             taille = s;
@@ -657,7 +658,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                         myEditor.setTypeface(null,Typeface.ITALIC);
                     }
                 }
-
+*/
     }
     private void update_audios(){
         if (getIntent().getStringArrayListExtra("audios") != null) {
