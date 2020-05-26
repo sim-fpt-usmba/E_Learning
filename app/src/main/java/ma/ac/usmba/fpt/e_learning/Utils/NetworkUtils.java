@@ -10,9 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkUtils {
 
     private static Retrofit retrofit;
-    private APIEndPoint apiEndPoint;
-
-    //private User user;
+    public APIEndPoint apiEndPoint;
 
     public APIEndPoint getApiEndPoint() {
         return apiEndPoint;
@@ -31,11 +29,9 @@ public class NetworkUtils {
     public NetworkUtils() {
         retrofit = new Retrofit.Builder()
                 .client(buildClient())
-                .baseUrl("http://apps.oubtou.me/elearning/api/")
+                .baseUrl("https://apps.oubtou.me/elearning/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiEndPoint = retrofit.create(APIEndPoint.class);
     }
-
-
 }

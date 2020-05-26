@@ -1,14 +1,17 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
 public class User {
-    private int id;
-    private int user_id;
-    private String name;
-    private String role;
-    private String email;
-    private String avatar;
-    private String phone;
-    private String cin;
+    public int id;
+    public int user_id;
+    public String name;
+    public String role;
+    public String email;
+    public String avatar;
+    public String phone;
+    public String cin;
+    public String access_token;
+    public String token_type;
+    public String expires_at;
 
     public User() {
     }

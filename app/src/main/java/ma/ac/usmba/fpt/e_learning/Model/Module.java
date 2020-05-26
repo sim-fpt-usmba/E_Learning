@@ -3,8 +3,11 @@ package ma.ac.usmba.fpt.e_learning.Model;
 import java.util.ArrayList;
 
 public class Module {
+    private int id;
     private String name;
     private String ref;
+    private String description;
+    private String semester_id;
     private ArrayList<Seance> seances;
 
     public Module() {
@@ -14,6 +17,14 @@ public class Module {
         this.name = name;
         this.ref = ref;
         this.seances = seances;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

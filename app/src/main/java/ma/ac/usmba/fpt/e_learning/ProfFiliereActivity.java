@@ -2,15 +2,12 @@ package ma.ac.usmba.fpt.e_learning;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -20,7 +17,6 @@ import ma.ac.usmba.fpt.e_learning.Controller.ProfFiliereController;
 import ma.ac.usmba.fpt.e_learning.Model.Filiere;
 
 import static android.graphics.Color.WHITE;
-import static android.widget.LinearLayout.VERTICAL;
 
 public class ProfFiliereActivity extends AppCompatActivity {
     ArrayList<Filiere> list_filiere = ProfFiliereController.set_Filiere();
@@ -46,7 +42,7 @@ public class ProfFiliereActivity extends AppCompatActivity {
             button_filier_list.get(i).setWidth(150);
             button_filier_list.get(i).setTextColor(WHITE);
             button_filier_list.get(i).setTextSize(20);
-            button_filier_list.get(i).setText(f.getNom_filere());
+            button_filier_list.get(i).setText(f.getName());
             button_filier_list.get(i).setTag(i);
             button_filier_list.get(i).setPadding(100, 0, 100, 0);
             button_filier_list.get(i).setOnClickListener(new View.OnClickListener() {

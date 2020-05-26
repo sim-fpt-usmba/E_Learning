@@ -1,35 +1,59 @@
 package ma.ac.usmba.fpt.e_learning.Model;
 
+import java.util.ArrayList;
+
 public class Filiere {
-private String id_filiere;
-private String nom_filere;
+    private int id;
+    private String name;
+    private String description;
+    public ArrayList<Module> modules;
 
     public Filiere() {
 
     }
 
-    public Filiere(String id_filiere) {
-        this.id_filiere = id_filiere;
+    public Filiere(int id_filiere) {
+        this.id = id_filiere;
     }
 
-    public Filiere(String id_filiere, String nom_filere) {
-        this.id_filiere = id_filiere;
-        this.nom_filere = nom_filere;
+    public Filiere(int id_filiere, String nom_filere) {
+        this.id = id_filiere;
+        this.name = nom_filere;
     }
 
-    public String getId_filiere() {
-        return id_filiere;
+    public int getId() {
+        return id;
     }
 
-    public void setId_filiere(String id_filiere) {
-        this.id_filiere = id_filiere;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getNom_filere() {
-        return nom_filere;
+    public String getName() {
+        return name;
     }
 
-    public void setNom_filere(String nom_filere) {
-        this.nom_filere = nom_filere;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ArrayList<Module> getModules() {
+        return modules;
+    }
+
+    public void setModules(ArrayList<Module> modules) {
+        this.modules = modules;
+    }
+    public String toString() {
+
+        return " " + id  + name ;
     }
 }

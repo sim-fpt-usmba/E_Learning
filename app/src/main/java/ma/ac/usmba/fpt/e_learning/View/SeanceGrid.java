@@ -11,9 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ma.ac.usmba.fpt.e_learning.EtudiantLoginActivity;
 import ma.ac.usmba.fpt.e_learning.EtudiantSeanceActivity;
-import ma.ac.usmba.fpt.e_learning.EtudiantSemestreActivity;
 import ma.ac.usmba.fpt.e_learning.Model.Seance;
 import ma.ac.usmba.fpt.e_learning.ProfFiliereActivity;
 import ma.ac.usmba.fpt.e_learning.ProfSeanceActivity;
@@ -30,16 +28,23 @@ public class SeanceGrid extends GridLayout {
 
         seanceBtnList = new ArrayList<>();
 
+
+        /*
+         oubtou_log : you need to added cases of have a 1 or 2 items !!!!
+
         this.setRowCount(seances.size() / 3);
         this.setColumnCount(3);
-        for (Seance m : seances) {
+         */
+
+        for (final Seance m : seances) {
             Button tempBtn = new Button(context);
-            tempBtn.setText(m.getTitle());
+            tempBtn.setText(m.getTitre());
             tempBtn.setPadding(10, 10, 10, 10);
             tempBtn.setTextColor(getResources().getColor(R.color.whitecolor));
             tempBtn.setBackgroundColor(getResources().getColor(R.color.dark_gray));
             tempBtn.setHeight((int) (tempBtn.getHeight() * 1.2));
             tempBtn.setWidth(tempBtn.getWidth());
+
             tempBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -55,15 +60,14 @@ public class SeanceGrid extends GridLayout {
                     }
                     Toast.makeText(context, from + "", Toast.LENGTH_SHORT).show();
 
-                    if (isProf) {
-                        Intent intent = new Intent(context, ProfSeanceActivity.class);
-                        context.startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(context, EtudiantSeanceActivity.class);
-                        context.startActivity(intent);
-                    }
+                    Intent intent = new Intent(context, EtudiantSeanceActivity.class);
 
+                    if (isProf)
+                        intent = new Intent(context, ProfSeanceActivity.class);
 
+                    //
+                    intent.putExtra("seance_id", m.getId());
+                    context.startActivity(intent);
                 }
             });
             this.addView(tempBtn);
